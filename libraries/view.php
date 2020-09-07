@@ -12,6 +12,7 @@
 			require_once 'views/' . $name . '.php';
 
 			require_once 'views/layouts/' . 'footer.php';
+
 		}
 	}
 
