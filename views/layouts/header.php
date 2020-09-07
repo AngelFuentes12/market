@@ -38,8 +38,31 @@
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
+
+                <?php if (isset($_SESSION['admin'])): ?>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo constant('URL'); ?>auth/login">
+                        <a class="nav-link" href="<?php echo constant('URL'); ?>product/register">
+                            Agregar productos
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo constant('URL'); ?>product/show">
+                            Ver productos
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo constant('URL'); ?>admin/logout">
+                            Cerrar Sesión
+                        </a>
+                    </li>
+
+                <?php else: ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo constant('URL'); ?>auth/index">
                             Iniciar Sesión
                         </a>
                     </li>
@@ -49,6 +72,9 @@
                             Registrarse
                         </a>
                     </li>
+                
+                <?php endif ?>
+
                 </ul>
             </div>
         </div>
