@@ -13,17 +13,26 @@
                     <option>Example</option>
                     </select>
                  </div>
-				<div class="form-group">
+				<div class="form-group ">
 					<label for="product">Nombre del producto</label>
-					<input type="text" name="" class="form-control" required>
+                    <input type="text" name="" class="form-control is-invalid" required>
+                    <div class="alert alert-danger" role="alert">
+						alert!
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="price">Precio</label>
-					<input type="text" name="" class="form-control" required>
+                    <input type="text" name="" class="form-control is-invalid" required>
+                    <div class="alert alert-danger" role="alert">
+						alert!
+					</div>
                 </div>
                 <div class="form-group">
 					<label for="upc">Codigo</label>
-					<input type="text" name="" class="form-control" required>
+                    <input type="text" name="" class="form-control is-invalid" required>
+                    <div class="alert alert-danger" role="alert">
+						alert!
+					</div>
 				</div>
                 <div class="form-group">
                     <label for="category">Categoria</label>

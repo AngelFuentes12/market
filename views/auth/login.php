@@ -4,12 +4,18 @@
 			<form method="POST" action="<?php echo constant('URL'); ?>auth/login">
 				<div class="form-group">
 					<label for="email">Correo Electronico</label>
-					<input type="email" name="email" class="form-control" required>
+					<input type="email" name="email" class="form-control  is-invalid" required>
+					<div class="alert alert-danger" role="alert">
+						alert!
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="password">Contraseña</label>
 					<a href="#" style="float:right;font-size:12px;">¿Olvidaste tu contraseña?</a>
-					<input type="password" name="password" class="form-control" required>
+					<input type="password" name="password" class="form-control  is-invalid" required>
+					<div class="alert alert-danger" role="alert">
+						alert!
+					</div>
 				</div>
 				<div class="form-group">
 					<input type="submit" class="btn btn-success btn-block" value="Acceder">
