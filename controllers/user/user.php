@@ -3,7 +3,7 @@
 	/**
 	 * Autor: Angel Fuentes
 	 */
-	class Admin extends Controller
+	class User extends Controller
 	{
 		
 		function __construct()
@@ -15,7 +15,7 @@
 		function index()
 		{
 			$this->view->url = "Bienvenido";
-			$this->view->render('admin/index');
+			$this->view->render('user/index');
 		}
 
 		function logout()

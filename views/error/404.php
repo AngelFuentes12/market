@@ -2,10 +2,10 @@
 		<div class="row justify-content-center">
 			<div class="col-md-8 font-weigth-bold text-center">
 				<p class="display-1 text-danger ">
-					Ups...
+					Lo sentimos!
 				</p>
 				<p class="display-5 text-danger">
-					No se encontro el recurso
+					Parece que el enlace se encuentra roto o no esta disponible :'(
 				</p>
 			</div>
 		</div>

@@ -2,7 +2,7 @@
 	<div class="container-fluid text-center">
 		<div class="row p-3 bg-dark">
 			<div class="col-md-8 mx-auto text-white p-1">
-				<p class="h4">Informacion general</p>
+				<p class="h4">Footer del admin</p>
 			</div>
     	</div>
 

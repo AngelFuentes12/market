@@ -23,7 +23,7 @@
                         alert!
                     </div>
                 </div>
-                <?php if (sizeof($this->marks) == 0): ?>
+                <?php if (sizeof($this->marks) > 0): ?>
                 <div class="form-group ">
                     <label for="product">Nombre del producto</label>
                     <input type="text" name="" class="form-control is-invalid" required>
@@ -71,7 +71,7 @@
                     <input type="submit" class="btn btn-success btn-block" value="Registrar">
                 </div>
                 <?php else: ?>
-                <p>Aun no tienes marcas registrada, registra una <a href="#">aqui</a></p>
+                <p>Aun no tienes marcas registrada, registra una <a href="<?php echo constant('URL'); ?>mark/index">aqui</a></p>
                 <?php endif ?>
                 
 			</form>

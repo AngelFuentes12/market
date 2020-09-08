@@ -14,16 +14,8 @@
 
 		function error404()
 		{
-			$this->cleanError();
+			$this->view->url = "Ups...";
 			$this->view->render('error/404');
-		}
-
-		function cleanError()
-		{
-			$this->view->alert = [
-				'class' => '',
-				'message' => ''
-			];
 		}
 	}
 
