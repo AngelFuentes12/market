@@ -9,12 +9,20 @@
 		function __construct()
 		{
 			parent::__construct();
+			error_reporting(0);
+		}
+
+		function index()
+		{
+			$marks = $this->model->getMarks();
+			$this->view->marks = $marks;
+			$this->view->url = "Registar producto";
+			$this->view->render('admin/products/register');
 		}
 
 		function register()
 		{
-			$this->view->url = "Registar producto";
-			$this->view->render('admin/products/register');
+			
 		}
 
 		function show()

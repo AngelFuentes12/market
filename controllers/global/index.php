@@ -9,6 +9,7 @@
 		function __construct()
 		{
 			parent::__construct();
+			error_reporting(0);
 		}
 
 		function index()

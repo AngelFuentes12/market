@@ -4,17 +4,17 @@
 			<form method="POST" action="<?php echo constant('URL'); ?>auth/login">
 				<div class="form-group">
 					<label for="email">Correo Electronico</label>
-					<input type="email" name="email" class="form-control  is-invalid" required>
-					<div class="alert alert-danger" role="alert">
-						alert!
+					<input type="email" value="<?php echo $this->error['email']; ?>" name="email" class="form-control <?php echo $this->error['c1']; ?>" required>
+					<div class="invalid-feedback">
+						<?php echo $this->error['m1']; ?>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="password">Contraseña</label>
 					<a href="#" style="float:right;font-size:12px;">¿Olvidaste tu contraseña?</a>
-					<input type="password" name="password" class="form-control  is-invalid" required>
-					<div class="alert alert-danger" role="alert">
-						alert!
+					<input type="password" name="password" class="form-control <?php echo $this->error['c2']; ?>" required>
+					<div class="invalid-feedback">
+						<?php echo $this->error['m2']; ?>
 					</div>
 				</div>
 				<div class="form-group">

@@ -42,7 +42,7 @@
                 <?php if (isset($_SESSION['admin'])): ?>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo constant('URL'); ?>product/register">
+                        <a class="nav-link" href="<?php echo constant('URL'); ?>product/index">
                             Agregar productos
                         </a>
                     </li>
