@@ -5,10 +5,10 @@
 	 */
 	class Marks 
 	{
-		private $id_mark;
-		private $name;
-		private $create_at;
-		private $update_at;
+		public $id_mark;
+		public $name;
+		public $create_at;
+		public $update_at;
 	}
 
 ?>

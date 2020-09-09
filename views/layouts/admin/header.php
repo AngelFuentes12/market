@@ -41,16 +41,32 @@
 
                 <?php if (isset($_SESSION['admin'])): ?>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo constant('URL'); ?>product/index">
-                            Agregar productos
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Productos
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownProducts">
+                            <a class="nav-link" href="<?php echo constant('URL'); ?>product/show">
+                                Ver productos
+                            </a>
+                            <a class="nav-link" href="<?php echo constant('URL'); ?>product/index">
+                                Agregar productos
+                            </a>
+                        </div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo constant('URL'); ?>product/show">
-                            Ver productos
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Marcas
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownProducts">
+                            <a class="nav-link" href="<?php echo constant('URL'); ?>mark/show">
+                                Ver marcas
+                            </a>
+                            <a class="nav-link" href="<?php echo constant('URL'); ?>mark/index">
+                                Agregar marca
+                            </a>
+                        </div>
                     </li>
                 
                     <li class="nav-item">
@@ -79,3 +95,18 @@
             </div>
         </div>
     </nav>
+
+    <?php if ($this->error['alert'] != ''): ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 text-center mx-auto">
+                <div class="alert <?php echo $this->error['alert']; ?> alert-dismissible fade show m-3" role="alert">
+                    <?php echo $this->error['message']; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif ?>
