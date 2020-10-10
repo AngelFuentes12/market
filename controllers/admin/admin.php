@@ -1,21 +1,20 @@
 <?php 
 
 	/**
-	 * Autor: Angel Fuentes
+	 * @author: Angel Fuentes
 	 */
 	class Admin extends Controller
 	{
-		
 		function __construct()
 		{
 			parent::__construct();
-			//error_reporting(0);
+			error_reporting(0);
 		}
 
 		function index()
 		{
 			$this->errors([]);
-			$this->view->url = "Bienvenido";
+			$this->view->title = "Bienvenido";
 			$this->view->render('admin/index');
 		}
 
@@ -25,7 +24,7 @@
 			session_unset();
 			session_destroy();
 			$this->errors([]);
-			$this->view->url = "Bienvenido";
+			$this->view->title = "Bienvenido";
 			$this->view->render('index');
 		}
 

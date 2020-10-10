@@ -1,7 +1,7 @@
 <?php
 
-	/*
-	* Autor: Angel Fuentes
+	/**
+	* @author: Angel Fuentes
 	*/
  
 	/* Global url */

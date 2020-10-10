@@ -1,5 +1,8 @@
 <?php 
 	
+	/**
+	* @author: Angel Fuentes
+	*/
 	require_once 'config/config.php';
 	require_once 'libraries/app.php';
 	require_once 'libraries/controller.php';

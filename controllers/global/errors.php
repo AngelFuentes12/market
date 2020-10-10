@@ -1,8 +1,8 @@
 <?php
 
 	/**
-	 * Autor: Angel Fuentes
-	 */
+	* @author: Angel Fuentes
+	*/
 	class Errors extends Controller
 	{
 		
@@ -14,7 +14,7 @@
 
 		function error404()
 		{
-			$this->view->url = "Ups...";
+			$this->view->title = "Ups...";
 			$this->view->render('error/404');
 		}
 	}

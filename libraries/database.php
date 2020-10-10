@@ -1,8 +1,8 @@
 <?php 
 
 	/**
-	 * Autor: Angel Fuentes
-	 */
+	* @author: Angel Fuentes
+	*/
 	class Database
 	{
 		private $host;
