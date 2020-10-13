@@ -3,7 +3,7 @@
 	/**
 	* @author: Angel Fuentes
 	*/
-	class Errors extends Controller
+	class Contact extends Controller
 	{
 		
 		function __construct()
@@ -12,11 +12,11 @@
 			error_reporting(0);
 		}
 
-		function error404()
+		function index()
 		{
 			$this->errors([]);
-			$this->view->title = "Ups...";
-			$this->view->render('error/404');
+			$this->view->title = "Contacto";
+			$this->view->render('user/contact/show');
 		}
 
 		function errors($error)

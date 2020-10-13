@@ -9,6 +9,10 @@
 			session_start();
 			if (isset($_SESSION['admin'])) {
 				require_once 'views/layouts/admin/' . 'header.php';
+			} elseif (isset($_SESSION['secretary'])) {
+				require_once 'views/layouts/admin/' . 'header.php';
+			} elseif (isset($_SESSION['user'])) {
+				require_once 'views/layouts/user/' . 'header.php';
 			} else {
 				require_once 'views/layouts/user/' . 'header.php';
 			}
@@ -17,6 +21,10 @@
 
 			if (isset($_SESSION['admin'])) {
 				require_once 'views/layouts/admin/' . 'footer.php';
+			} elseif (isset($_SESSION['secretary'])) {
+				require_once 'views/layouts/admin/' . 'footer.php';
+			} elseif (isset($_SESSION['user'])) {
+				require_once 'views/layouts/user/' . 'footer.php';
 			} else {
 				require_once 'views/layouts/user/' . 'footer.php';
 			}

@@ -1,9 +1,9 @@
-<?php
+<?php 
 
 	/**
-	* @author: Angel Fuentes
-	*/
-	class Errors extends Controller
+	 * @author: Angel Fuentes
+	 */
+	class Slider extends Controller
 	{
 		
 		function __construct()
@@ -12,11 +12,11 @@
 			error_reporting(0);
 		}
 
-		function error404()
+		function index()
 		{
 			$this->errors([]);
-			$this->view->title = "Ups...";
-			$this->view->render('error/404');
+			$this->view->title = "Slider";
+			$this->view->render('admin/slider/show');
 		}
 
 		function errors($error)

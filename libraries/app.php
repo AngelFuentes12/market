@@ -17,11 +17,13 @@
 			$method = isset($url[1]) ? $url[1] : '';
 
 			if ($controller != '') {
-				if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
+				if (isset($_SESSION['admin']) || isset($_SESSION['user']) || isset($_SESSION['secretary'])) {
 					$dir = "";
 					if (isset($_SESSION['admin'])) {
 						$dir = "admin";
-					} elseif (isset($_SESSION['user'])) {
+					} elseif (isset($_SESSION['secretary'])) {
+						$dir = "admin";
+					}elseif (isset($_SESSION['user'])) {
 						$dir = "user";
 					}
 

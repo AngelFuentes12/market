@@ -112,19 +112,19 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link submenu" href="">NOSOTROS</a>
+                            <a class="nav-link submenu" href="#">NOSOTROS</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link submenu" href="">PRODUCTOS</a>
+                            <a class="nav-link submenu" href="#">PRODUCTOS</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link submenu" href="">CONTACTOS</a>
+                            <a class="nav-link submenu" href="#">CATEGORIAS</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link submenu" href="<?= constant('URL'); ?>auth/contacto">CONTACTOS</a>
+                            <a class="nav-link submenu" href="<?= constant('URL'); ?>contact">CONTACTO</a>
                         </li>
                 </ul>
             </div>

@@ -26,16 +26,19 @@
 			
 			switch ($this->model->login($email, $password)) {
 				case 'user':
+					$this->errors([]);
 					$this->view->title = "Bienvenido";
 					$this->view->render('user/index');
 					break;
 
 				case 'admin':
+					$this->errors([]);
 					$this->view->title = "Bienvenido";
 					$this->view->render('admin/index');
 					break;
 
 				case 'secretary':
+					$this->errors([]);
 					$this->view->title = "Bienvenido";
 					$this->view->render('admin/index');
 					break;
@@ -102,6 +105,7 @@
 
 		function register()
 		{
+			$this->errors([]);
 			$this->view->title = "Registrarse";
 			$this->view->render('auth/register');
 		}
