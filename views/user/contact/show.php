@@ -1,3 +1,5 @@
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 	<section id="login">
 		<div class="container p-5">
 			<div class="row justify-content-center">
@@ -25,6 +27,7 @@
 						</div>
 						<div class="form-group">
 							<label for="captcha" class="captcha">Captcha</label>
+							<div class="g-recaptcha" data-sitekey="your_site_key"></div>
 						</div>
 						<div class="form-group">
 							<label for="desc" class="nombre">Descripción</label>
