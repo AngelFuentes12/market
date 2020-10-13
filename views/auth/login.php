@@ -20,6 +20,9 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="captcha" class="captcha">Captcha</label>
+					</div>
+					<div class="form-group">
 						<input type="submit" class="btn btn-login btn-block" value="Acceder">
 					</div>
 					<div class="sign-up p-3">

@@ -14,6 +14,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="<?= constant('CSS'); ?>style.css">
+    <link rel="stylesheet" type="text/css" href="<?= constant('CSS'); ?>hint.min.css">
 
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
@@ -107,7 +108,7 @@
                     <?php else : ?>
 
                         <li class="nav-item">
-                            <a class="nav-link submenu" href="">HOME</a>
+                            <a class="nav-link submenu" href="<?= constant('URL'); ?>">HOME</a>
                         </li>
 
                         <li class="nav-item">
@@ -123,7 +124,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link submenu" href="">CONTACTOS</a>
+                            <a class="nav-link submenu" href="<?= constant('URL'); ?>auth/contacto">CONTACTOS</a>
                         </li>
                 </ul>
             </div>
@@ -132,15 +133,15 @@
         <div class="mx-auto m-0 p-0" id="">
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link submenu" href="#"><i class="fas fa-shopping-bag"></i> (0)</a>
+                    <a class="nav-link submenu hint--bottom hint--rounded" aria-label="Compras" href="#"><i class="fas fa-shopping-bag"></i> (0)</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link submenu" href="#"><i class="fas fa-heart"></i></a>
+                    <a class="nav-link submenu hint--bottom hint--rounded" aria-label="Lista de deseos" href="#"><i class="fas fa-heart"></i></a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link submenu" href="<?= constant('URL'); ?>auth/index"><i class="far fa-user"></i></a>
+                    <a class="nav-link submenu hint--bottom hint--rounded" aria-label="Iniciar Sesión" href="<?= constant('URL'); ?>auth/index"><i class="far fa-user"></i></a>
                 </li>
 
                 <li class="nav-item">
