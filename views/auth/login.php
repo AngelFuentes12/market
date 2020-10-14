@@ -1,10 +1,10 @@
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 
 	<section id="login">
 		<div class="container p-5">
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-4 form-color p-4 shadow-sm">
-					<form id="demo-form" method="POST" action="<?php echo constant('URL'); ?>auth/login">
+					<form method="POST" action="<?php echo constant('URL'); ?>auth/login">
 						<h3 class="text-login h3">Identifícate</h3>
 
 						<div class="form-group">
@@ -26,7 +26,11 @@
 
 						<div class="form-group">
 							<label for="captcha" class="captcha">Captcha</label>
-							<div class="g-recaptcha" data-sitekey="your_site_key"></div>
+							<div class="g-recaptcha <?= $this->error['c3']; ?>" data-sitekey="6LfkDdcZAAAAAP5CSjK2uKUgg_sw5HshpK4QVlC1"></div>
+
+							<div class="invalid-feedback">
+								<?= $this->error['m3']; ?>
+							</div>
 						</div>
 
 						<div class="form-group">

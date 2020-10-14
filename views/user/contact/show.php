@@ -4,35 +4,50 @@
 		<div class="container p-5">
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-7 form-color p-4 shadow-sm">
-					<form method="POST" action="<?php echo constant('URL'); ?>auth/login">
+					<form method="POST" action="<?= constant('URL'); ?>contact/send">
 						<h3 class="text-login h3">Contactos</h3>
-						<!-- <p style="color:red">Recuerda que todos los campos son obligatorios</p> -->
 						<div class="form-group">
-							<label for="nombre" class="nombre">Nombre(s)</label>
-							<input type="text" value="" name="nombre" class="form-control" required>
+							<label for="name" class="nombre">Nombre(s)</label>
+							<input type="text" value="<?= $this->error['name']; ?>" name="name" class="form-control <?= $this->error['c1']; ?>" required>
+
 							<div class="invalid-feedback">
+								<?= $this->error['m1']; ?>
 							</div>
 						</div>
+
 						<div class="form-group">
-							<label for="Telefono" class="Telefono">Telefono</label>
-							<input type="text" value="" name="Telefono" class="form-control" required>
+							<label for="telephone" class="Telefono">Telefono</label>
+							<input type="text" value="<?= $this->error['telephone']; ?>" name="telephone" class="form-control <?= $this->error['c2']; ?>" required>
+
 							<div class="invalid-feedback">
+								<?= $this->error['m2']; ?>
 							</div>
 						</div>
+
 						<div class="form-group">
 							<label for="email" class="email">Correo Electronico</label>
-							<input type="email" value="" name="email" class="form-control" required>
+							<input type="email" value="<?= $this->error['email']; ?>" name="email" class="form-control <?= $this->error['c3']; ?>" required>
+
 							<div class="invalid-feedback">
+								<?= $this->error['m3']; ?>
 							</div>
 						</div>
+
 						<div class="form-group">
 							<label for="captcha" class="captcha">Captcha</label>
-							<div class="g-recaptcha" data-sitekey="your_site_key"></div>
-						</div>
-						<div class="form-group">
-							<label for="desc" class="nombre">Descripción</label>
-							<textarea name="desc" class="form-control"></textarea>
+							<div class="g-recaptcha <?= $this->error['c4']; ?>" data-sitekey="6LfkDdcZAAAAAP5CSjK2uKUgg_sw5HshpK4QVlC1"></div>
+
 							<div class="invalid-feedback">
+								<?= $this->error['m4']; ?>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="description" class="nombre">Descripción</label>
+							<textarea name="description" class="form-control <?= $this->error['c5']; ?>" required><?= $this->error['description']; ?></textarea>
+
+							<div class="invalid-feedback">
+								<?= $this->error['m5']; ?>
 							</div>
 						</div>
 						
