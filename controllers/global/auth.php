@@ -150,15 +150,122 @@
 
 		function resetpassword()
 		{
-			$email = $_POST['email'];
+			$email = isset($_POST['email']) ? $_POST['email'] : '';
 
-			$this->errors([
-				'alert' => 'alert-success', 
-				'message' => 'Se envio un correo electronico a ' . $email . ' con mas instrucciones',
-				'email' => $email
-			]);
-			$this->view->title = "Iniciar Sesión";
-			$this->view->render('auth/login');
+			if ($email != '') {
+				switch ($this->model->reset($email)) {
+					case 'send':
+						$this->sendEmailReset($email);
+						break;
+
+					case 'email':
+						$this->errors([
+							'c1' => 'is-invalid', 
+							'm1' => 'El correo electronico es invalido',
+							'email' => $email
+						]);
+						$this->view->title = "Restablecer contraseña";
+						$this->view->render('auth/reset');
+						break;
+
+					case 'credentials':
+						$this->errors([
+							'c1' => 'is-invalid', 
+							'm1' => 'Esta credencial es incorrecta',
+							'email' => $email
+						]);
+						$this->view->title = "Restablecer contraseña";
+						$this->view->render('auth/reset');
+						break;
+					
+					default:
+						$this->errors([
+							'alert' => 'alert-danger', 
+							'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
+						]);
+						$this->view->title = "Restablecer contraseña";
+						$this->view->render('auth/reset');
+						break;
+				}
+			} else {
+				$this->errors([
+					'c1' => 'is-invalid', 
+					'm1' => 'Debe completar este campo',
+					'email' => $email
+				]);
+				$this->view->title = "Restablecer";
+				$this->view->render('auth/reset');
+			}	
+		}
+
+		function sendEmailReset($email)
+		{
+			switch ($this->model->sendEmailReset($email)) {
+				case 'send':
+					$this->errors([
+						'alert' => 'alert-success', 
+						'message' => 'Se envio un correo electronico a ' . $email . ' con mas instrucciones',
+						'email' => $email
+					]);
+					$this->view->title = "Iniciar Sesión";
+					$this->view->render('auth/login');
+					break;
+
+				case 'failed':
+					$this->errors([
+						'alert' => 'alert-danger', 
+						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
+					]);
+					$this->view->title = "Restablecer contraseña";
+					$this->view->render('auth/reset');
+					break;
+				
+				default:
+					$this->errors([
+						'alert' => 'alert-danger', 
+						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
+					]);
+					$this->view->title = "Restablecer contraseña";
+					$this->view->render('auth/reset');
+					break;
+			}
+		}
+
+		function email()
+		{
+			
+			$email = isset($_GET['email']) ? $_GET['email'] : '';
+			$token = isset($_GET['token']) ? $_GET['token'] : '';
+			
+			if ($email != '' && $token != '') {
+				switch ($this->model->validationToken($email, $token)) {
+					case 'valid':
+						$this->errors([
+							'email' => $_GET['email']
+						]);
+						$this->view->title = "Cambiar contraseña";
+						$this->view->render('auth/email');
+						break;
+
+					case 'invalid':
+						$this->errors([]);
+						$this->view->title = "Cambiar contraseña";
+						$this->view->render('auth/reset');
+						break;
+					
+					default:
+						$this->errors([]);
+						$this->view->title = "Cambiar contraseña";
+						$this->view->render('auth/reset');
+						break;
+				}
+			} else {
+				$this->errors([]);
+				$this->view->title = "Cambiar contraseña";
+				$this->view->render('auth/reset');
+			}
+
+			
 		}
 
 		function errors($error)
