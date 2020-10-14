@@ -7,7 +7,7 @@
 					<form method="POST" action="<?= constant('URL'); ?>contact/send">
 						<h3 class="text-login h3">Contactos</h3>
 						<div class="form-group">
-							<label for="name" class="nombre">Nombre(s)</label>
+							<label for="name" class="nombre">Nombre(s) <span style="color: red;">*</span></label>
 							<input type="text" value="<?= $this->error['name']; ?>" name="name" class="form-control <?= $this->error['c1']; ?>" required>
 
 							<div class="invalid-feedback">
@@ -16,7 +16,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="telephone" class="Telefono">Telefono</label>
+							<label for="telephone" class="Telefono">Telefono <span style="color: red;">*</span></label>
 							<input type="text" value="<?= $this->error['telephone']; ?>" name="telephone" class="form-control <?= $this->error['c2']; ?>" required>
 
 							<div class="invalid-feedback">
@@ -25,7 +25,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="email" class="email">Correo Electronico</label>
+							<label for="email" class="email">Correo Electronico <span style="color: red;">*</span></label>
 							<input type="email" value="<?= $this->error['email']; ?>" name="email" class="form-control <?= $this->error['c3']; ?>" required>
 
 							<div class="invalid-feedback">
@@ -34,7 +34,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="captcha" class="captcha">Captcha</label>
+							<label for="captcha" class="captcha">Captcha <span style="color: red;">*</span></label>
 							<div class="g-recaptcha <?= $this->error['c4']; ?>" data-sitekey="6LfkDdcZAAAAAP5CSjK2uKUgg_sw5HshpK4QVlC1"></div>
 
 							<div class="invalid-feedback">
@@ -43,7 +43,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="description" class="nombre">Descripción</label>
+							<label for="description" class="nombre">Descripción <span style="color: red;">*</span></label>
 							<textarea name="description" class="form-control <?= $this->error['c5']; ?>" required><?= $this->error['description']; ?></textarea>
 
 							<div class="invalid-feedback">

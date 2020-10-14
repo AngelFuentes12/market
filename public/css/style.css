@@ -317,7 +317,15 @@ input:focus, input[type]:focus {
     text-align: center;
 }
 
+.title-email{
+    font-weight: bold;
+    padding-bottom: 20px;
+}
 
+#reset{
+    background-color:#F1F1F1;
+    padding-bottom: 50px;
+}
 
 /* responsive */
 /* Extra small devices (portrait phones, less than 576px) */

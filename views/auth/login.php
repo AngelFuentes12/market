@@ -8,7 +8,7 @@
 						<h3 class="text-login h3">Identifícate</h3>
 
 						<div class="form-group">
-							<label for="email" class="email">Correo Electronico</label>
+							<label for="email" class="email">Correo Electronico <span style="color: red;">*</span></label>
 							<input type="email" value="<?php echo $this->error['email']; ?>" name="email" class="form-control <?php echo $this->error['c1']; ?>" required>
 							<div class="invalid-feedback">
 								<?php echo $this->error['m1']; ?>
@@ -16,7 +16,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="password" class="password">Contraseña</label>
+							<label for="password" class="password">Contraseña <span style="color: red;">*</span></label>
 							<a href="<?= constant('URL'); ?>auth/reset" class="recordar">¿Olvidaste tu contraseña?</a>
 							<input type="password" name="password" class="form-control <?php echo $this->error['c2']; ?>" required>
 							<div class="invalid-feedback">
@@ -25,7 +25,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="captcha" class="captcha">Captcha</label>
+							<label for="captcha" class="captcha">Captcha <span style="color: red;">*</span></label>
 							<div class="g-recaptcha <?= $this->error['c3']; ?>" data-sitekey="6LfkDdcZAAAAAP5CSjK2uKUgg_sw5HshpK4QVlC1"></div>
 
 							<div class="invalid-feedback">
