@@ -67,7 +67,9 @@
 		{
 			$case = "";
 			$query = $this->db->connection()->prepare("SELECT * FROM t_usuarios WHERE correo = :email");
-			$query_reg = $this->db->connection()->prepare("INSERT INTO t_reset (email, token, create_at) VALUES(:email, :token, NOW())");
+			$query_val = $this->db->connection()->prepare("SELECT * FROM t_reset WHERE email = :email AND status = 'Valid'");
+			$query_upd = $this->db->connection()->prepare("UPDATE t_reset SET status = 'expired' WHERE id_reset = :id_reset ");
+			$query_reg = $this->db->connection()->prepare("INSERT INTO t_reset (email, token, create_at, status) VALUES(:email, :token, NOW(), 'Valid')");
 			$token = base64_encode(date("Y-m-d H:i:s"));
 
 			try {
@@ -75,19 +77,29 @@
 
 				$row = $query->fetch();
 				if ($row['status'] != "") {
-					if ($row['status'] == 1) {
-						if ($row['correo'] === $email) {
+					if ($row['correo'] === $email) {
+						$query_val->execute(['email' => $email]);
+						
+						$row_val = $query_val->fetch();
+						if ($row_val['id_reset'] != "") {
+							$query_upd->execute(['id_reset' => $row_val['id_reset']]);
+
 							$query_reg->execute([
-								'email' => $email,
+								'email' => $email, 
 								'token' => $token
 							]);
 
-							$case = "send";
+							$case = "register";
 						} else {
-							$case = "email";
+							$query_reg->execute([
+								'email' => $email, 
+								'token' => $token
+							]);
+
+							$case = "register";
 						}
 					} else {
-						$case = "";
+						$case = "email";
 					}
 				} else {
 					$case = "credentials";
@@ -102,7 +114,7 @@
 		function sendEmailReset($email)
 		{
 			$case = "";
-			$query = $this->db->connection()->prepare("SELECT * FROM t_reset WHERE email = :email");
+			$query = $this->db->connection()->prepare("SELECT * FROM t_reset WHERE email = :email AND status = 'Valid'");
 
 			try {
 				$query->execute(['email' => $email]);
@@ -112,88 +124,90 @@
 				$url = constant('URL') . 'auth/email?email=' . $email . '&token=' . $token;
 
 				$to = $email;
-				$title = 'Solicitud de restablecimiento de contraseña';
+				$title = 'Restablecimiento de contraseña';
 				$from = 'MIME-Version: 1.0' . "\r\n";
 				$from .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-				$from .= 'From: support@shoppingmarket.com';
+				$from .= 'From: support@market.com';
 
 				$message = '<!DOCTYPE html>
 				<html lang="en">
-
 				<head>
-				    <meta charset="utf-8">
-				    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+					<meta charset="UTF-8">
+					<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+					<title>Shopping Market</title>
 
-				    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-				        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+					<style type="text/css">
+						* {
+							font-family: "Arial", sans-serif;
+						}
 
-				    <title>Shopping Market</title>
+						.container {
+							width: 80%;
+							margin: auto;
+						}
 
-				    <style type="text/css">
-				        *{
-				            margin: 0;
-				            padding: 0;
-				        }
+						.title {
+							font-size: 1.5em;
+							color: #fff;
+							text-align: center;
+							padding: .4em;
+							width: 80%;
+							margin: auto;
+							text-transform: uppercase;
+							font-weight: bold;
+						}
 
-				        #email{
-				            border-top: 20px solid #3D465B;
-				        }
+						.copy {
+							text-align: center;
+							color: #fff;
+							padding: .5em
+						}
 
-				        #email h3{
-				            text-align: center;
-				            padding-bottom: 20px;
-				        }
+						.content {
+							text-align: center;
+							padding: 2em;
+							margin: 1em;
+						}
 
-				        .text-email{
-				            text-align: center;
-				            font-size: 1.3rem;
-				        }
-
-				        .acept{
-				            padding-bottom: 20px;
-				        }
-				        .cancel{
-				            padding-top: 20px;
-				            padding-bottom: 20px;
-				            border-top: 1px solid #e2e0e0;
-				        }
-
-				        .copyright{
-				            padding-top: 20px;
-				            font-size: 12px;
-				            text-align: center;
-				            color: #c4c4c4;
-				        }
-				    </style>
+						.message {
+							font-size: 1em;
+							text-transform: uppercase;
+						}
+					</style>
+					
 				</head>
-
 				<body>
+					<div class="container">
+						<div class="row">
+							<div class="col" style="background-color: #000;">
+								<p class="title">Shopping Market</p>
+							</div>
+						</div>
+					</div>
 
-				    <section id="email">
-				        <div class="container p-5">
-				            <div class="row justify-content-center">
-				                <div class="col-12 col-md-8 form-color p-4 shadow-sm">
-				                    <h3>Hola, '. $email .'</h3>
-				                    <p class="text-email">Olvidaste tu contraseña, por favor ingresa al siguiente link y sigue los
-				                        siguientes pasos. </p>
-				                    <div class="acept">
-				                        <center>
-				                            <a href="'.$url.'">'. $url .'</a>
-				                        </center>
-				                    </div>
-				                    <div class="cancel">
-				                        <center>
-				                            <p class="text-email">Si no realizaste esta acción, Ignora este correo</p>
-				                            <p class="copyright">Copyright © 2020 Creativa | All Rights Reserved.</p>
-				                        </center>
-				                    </div>
+					<div class="content">
+						<div class="row">
+							<div class="message">
+								<p><b>Restablecimiento de contraseña</b></p>
+							</div>
 
-				                </div>
-				            </div>
-				        </div>
-				    </section>
+							<div class="col-12">
+								<p>
+									' . $url . '
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="container fixed-bottom">
+						<div class="row">
+							<div class="col-12 copy" style="background-color: #000;">
+								<p>Copyright 2020 Creativa | All Rights Reserved</p>
+							</div>
+						</div>
+					</div>
+
 				</body>
-
 				</html>';
 
 				if (mail($to, $title, $message, $from)) {
@@ -204,14 +218,14 @@
 
 				return $case;
 			} catch (PDOException $e) {
-				return $case;	
+				return $case;
 			}
 		}
 
 		function validationToken($email, $token)
 		{
 			$case = "";
-			$query = $this->db->connection()->prepare("SELECT * FROM t_reset WHERE email = :email AND token = :token ORDER BY 1 DESC LIMIT 1");
+			$query = $this->db->connection()->prepare("SELECT * FROM t_reset WHERE email = :email AND token = :token AND status = 'Valid'");
 
 			try {
 				$query->execute([
@@ -231,6 +245,32 @@
 				return $case;
 			} catch (PDOException $e) {
 				return $case;	
+			}
+		}
+
+		function password($email, $token, $password)
+		{
+			$case = "";
+			$query = $this->db->connection()->prepare("UPDATE t_usuarios SET contrapass = :password WHERE correo = :email");
+
+			try {
+				switch ($this->validationToken($email, $token)) {
+					case 'valid':
+						$query->execute([
+							'email' => $email,
+							'password' => $password
+						]);
+						$case = "change";
+						break;
+
+					case 'invalid':
+					default:
+						$case = "invalid";
+						break;
+				}
+				return $case;	
+			} catch (PDOException $e) {
+				return $case;
 			}
 		}
 	}
