@@ -210,13 +210,14 @@
 				</body>
 				</html>';
 
-				if (mail($to, $title, $message, $from)) {
+				/*if (mail($to, $title, $message, $from)) {
 					$case = 'send';
 				} else {
 					$case = 'failed';
-				}
+				}*/
 
-				return $case;
+				//return $case;
+				echo $message;
 			} catch (PDOException $e) {
 				return $case;
 			}

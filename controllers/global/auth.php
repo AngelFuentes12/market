@@ -9,7 +9,7 @@
 		function __construct()
 		{
 			parent::__construct();
-			error_reporting(0);
+			//error_reporting(0);
 		}
 
 		function index()
@@ -156,6 +156,7 @@
 				switch ($this->model->reset($email)) {
 					case 'register':
 						$this->sendEmailReset($email);
+						echo '<br>'.$email . ' reset';
 						break;
 
 					case 'email':
@@ -200,7 +201,8 @@
 
 		function sendEmailReset($email)
 		{
-			switch ($this->model->sendEmailReset($email)) {
+			echo $email . ' sendEmailReset';
+			/*switch ($this->model->sendEmailReset($email)) {
 				case 'send':
 					$this->errors([
 						'alert' => 'alert-success', 
@@ -228,7 +230,7 @@
 					$this->view->title = "Restablecer contraseña";
 					$this->view->render('auth/reset');
 					break;
-			}
+			}*/
 		}
 
 		function email()
@@ -309,7 +311,7 @@
 												$this->errors([
 													'email' => $email,
 													'alert' => 'alert-danger', 
-													'message' => 'Ocurrio un error, vuelva a intentarlo más tarde perro'
+													'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
 												]);
 												$this->view->title = "Cambiar contraseña";
 												$this->view->render('auth/reset');
@@ -350,7 +352,7 @@
 					$this->errors([
 						'email' => $email,
 						'alert' => 'alert-danger', 
-						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde 1'
+						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
 					]);
 					$this->view->title = "Cambiar contraseña";
 					$this->view->render('auth/reset');
@@ -358,7 +360,7 @@
 					$this->errors([
 						'email' => $email,
 						'alert' => 'alert-danger', 
-						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde 2'
+						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
 					]);
 					$this->view->title = "Cambiar contraseña";
 					$this->view->render('auth/reset');
