@@ -162,6 +162,7 @@
 				switch ($this->model->reset($email)) {
 					case 'register':
 						$this->sendEmailReset($email);
+						echo '<br>'.$email . ' reset';
 						break;
 
 					case 'email':
@@ -207,7 +208,8 @@
 
 		function sendEmailReset($email)
 		{
-			switch ($this->model->sendEmailReset($email)) {
+			echo $email . ' sendEmailReset';
+			/*switch ($this->model->sendEmailReset($email)) {
 				case 'send':
 					$this->errors([
 						'alert' => 'alert-success', 
@@ -235,7 +237,7 @@
 					$this->view->title = "Restablecer contraseña";
 					$this->view->render('auth/reset');
 					break;
-			}
+			}*/
 		}
 
 		function email()
