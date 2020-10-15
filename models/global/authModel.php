@@ -125,99 +125,100 @@
 
 				$to = $email;
 				$title = 'Restablecimiento de contraseña';
+
+				$message = '<!DOCTYPE html>
+				<html lang="en">
+
+				<head>
+				    <!-- Required meta tags -->
+				    <meta charset="utf-8">
+				    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+				    <!-- Bootstrap CSS -->
+				    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+				    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+				    <title>Shopping Market</title>
+
+				    <style type="text/css">
+				        *{
+				            margin: 0;
+				            padding: 0;
+				        }
+
+				        #email{
+				            border-top: 20px solid #3D465B;
+				        }
+
+				        #email h3{
+				            text-align: center;
+				            padding-bottom: 20px;
+				        }
+
+				        .text-email{
+				            text-align: center;
+				            font-size: 1.3rem;
+				        }
+
+				        .acept{
+				            padding-bottom: 20px;
+				        }
+				        .cancel{
+				            padding-top: 20px;
+				            padding-bottom: 20px;
+				            border-top: 1px solid #e2e0e0;
+				        }
+
+				        .copyright{
+				            padding-top: 20px;
+				            font-size: 12px;
+				            text-align: center;
+				            color: #c4c4c4;
+				        }
+				    </style>
+				</head>
+
+				<body>
+
+				    <section id="email">
+				        <div class="container p-5">
+				            <div class="row justify-content-center">
+				                <div class="col-12 col-md-8 form-color p-4 shadow-sm">
+				                    <h3>Hola, ' . $email . '</h3>
+				                    <p class="text-email">Olvidaste tu contraseña, por favor ingresa al siguiente link y sigue los
+				                        siguientes pasos. </p>
+				                    <div class="acept">
+				                        <center>
+				                            <a href="' . $url . '">' . $url . '</a>
+				                        </center>
+				                    </div>
+				                    <div class="cancel">
+				                        <center>
+				                            <p class="text-email">Si no realizaste esta acción, Ignora este correo</p>
+				                            <p class="copyright">Copyright © 2020 Creativa | All Rights Reserved.</p>
+				                        </center>
+				                    </div>
+
+				                </div>
+				            </div>
+				        </div>
+				    </section>
+				</body>
+				</html>';
+				
 				$from = 'MIME-Version: 1.0' . "\r\n";
 				$from .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 				$from .= 'From: support@market.com';
 
-				$message = '<!DOCTYPE html>
-				<html lang="en">
-				<head>
-					<meta charset="UTF-8">
-					<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-					<title>Shopping Market</title>
+				
 
-					<style type="text/css">
-						* {
-							font-family: "Arial", sans-serif;
-						}
-
-						.container {
-							width: 80%;
-							margin: auto;
-						}
-
-						.title {
-							font-size: 1.5em;
-							color: #fff;
-							text-align: center;
-							padding: .4em;
-							width: 80%;
-							margin: auto;
-							text-transform: uppercase;
-							font-weight: bold;
-						}
-
-						.copy {
-							text-align: center;
-							color: #fff;
-							padding: .5em
-						}
-
-						.content {
-							text-align: center;
-							padding: 2em;
-							margin: 1em;
-						}
-
-						.message {
-							font-size: 1em;
-							text-transform: uppercase;
-						}
-					</style>
-					
-				</head>
-				<body>
-					<div class="container">
-						<div class="row">
-							<div class="col" style="background-color: #000;">
-								<p class="title">Shopping Market</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="content">
-						<div class="row">
-							<div class="message">
-								<p><b>Restablecimiento de contraseña</b></p>
-							</div>
-
-							<div class="col-12">
-								<p>
-									' . $url . '
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="container fixed-bottom">
-						<div class="row">
-							<div class="col-12 copy" style="background-color: #000;">
-								<p>Copyright 2020 Creativa | All Rights Reserved</p>
-							</div>
-						</div>
-					</div>
-
-				</body>
-				</html>';
-
-				/*if (mail($to, $title, $message, $from)) {
+				if (mail($to, $title, $message, $from)) {
 					$case = 'send';
 				} else {
 					$case = 'failed';
-				}*/
+				}
 
-				//return $case;
-				echo $message;
+				return $case;
 			} catch (PDOException $e) {
 				return $case;
 			}

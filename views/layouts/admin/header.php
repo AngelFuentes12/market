@@ -44,6 +44,10 @@
                     <i class="fas fa-user-shield"></i> Administradores
                 </a>
 
+                <a href="<?= constant('URL'); ?>secretaries" class="list-group-item list-group-item-action text-muted"> 
+                    <i class="fas fa-user-shield"></i> Secretarias
+                </a>
+
                 <a href="<?= constant('URL'); ?>users" class="list-group-item list-group-item-action text-muted"> 
                     <i class="fas fa-users"></i> Clientes
                 </a>
