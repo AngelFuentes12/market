@@ -44,8 +44,17 @@
                     <i class="fas fa-user-shield"></i><small class="pl-4 text-muted">Administradores</small> 
                 </a>
 
+<<<<<<< HEAD
                 <a href="<?= constant('URL'); ?>users" class="list-group-item list-group-item-action">
                     <i class="fas fa-users"></i><small class="pl-4 text-muted">Clientes</small> 
+=======
+                <a href="<?= constant('URL'); ?>secretaries" class="list-group-item list-group-item-action text-muted"> 
+                    <i class="fas fa-user-shield"></i> Secretarias
+                </a>
+
+                <a href="<?= constant('URL'); ?>users" class="list-group-item list-group-item-action text-muted"> 
+                    <i class="fas fa-users"></i> Clientes
+>>>>>>> 3986502c471ef0830918f5cd390d87b0f22c67f8
                 </a>
 
                 <a href="<?= constant('URL'); ?>categories" class="list-group-item list-group-item-action">

@@ -199,6 +199,7 @@
 			}	
 		}
 
+
 		function sendEmailReset($email)
 		{
 			echo $email . ' sendEmailReset';
@@ -311,7 +312,7 @@
 												$this->errors([
 													'email' => $email,
 													'alert' => 'alert-danger', 
-													'message' => 'Ocurrio un error, vuelva a intentarlo más tarde perro'
+													'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
 												]);
 												$this->view->title = "Cambiar contraseña";
 												$this->view->render('auth/reset');
@@ -352,7 +353,7 @@
 					$this->errors([
 						'email' => $email,
 						'alert' => 'alert-danger', 
-						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde 1'
+						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
 					]);
 					$this->view->title = "Cambiar contraseña";
 					$this->view->render('auth/reset');
@@ -360,7 +361,7 @@
 					$this->errors([
 						'email' => $email,
 						'alert' => 'alert-danger', 
-						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde 2'
+						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
 					]);
 					$this->view->title = "Cambiar contraseña";
 					$this->view->render('auth/reset');
