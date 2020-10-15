@@ -37,48 +37,52 @@
             </div>
             <div class="menu list-group-flush">
                 <a href="<?= constant('URL'); ?>admin" class="list-group-item list-group-item-action">
-                    <i class="fas fa-house-user"></i><small class="pl-4 text-muted">Dashboard</small> 
+                    <i class="fas fa-house-user"></i>
+                    <small class="pl-4 text-muted">Dashboard</small> 
                 </a>
 
                 <a href="<?= constant('URL'); ?>admins" class="list-group-item list-group-item-action">
                     <i class="fas fa-user-shield"></i><small class="pl-4 text-muted">Administradores</small> 
                 </a>
 
-<<<<<<< HEAD
                 <a href="<?= constant('URL'); ?>users" class="list-group-item list-group-item-action">
-                    <i class="fas fa-users"></i><small class="pl-4 text-muted">Clientes</small> 
-=======
-                <a href="<?= constant('URL'); ?>secretaries" class="list-group-item list-group-item-action text-muted"> 
-                    <i class="fas fa-user-shield"></i> Secretarias
-                </a>
+                    <i class="fas fa-users"></i>
+                    <small class="pl-4 text-muted">Clientes</small>
+                </a> 
 
-                <a href="<?= constant('URL'); ?>users" class="list-group-item list-group-item-action text-muted"> 
-                    <i class="fas fa-users"></i> Clientes
->>>>>>> 3986502c471ef0830918f5cd390d87b0f22c67f8
+                <a href="<?= constant('URL'); ?>secretaries" class="list-group-item list-group-item-action text-muted"> 
+                    <i class="fas fa-user-shield"></i>
+                    <small class="pl-4 text-muted">Secretarias</small>
                 </a>
 
                 <a href="<?= constant('URL'); ?>categories" class="list-group-item list-group-item-action">
-                    <i class="fas fa-chevron-circle-down"></i><small class="pl-4 text-muted">Categorías</small> 
+                    <i class="fas fa-chevron-circle-down"></i>
+                    <small class="pl-4 text-muted">Categorías</small> 
                 </a>
 
                 <a href="<?= constant('URL'); ?>vendors" class="list-group-item list-group-item-action">
-                    <i class="fas fa-user-tie"></i><small class="pl-4 text-muted">Proveedores</small> 
+                    <i class="fas fa-user-tie"></i>
+                    <small class="pl-4 text-muted">Proveedores</small> 
                 </a>
 
                 <a href="<?= constant('URL'); ?>products" class="list-group-item list-group-item-action">
-                    <i class="fab fa-shopify"></i><small class="pl-4 text-muted">Productos</small> 
+                    <i class="fab fa-shopify"></i>
+                    <small class="pl-4 text-muted">Productos</small> 
                 </a>
 
                 <a href="<?= constant('URL'); ?>buys" class="list-group-item list-group-item-action">
-                    <i class="fas fa-shopping-cart"></i><small class="pl-4 text-muted">Compras</small> 
+                    <i class="fas fa-shopping-cart"></i>
+                    <small class="pl-4 text-muted">Compras</small> 
                 </a>
 
                 <a href="<?= constant('URL'); ?>slider" class="list-group-item list-group-item-action">
-                    <i class="fas fa-images"></i><small class="pl-4 text-muted">Slider</small> 
+                    <i class="fas fa-images"></i>
+                    <small class="pl-4 text-muted">Slider</small> 
                 </a>
 
                 <a href="<?= constant('URL'); ?>admin/logout" class="list-group-item list-group-item-action">
-                    <i class="fas fa-arrow-down"></i><small class="pl-4 text-muted">Salir</small> 
+                    <i class="fas fa-arrow-down"></i>
+                    <small class="pl-4 text-muted">Salir</small> 
                 </a>
             </div>
         </div>
@@ -97,10 +101,6 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                        <!-- <li class="nav-item">
-                                <a href="#" class="nav-link submenu"><i class="fas fa-cog"></i></a>
-                                </a>
-                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link submenu" href="<?= constant('URL'); ?>messages">
                                     <i class="fas fa-envelope-open-text"></i> Mensajeria

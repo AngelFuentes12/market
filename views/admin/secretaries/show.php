@@ -1,1 +1,1 @@
-Pagina de secretarias
+Pagina de secretarias <a href="<?= constant('URL'); ?>secretaries/register">registrar nueva secretaria</a>

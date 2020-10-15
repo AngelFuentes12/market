@@ -21,6 +21,15 @@
 			$this->view->render('admin/categories/show');
 		}
 
+		function register()
+		{
+			$this->validation();
+
+			$this->errors([]);
+			$this->view->title = "Registrar categoria";
+			$this->view->render('admin/categories/register');
+		}
+
 		function validation()
 		{
 			require_once 'models/admin/validation.php';

@@ -18,8 +18,6 @@
 
 			$this->errors([]);
 			$this->view->title = "Usuarios";
-			$users = $this->model->getUsers();
-			$this->view->users = $users;
 			$this->view->render('admin/users/show');
 		}
 

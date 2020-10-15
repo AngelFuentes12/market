@@ -21,6 +21,15 @@
 			$this->view->render('admin/secretaries/show');
 		}
 
+		function register()
+		{
+			$this->validation();
+
+			$this->errors([]);
+			$this->view->title = "Registrar secretarias";
+			$this->view->render('admin/secretaries/register');
+		}
+
 		function validation()
 		{
 			require_once 'models/admin/validation.php';

@@ -31,7 +31,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="status-span badge-primary badge-active"><i class="fas fa-plus"></i></a>
+                    <a href="<?= constant('URL'); ?>categories/register" class="status-span badge-primary badge-active"><i class="fas fa-plus"></i></a>
                 </div>
             </div>
         </div>

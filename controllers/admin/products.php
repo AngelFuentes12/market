@@ -21,6 +21,15 @@
 			$this->view->render('admin/products/show');
 		}
 
+		function register()
+		{
+			$this->validation();
+
+			$this->errors([]);
+			$this->view->title = "Registrar productos";
+			$this->view->render('admin/products/register');
+		}
+
 		function validation()
 		{
 			require_once 'models/admin/validation.php';
