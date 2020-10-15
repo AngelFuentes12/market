@@ -152,11 +152,32 @@ input:focus, input[type]:focus {
 
 
 /* ADMIN */
+.text-dashboard{
+    padding-top: 12px;
+    font-size: 0.80rem;
+    color: #797a7aa6;
+
+}
 .menu a{
     border: 0;
-    padding: 20px;
+    padding: 19px;
 }
 
+.text-slider{
+    font-size: 15px;
+}
+
+.icon-primario{
+    font-size: 2.4rem;
+}
+
+.stat-heading{
+    color: #797a7a9d;
+}
+
+.stat-text{
+    font-weight: bold;
+}
 .menu .fas  .fab{
     font-size: 18px;
     padding-left: 15px;
@@ -389,6 +410,10 @@ table tbody td {
     .display-1 {
         font-size: 4rem!important;
     }
+
+    .card-paddin{
+        padding-bottom: 12px;
+    }
     
  }
 
@@ -400,17 +425,34 @@ table tbody td {
 @media (min-width: 768px) {
     #sidebar-container {
         margin-left: 0;
+        /* position: absolute!important; */
       }
     #content-wrapper.toggled #sidebar-container {
         margin-left: -18rem;
+        
+    }
+
+    .btn-outline-dark{
+        display: none!important;
     }
 
  }
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) { }
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    .btn-outline-dark{
+        display: none!important;
+    }
+    
+}
 
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { }
+@media (min-width: 1200px) { 
+
+    .btn-outline-dark{
+        display: none!important;
+        
+    }
+}
 
 

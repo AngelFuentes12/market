@@ -10,12 +10,12 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col"><small class="font-weight-bold">Proveedor<small></th>
+                                            <th scope="col"><small class="font-weight-bold">Cliente<small></th>
                                             <th scope="col"><small class="font-weight-bold">Estatus<small></th>
                                             <th scope="col"><small class="font-weight-bold">#<small></th>
                                             <th scope="col"><small class="font-weight-bold">Telefono<small></th>
                                             <th scope="col"><small class="font-weight-bold">Eliminar<small></th>
-                                            <th scope="col"><small class="font-weight-bold">Configuración<small></th>
+                                            <!-- <th scope="col"><small class="font-weight-bold">Configuración<small></th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -25,7 +25,7 @@
                                             <td class="align-middle"><a href="#" class="status-span badge-primary badge-activo"><i class="fas fa-arrow-down"></i></a></td>
                                             <td class="align-middle"><a href="#" class="status-span badge-secondary text-secondary">5545343673</a></td>
                                             <td class="align-middle"><a href="#" class="status-span badge-primary badge-delete"><i class="fas fa-trash-alt"></i></a></td>
-                                            <td class="align-middle"><a href="#" class="status-span badge-secondary">Editar <i class="fas fa-cog"></i></a></td>
+                                            <!-- <td class="align-middle"><a href="#" class="status-span badge-secondary">Editar <i class="fas fa-cog"></i></a></td> -->
                                         </tr>
                                     </tbody>
                                 </table>

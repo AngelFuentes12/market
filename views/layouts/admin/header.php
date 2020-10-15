@@ -27,49 +27,49 @@
 </head>
 
 <body>
-    
+
     <div class="d-flex" id="content-wrapper">
         <div id="sidebar-container" class="border-right">
             <div class="logo pr-3">
                 <a class="navbar-brand" href="<?= constant('URL'); ?>admin/">
-                    <img src="<?= constant('PIC'); ?>logotipo.png" style="width: 110px;">
+                    <img src="<?= constant('PIC'); ?>logotipo.png" style="width: 100px;">
                 </a>
             </div>
             <div class="menu list-group-flush">
-                <a href="<?= constant('URL'); ?>admin" class="list-group-item list-group-item-action text-muted">
-                    <i class="fas fa-house-user"></i> Inicio
+                <a href="<?= constant('URL'); ?>admin" class="list-group-item list-group-item-action">
+                    <i class="fas fa-house-user"></i><small class="pl-4 text-muted">Dashboard</small> 
                 </a>
 
-                <a href="<?= constant('URL'); ?>admins" class="list-group-item list-group-item-action text-muted"> 
-                    <i class="fas fa-user-shield"></i> Administradores
+                <a href="<?= constant('URL'); ?>admins" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-shield"></i><small class="pl-4 text-muted">Administradores</small> 
                 </a>
 
-                <a href="<?= constant('URL'); ?>users" class="list-group-item list-group-item-action text-muted"> 
-                    <i class="fas fa-users"></i> Clientes
+                <a href="<?= constant('URL'); ?>users" class="list-group-item list-group-item-action">
+                    <i class="fas fa-users"></i><small class="pl-4 text-muted">Clientes</small> 
                 </a>
 
-                <a href="<?= constant('URL'); ?>categories" class="list-group-item list-group-item-action text-muted"> 
-                    <i class="fas fa-chevron-circle-down"></i> Categorías
+                <a href="<?= constant('URL'); ?>categories" class="list-group-item list-group-item-action">
+                    <i class="fas fa-chevron-circle-down"></i><small class="pl-4 text-muted">Categorías</small> 
                 </a>
 
-                <a href="<?= constant('URL'); ?>vendors" class="list-group-item list-group-item-action text-muted"> 
-                    <i class="fas fa-user-tie"></i> Proveedores
+                <a href="<?= constant('URL'); ?>vendors" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-tie"></i><small class="pl-4 text-muted">Proveedores</small> 
                 </a>
 
-                <a href="<?= constant('URL'); ?>products" class="list-group-item list-group-item-action text-muted"> 
-                    <i class="fab fa-shopify"></i> Productos
+                <a href="<?= constant('URL'); ?>products" class="list-group-item list-group-item-action">
+                    <i class="fab fa-shopify"></i><small class="pl-4 text-muted">Productos</small> 
                 </a>
 
-                <a href="<?= constant('URL'); ?>buys" class="list-group-item list-group-item-action text-muted"> 
-                    <i class="fas fa-shopping-cart"></i> Compras
+                <a href="<?= constant('URL'); ?>buys" class="list-group-item list-group-item-action">
+                    <i class="fas fa-shopping-cart"></i><small class="pl-4 text-muted">Compras</small> 
                 </a>
 
-                <a href="<?= constant('URL'); ?>slider" class="list-group-item list-group-item-action text-muted"> 
-                    <i class="fas fa-images"></i> Slider
+                <a href="<?= constant('URL'); ?>slider" class="list-group-item list-group-item-action">
+                    <i class="fas fa-images"></i><small class="pl-4 text-muted">Slider</small> 
                 </a>
 
-                <a href="<?= constant('URL'); ?>admin/logout" class="list-group-item list-group-item-action text-muted"> 
-                    <i class="fas fa-arrow-down"></i> Salir
+                <a href="<?= constant('URL'); ?>admin/logout" class="list-group-item list-group-item-action">
+                    <i class="fas fa-arrow-down"></i><small class="pl-4 text-muted">Salir</small> 
                 </a>
             </div>
         </div>
@@ -82,12 +82,16 @@
                         <i class="fas fa-bars"></i>
                     </button>
 
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler btn-responsive" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <!-- <li class="nav-item">
+                                <a href="#" class="nav-link submenu"><i class="fas fa-cog"></i></a>
+                                </a>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link submenu" href="<?= constant('URL'); ?>messages">
                                     <i class="fas fa-envelope-open-text"></i> Mensajeria
@@ -125,6 +129,14 @@
                 $("#menu-toggle").click(function(e) {
                     e.preventDefault();
                     $("#content-wrapper").toggleClass("toggled");
+                    $(".btn-responsive").hide();
+                    if ($('#content-wrapper').hasClass('toggled')) {
+                        $("#content").css("display", "none");
+                        $(".btn-responsive").css("display", "none");
+                    } else {
+                        $("#content").show();
+                        $(".btn-responsive").show();
+                    }
                 });
             </script>
 
