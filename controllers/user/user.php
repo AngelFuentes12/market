@@ -9,11 +9,13 @@
 		function __construct()
 		{
 			parent::__construct();
-			error_reporting(0);
+			//error_reporting(0);
 		}
 
 		function index()
 		{
+			$this->validation();
+
 			$this->errors([]);
 			$this->view->url = "Bienvenido";
 			$this->view->render('user/index');
@@ -21,11 +23,27 @@
 
 		function logout()
 		{
-			session_start();
-			session_unset();
-			session_destroy();
-			$this->view->url = "Bienvenido";
-			$this->view->render('index');
+			if ($this->model->logout()) {
+				session_unset();
+				session_destroy();
+				header("Location: " . constant('URL'));
+			} else {
+				$this->errors([
+					'alert' => 'alert-danger',
+					'message' => 'Ocurrio un error, vuelva a interntarlo más tarde'
+				]);
+				$this->view->title = "Bienvenido";
+				$this->view->render('admin/index');
+			}
+		}
+
+		function validation()
+		{
+			require_once 'models/user/validation.php';
+			$validation = new Validation();
+			if ($validation->validationSession() == false) {
+				$this->logout();
+			}
 		}
 
 		function errors($error)

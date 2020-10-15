@@ -15,18 +15,18 @@
 		function getAdmins()
 		{
 			$items = [];
-			$query = $this->db->connection()->prepare("SELECT * FROM t_usuarios WHERE nevel = 1");
+			$query = $this->db->connection()->prepare("SELECT * FROM users WHERE level = 1");
 
 			try {
 				$query->execute();
 
 				while ($row = $query->fetch()) {
 					$item = new Admin();
-					$item->id_usuario = $row['id_usuario'];
-					$item->nombre = $row['nombre'];
-					$item->correo = $row['correo'];
-					$item->contrapass = $row['contrapass'];
-					$item->nevel = $row['nevel'];
+					$item->id_user = $row['id_user'];
+					$item->name = $row['name'];
+					$item->email = $row['email'];
+					$item->password = $row['password'];
+					$item->level = $row['level'];
 					$item->status = $row['status'];
 
 					array_push($items, $item);
@@ -41,8 +41,8 @@
 		function changeStatus($id, $status)
 		{
 			$case = "";
-			$query = $this->db->connection()->prepare("UPDATE t_usuarios SET status = :status WHERE id_usuario = :id");
-			$query_val = $this->db->connection()->prepare("SELECT * FROM t_usuarios WHERE id_usuario = :id");
+			$query = $this->db->connection()->prepare("UPDATE users SET status = :status WHERE id_user = :id");
+			$query_val = $this->db->connection()->prepare("SELECT * FROM users WHERE id_user = :id");
 
 			try {
 				$query_val->execute(['id' => $id]);
@@ -52,7 +52,7 @@
 				if ($row['status'] == 2) {
 					$case = "invalid";
 				} else {
-					if ($row['nevel'] == 1 && $row['status'] != $status) {
+					if ($row['level'] == 1 && $row['status'] != $status) {
 						$query->execute([
 							'id' => $id,
 							'status' => $status
@@ -73,15 +73,15 @@
 		function delete($id)
 		{
 			$case = "";
-			$query = $this->db->connection()->prepare("DELETE FROM t_usuarios WHERE id_usuario = :id");
-			$query_val = $this->db->connection()->prepare("SELECT * FROM t_usuarios WHERE id_usuario = :id");
+			$query = $this->db->connection()->prepare("DELETE FROM users WHERE id_user = :id");
+			$query_val = $this->db->connection()->prepare("SELECT * FROM users WHERE id_user = :id");
 
 			try {
 				$query_val->execute(['id' => $id]);
 
 				$row = $query_val->fetch();
 
-				if ($row['nevel'] == 1) {
+				if ($row['level'] == 1) {
 					$query->execute(['id' => $id]);
 
 					$case = "success";
@@ -98,21 +98,21 @@
 		function edit($id)
 		{
 			$items = [];
-			$query = $this->db->connection()->prepare("SELECT * FROM t_usuarios WHERE id_usuario = :id");
+			$query = $this->db->connection()->prepare("SELECT * FROM users WHERE id_user = :id");
 
 			try {
 				$query->execute(['id' => $id]);
 
 				$row = $query->fetch();
 
-				if ($row['nevel'] == 1) {
+				if ($row['level'] == 1) {
 
 					$item = new Admin();
-					$item->id_usuario = $row['id_usuario'];
-					$item->nombre = $row['nombre'];
-					$item->correo = $row['correo'];
-					$item->contrapass = $row['contrapass'];
-					$item->nevel = $row['nevel'];
+					$item->id_user = $row['id_user'];
+					$item->name = $row['name'];
+					$item->email = $row['email'];
+					$item->password = $row['password'];
+					$item->level = $row['level'];
 					$item->status = $row['status'];
 
 					array_push($items, $item);

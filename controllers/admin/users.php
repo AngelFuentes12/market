@@ -9,11 +9,13 @@
 		function __construct()
 		{
 			parent::__construct();
-			error_reporting(0);
+			//error_reporting(0);
 		}
 
 		function index()
 		{
+			$this->validation();
+
 			$this->errors([]);
 			$this->view->title = "Usuarios";
 			$users = $this->model->getUsers();
@@ -21,79 +23,25 @@
 			$this->view->render('admin/users/show');
 		}
 
-		function status()
+		function validation()
 		{
-			$id = isset($_GET['id']) ? $_GET['id'] : '';
-			$status = isset($_GET['status']) ? $_GET['status'] : '';
-
-			if (is_numeric($id) && $id > 0) {
-				if ($status == 1 || $status == 3) {
-					switch ($this->model->changeStatus($id, $status)) {
-						case 'success':
-							$this->errors([
-								'alert' => 'alert-success',
-								'message' => 'Estatus cambiado exitosamente'
-							]);
-							break;
-
-						case 'fail':
-						default:
-							$this->errors([
-								'alert' => 'alert-danger',
-								'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
-							]);
-							break;
-					}
-					$this->view->title = "Usuarios";
-					$users = $this->model->getAdmins();
-					$this->view->users = $users;
-					$this->view->render('admin/users/show');
-					return false;
+			require_once 'models/admin/validation.php';
+			$validation = new Validation();
+			if ($validation->validationSession() == false) {
+				require_once 'models/admin/adminModel.php';
+				$logout = new AdminModel();
+				if ($logout->logout()) {
+					session_unset();
+					session_destroy();
+					header("Location: " . constant('URL'));
+				} else {
+					$this->errors([
+						'alert' => 'alert-danger',
+						'message' => 'Ocurrio un error, vuelva a interntarlo más tarde'
+					]);
+					$this->view->title = "Bienvenido";
+					$this->view->render('admin/index');
 				}
-			}
-			$this->errors([
-				'alert' => 'alert-danger',
-				'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
-			]);
-			$this->view->title = "Usuarios";
-			$users = $this->model->getUsers();
-			$this->view->users = $users;
-			$this->view->render('admin/users/show');	
-		}
-
-		function delete()
-		{
-			$id = isset($_GET['id']) ? $_GET['id'] : '';
-			if (is_numeric($id) && $id > 0) {
-				switch ($this->model->delete($id)) {
-					case 'success':
-						$this->errors([
-							'alert' => 'alert-success',
-							'message' => 'Usuario eliminado exitosamente'
-						]);
-						break;
-
-					case 'fail':
-					default:
-						$this->errors([
-							'alert' => 'alert-danger',
-							'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
-						]);
-						break;
-				}
-				$this->view->title = "Usuarios";
-				$users = $this->model->getUsers();
-				$this->view->users = $users;
-				$this->view->render('admin/users/show');
-			} else {
-				$this->errors([
-					'alert' => 'alert-danger',
-					'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
-				]);
-				$this->view->title = "Usuarios";
-				$users = $this->model->getUsers();
-				$this->view->users = $users;
-				$this->view->render('admin/users/show');
 			}
 		}
 

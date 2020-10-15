@@ -40,9 +40,9 @@
                                                     $admin = $row; 
                                             ?>
                                             <tr>
-                                                <td><span class="d-block"><?= $admin->nombre; ?></span>
+                                                <td><span class="d-block"><?= $admin->name; ?></span>
                                                     <small class="text-muted">
-                                                        <?= $admin->correo; ?>
+                                                        <?= $admin->email; ?>
                                                     </small>
                                                 </td>
 
@@ -63,25 +63,29 @@
                                                 </td>
 
                                                 <td class="align-middle">
+                                                    <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] != $admin->id_user || isset($_SESSION['secretary'])): ?>
                                                     <?php if ($admin->status == 1): ?>
-                                                    <a href="<?= constant('URL'); ?>admins/status?id=<?= $admin->id_usuario; ?>&status=3" class="status-span badge-primary badge-activo">
+                                                    <a href="<?= constant('URL'); ?>admins/status?id=<?= $admin->id_user; ?>&status=3" class="status-span badge-primary badge-activo">
                                                         <i class="fas fa-arrow-down"></i>
                                                     </a>
                                                     <?php elseif($admin->status == 3): ?>
-                                                    <a href="<?= constant('URL'); ?>admins/status?id=<?= $admin->id_usuario; ?>&status=1" class="status-span badge-primary badge-active">
+                                                    <a href="<?= constant('URL'); ?>admins/status?id=<?= $admin->id_user; ?>&status=1" class="status-span badge-primary badge-active">
                                                         <i class="fas fa-arrow-up"></i>
+                                                    </a>
+                                                    <?php endif ?>
+                                                    <?php endif ?>
+                                                </td>
+
+                                                <td class="align-middle">
+                                                    <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] != $admin->id_user || isset($_SESSION['secretary'])): ?>
+                                                    <a href="<?= constant('URL'); ?>admins/delete?id=<?= $admin->id_user; ?>" class="status-span badge-primary badge-delete">
+                                                        <i class="fas fa-trash-alt"></i>
                                                     </a>
                                                     <?php endif ?>
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="<?= constant('URL'); ?>admins/delete?id=<?= $admin->id_usuario; ?>" class="status-span badge-primary badge-delete">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </a>
-                                                </td>
-
-                                                <td class="align-middle">
-                                                    <a href="<?= constant('URL'); ?>admins/edit?id=<?= $admin->id_usuario; ?>" class="status-span badge-secondary">
+                                                    <a href="<?= constant('URL'); ?>admins/edit?id=<?= $admin->id_user; ?>" class="status-span badge-secondary">
                                                         Editar <i class="fas fa-cog"></i>
                                                     </a>
                                                 </td>

@@ -6,7 +6,6 @@
 	class View
 	{
 		function render($name){
-			session_start();
 			if (isset($_SESSION['admin'])) {
 				require_once 'views/layouts/admin/' . 'header.php';
 			} elseif (isset($_SESSION['secretary'])) {

@@ -10,12 +10,12 @@
 					?>
 					<div>
 						Nombre
-						<input type="text" name="name" value="<?= $admin->nombre; ?>">
+						<input type="text" name="name" value="<?= $admin->name; ?>">
 					</div>
 
 					<div>
 						Correo electronico
-						<input type="email" name="email" value="<?= $admin->correo; ?>" readonly>
+						<input type="email" name="email" value="<?= $admin->email; ?>" readonly>
 					</div>	
 
 					<div>

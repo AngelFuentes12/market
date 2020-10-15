@@ -3,7 +3,7 @@
 	/**
 	 * @author: Angel Fuentes
 	 */
-	class Secretaries extends Controller
+	class  extends Controller
 	{
 		
 		function __construct()
@@ -15,10 +15,10 @@
 		function index()
 		{
 			$this->validation();
-
+			
 			$this->errors([]);
-			$this->view->title = "Secretarias";
-			$this->view->render('admin/secretaries/show');
+			$this->view->title = "";
+			$this->view->render('admin/');
 		}
 
 		function validation()

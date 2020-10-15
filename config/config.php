@@ -17,7 +17,7 @@
 	define('HOST', 'localhost');
 	define('USER', 'root');
 	define('PASSWORD', '');
-	define('DB', 'market');
+	define('DB', 'market_new');
 	define('CHARSET', 'utf8mb4');
 
 ?>

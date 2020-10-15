@@ -3,7 +3,7 @@
 	/**
 	 * @author: Angel Fuentes
 	 */
-	class Secretaries extends Controller
+	class  extends Controller
 	{
 		
 		function __construct()
@@ -15,19 +15,19 @@
 		function index()
 		{
 			$this->validation();
-
+			
 			$this->errors([]);
-			$this->view->title = "Secretarias";
-			$this->view->render('admin/secretaries/show');
+			$this->view->title = "";
+			$this->view->render('user/');
 		}
 
 		function validation()
 		{
-			require_once 'models/admin/validation.php';
+			require_once 'models/user/validation.php';
 			$validation = new Validation();
 			if ($validation->validationSession() == false) {
-				require_once 'models/admin/adminModel.php';
-				$logout = new AdminModel();
+				require_once 'models/user/userModel.php';
+				$logout = new UserModel();
 				if ($logout->logout()) {
 					session_unset();
 					session_destroy();
@@ -38,7 +38,7 @@
 						'message' => 'Ocurrio un error, vuelva a interntarlo más tarde'
 					]);
 					$this->view->title = "Bienvenido";
-					$this->view->render('admin/index');
+					$this->view->render('user/index');
 				}
 			}
 		}

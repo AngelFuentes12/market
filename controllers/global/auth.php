@@ -9,7 +9,7 @@
 		function __construct()
 		{
 			parent::__construct();
-			error_reporting(0);
+			//error_reporting(0);
 		}
 
 		function index()
@@ -69,8 +69,7 @@
 
 						case 'suspended':
 							$this->errors([
-								'c1' => 'is-invalid',
-								'c2' => 'is-invalid', 'm2' => 'Acceso restringido',
+								'c1' => 'is-invalid', 'm1' => 'Acceso denegado',
 								'email' => $email
 							]);
 							$this->view->title = "Iniciar Sesión";
@@ -79,7 +78,6 @@
 
 						case 'password':
 							$this->errors([
-								'c1' => 'is-invalid',
 								'c2' => 'is-invalid', 'm2' => 'La contraseña es invalida',
 								'email' => $email
 							]);
@@ -89,8 +87,7 @@
 
 						case 'email':
 							$this->errors([
-								'c1' => 'is-invalid', 'm1' => 'El correo electronico es invalido',
-								'c2' => 'is-invalid', 
+								'c1' => 'is-invalid', 'm1' => 'El correo electronico es invalido', 
 								'email' => $email
 							]);
 							$this->view->title = "Iniciar Sesión";
@@ -101,6 +98,15 @@
 							$this->errors([
 								'c1' => 'is-invalid', 'm1' => 'Estas credenciales son incorrectas',
 								'c2' => 'is-invalid', 
+								'email' => $email
+							]);
+							$this->view->title = "Iniciar Sesión";
+							$this->view->render('auth/login');
+							break;
+
+						case 'sessions':
+							$this->errors([
+								'c1' => 'is-invalid', 'm1' => 'Alcanzo el numero maximo de sesiones activas',
 								'email' => $email
 							]);
 							$this->view->title = "Iniciar Sesión";

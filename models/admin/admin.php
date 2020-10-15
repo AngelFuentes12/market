@@ -5,11 +5,11 @@
 	 */
 	class Admin 
 	{
-		public $id_usuario;
-		public $nombre;
-		public $correo;
-		public $contrapass;
-		public $nevel;
+		public $id_user;
+		public $name;
+		public $email;
+		public $password;
+		public $level;
 		public $status;
 	}
 

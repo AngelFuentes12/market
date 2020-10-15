@@ -13,7 +13,8 @@
 		function login($email, $password)
 		{
 			$case = "";
-			$query = $this->db->connection()->prepare("SELECT * FROM t_usuarios WHERE correo = :email AND contrapass = :password");
+			$query = $this->db->connection()->prepare("SELECT * FROM users WHERE email = :email AND password = :password");
+			$query_sess = $this->db->connection()->prepare("UPDATE users SET sessions = sessions + 1 WHERE id_user = :id_user");
 
 			try {
 				$query->execute([
@@ -24,27 +25,32 @@
 				$row = $query->fetch();
 				if ($row['status'] != "") {
 					if ($row['status'] == 1) {
-						if ($row['correo'] === $email) {
-							if ($row['contrapass'] === $password) {
-								session_start();
-								if ($row['nevel'] == 1) {
-									$_SESSION['admin'] = $row['id_usuario'];
-									$_SESSION['email'] = $row['correo'];
-									$case = "admin";
-								} elseif ($row['nevel'] == 2) {
-									$_SESSION['secretary'] = $row['id_usuario'];
-									$_SESSION['email'] = $row['correo'];
-									$case = "secretary";
-								} elseif ($row['nevel'] == 3) {
-									$_SESSION['user'] = $row['id_usuario'];
-									$_SESSION['email'] = $row['correo'];
-									$case = "user";
+						if ($row['sessions'] < 2) {
+							if ($row['email'] === $email) {
+								if ($row['password'] === $password) {
+									if ($row['level'] == 1) {
+										$_SESSION['admin'] = $row['id_user'];
+										$case = "admin";
+									} elseif ($row['level'] == 2) {
+										$_SESSION['secretary'] = $row['id_user'];
+										$case = "secretary";
+									} elseif ($row['level'] == 3) {
+										$_SESSION['user'] = $row['id_user'];
+										$case = "user";
+									} else {
+										$case = "";
+										return false;
+									}
+									$query_sess->execute(['id_user' => $row['id_user']]);
+									$_SESSION['email'] = $row['email'];
+								} else {
+									$case = "password";
 								}
 							} else {
-								$case = "password";
+								$case = "email";
 							}
 						} else {
-							$case = "email";
+							$case = "sessions";
 						}
 					} elseif ($row['status'] == 2) {
 						$case = "verification";
