@@ -72,10 +72,10 @@
 		function reset($email)
 		{
 			$case = "";
-			$query = $this->db->connection()->prepare("SELECT * FROM t_usuarios WHERE correo = :email");
-			$query_val = $this->db->connection()->prepare("SELECT * FROM t_reset WHERE email = :email AND status = 'Valid'");
-			$query_upd = $this->db->connection()->prepare("UPDATE t_reset SET status = 'expired' WHERE id_reset = :id_reset ");
-			$query_reg = $this->db->connection()->prepare("INSERT INTO t_reset (email, token, create_at, status) VALUES(:email, :token, NOW(), 'Valid')");
+			$query = $this->db->connection()->prepare("SELECT * FROM users WHERE email = :email");
+			$query_val = $this->db->connection()->prepare("SELECT * FROM resets WHERE email = :email AND status = 'valid'");
+			$query_upd = $this->db->connection()->prepare("UPDATE resets SET status = 'expired' WHERE id_reset = :id_reset ");
+			$query_reg = $this->db->connection()->prepare("INSERT INTO resets (email, token, create_at, status) VALUES(:email, :token, NOW(), 'valid')");
 			$token = base64_encode(date("Y-m-d H:i:s"));
 
 			try {
@@ -83,7 +83,7 @@
 
 				$row = $query->fetch();
 				if ($row['status'] != "") {
-					if ($row['correo'] === $email) {
+					if ($row['email'] === $email) {
 						$query_val->execute(['email' => $email]);
 						
 						$row_val = $query_val->fetch();
@@ -120,7 +120,7 @@
 		function sendEmailReset($email)
 		{
 			$case = "";
-			$query = $this->db->connection()->prepare("SELECT * FROM t_reset WHERE email = :email AND status = 'Valid'");
+			$query = $this->db->connection()->prepare("SELECT * FROM resets WHERE email = :email AND status = 'valid'");
 
 			try {
 				$query->execute(['email' => $email]);
@@ -200,7 +200,7 @@
 				                    </div>
 				                    <div class="cancel">
 				                        <center>
-				                            <p class="text-email">Si no realizaste esta acción, Ignora este correo</p>
+				                            <p class="text-email">Si no realizaste esta acción, Ignora este email</p>
 				                            <p class="copyright">Copyright © 2020 Creativa | All Rights Reserved.</p>
 				                        </center>
 				                    </div>
@@ -215,8 +215,6 @@
 				$from = 'MIME-Version: 1.0' . "\r\n";
 				$from .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 				$from .= 'From: support@market.com';
-
-				
 
 				if (mail($to, $title, $message, $from)) {
 					$case = 'send';
@@ -233,7 +231,7 @@
 		function validationToken($email, $token)
 		{
 			$case = "";
-			$query = $this->db->connection()->prepare("SELECT * FROM t_reset WHERE email = :email AND token = :token AND status = 'Valid'");
+			$query = $this->db->connection()->prepare("SELECT * FROM resets WHERE email = :email AND token = :token AND status = 'valid'");
 
 			try {
 				$query->execute([
@@ -259,7 +257,7 @@
 		function password($email, $token, $password)
 		{
 			$case = "";
-			$query = $this->db->connection()->prepare("UPDATE t_usuarios SET contrapass = :password WHERE correo = :email");
+			$query = $this->db->connection()->prepare("UPDATE users SET password = :password WHERE email = :email");
 
 			try {
 				switch ($this->validationToken($email, $token)) {
