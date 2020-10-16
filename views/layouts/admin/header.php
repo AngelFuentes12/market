@@ -18,6 +18,8 @@
     <!-- CSS Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
+    <!--animate.css  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
@@ -38,51 +40,51 @@
             <div class="menu list-group-flush">
                 <a href="<?= constant('URL'); ?>admin" class="list-group-item list-group-item-action">
                     <i class="fas fa-house-user"></i>
-                    <small class="pl-4 text-muted">Dashboard</small> 
+                    <small class="pl-4 text-muted">Dashboard</small>
                 </a>
 
                 <a href="<?= constant('URL'); ?>admins" class="list-group-item list-group-item-action">
-                    <i class="fas fa-user-shield"></i><small class="pl-4 text-muted">Administradores</small> 
+                    <i class="fas fa-user-shield"></i><small class="pl-4 text-muted">Administradores</small>
                 </a>
 
                 <a href="<?= constant('URL'); ?>users" class="list-group-item list-group-item-action">
                     <i class="fas fa-users"></i>
                     <small class="pl-4 text-muted">Clientes</small>
-                </a> 
+                </a>
 
-                <a href="<?= constant('URL'); ?>secretaries" class="list-group-item list-group-item-action text-muted"> 
+                <a href="<?= constant('URL'); ?>secretaries" class="list-group-item list-group-item-action text-muted">
                     <i class="fas fa-user-shield"></i>
                     <small class="pl-4 text-muted">Secretarias</small>
                 </a>
 
                 <a href="<?= constant('URL'); ?>categories" class="list-group-item list-group-item-action">
                     <i class="fas fa-chevron-circle-down"></i>
-                    <small class="pl-4 text-muted">Categorías</small> 
+                    <small class="pl-4 text-muted">Categorías</small>
                 </a>
 
                 <a href="<?= constant('URL'); ?>vendors" class="list-group-item list-group-item-action">
                     <i class="fas fa-user-tie"></i>
-                    <small class="pl-4 text-muted">Proveedores</small> 
+                    <small class="pl-4 text-muted">Proveedores</small>
                 </a>
 
                 <a href="<?= constant('URL'); ?>products" class="list-group-item list-group-item-action">
                     <i class="fab fa-shopify"></i>
-                    <small class="pl-4 text-muted">Productos</small> 
+                    <small class="pl-4 text-muted">Productos</small>
                 </a>
 
                 <a href="<?= constant('URL'); ?>buys" class="list-group-item list-group-item-action">
                     <i class="fas fa-shopping-cart"></i>
-                    <small class="pl-4 text-muted">Compras</small> 
+                    <small class="pl-4 text-muted">Compras</small>
                 </a>
 
                 <a href="<?= constant('URL'); ?>slider" class="list-group-item list-group-item-action">
                     <i class="fas fa-images"></i>
-                    <small class="pl-4 text-muted">Slider</small> 
+                    <small class="pl-4 text-muted">Slider</small>
                 </a>
 
                 <a href="<?= constant('URL'); ?>admin/logout" class="list-group-item list-group-item-action">
                     <i class="fas fa-arrow-down"></i>
-                    <small class="pl-4 text-muted">Salir</small> 
+                    <small class="pl-4 text-muted">Salir</small>
                 </a>
             </div>
         </div>
@@ -101,31 +103,55 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link submenu" href="<?= constant('URL'); ?>messages">
-                                    <i class="fas fa-envelope-open-text"></i> Mensajeria
+                            <li class="nav-item dropdown pr-2">
+                                <a class="nav-link  user-title" href="#" id="dropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <!-- class="nav-link dropdown-toggle user-title"  -->
+                                    <i class="far fa-envelope"></i></i>
                                 </a>
+                                <div class="dropdown-menu p-2 div-mensajes animate__animated animate__tada" aria-labelledby="dropdownProducts">
+                                    <p class="title-mensajes-notify text-muted">Tienes 1 Mensajes</p>
+                                    <a class="nav-link submenu font-weight-bold" href="#">
+                                        <small class="punto" style="color: red;"><i class="fas fa-circle"></i></small>
+                                        Michalle Rodriguez
+                                        <small class="text-muted ml-auto pl-3">Hace 2 horas</small>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <center><a class="nav-link submenu" href="<?= constant('URL'); ?>messages">Ver Más</a><center>
+                                </div>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link submenu" href="#">
-                                    <i class="fas fa-bell"></i> Notificaciones
+                            <li class="nav-item dropdown pr-2">
+                                <a class="nav-link user-title" href="#" id="dropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="far fa-bell"></i></i>
                                 </a>
+                                <div class="dropdown-menu p-2 div-mensajes animate__animated animate__tada" aria-labelledby="dropdownProducts">
+                                    <p class="title-mensajes-notify text-muted">Tienes 1 Notificación</p>
+                                    <a class="nav-link submenu font-weight-bold" href="#">
+                                        <small class="punto" style="color: red;"><i class="fas fa-circle"></i></small>
+                                        Michalle Rodriguez
+                                        <small class="text-muted ml-auto pl-3">Hace 2 horas</small>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <center><a class="nav-link submenu" href="">Ver Más</a>
+                                        <center>
+                                </div>
                             </li>
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle user-title" href="#" id="dropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-user fa-fw"></i> <?= $_SESSION['email']; ?>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownProducts">
+                                <div class="dropdown-menu div-perfil p-1 animate__animated animate__bounceInDown" aria-labelledby="dropdownProducts">
+                                    <p class="pt-2 name-user">Juan Alberto</p>
+                                    <div class="dropdown-divider"></div>
                                     <a class="nav-link submenu" href="#">
-                                        <i class="fa fa-user fa-fw"></i>Perfil
+                                        <i class="fa fa-user fa-fw"></i> <small class="pl-2 text-muted">Perfil</small>
                                     </a>
                                     <a class="nav-link submenu" href="#">
-                                        <i class="fa fa-gear fa-fw"></i>Configuración
+                                        <i class="fa fa-gear fa-fw"></i> <small class="pl-2 text-muted">Configuración</small>
                                     </a>
                                     <a class="nav-link submenu" href="<?= constant('URL'); ?>admin/logout">
-                                        <i class="fa fa-sign-out fa-fw"></i>Desconectarte
+                                        <i class="fa fa-sign-out fa-fw"></i> <small class="pl-2 text-muted">Cerrar</small>
                                     </a>
                                 </div>
                             </li>

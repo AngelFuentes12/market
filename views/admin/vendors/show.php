@@ -40,9 +40,118 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="status-span badge-primary text-primary">Nuevo <i class="fas fa-user-plus"></i></a>
+                    <a href="#" class="status-span badge-primary text-primary" data-toggle="modal" data-target="#exampleModalCenter">Nuevo <i class="fas fa-user-plus"></i></a>
                 </div>
             </div>
         </div>
     </section>
+</div>
+
+<!-- Modal registro admin-->
+<div class="modal animate__animated animate__bounceInRight" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title title-register" id="exampleModalLongTitle">Alberto, registra un nuevo proveedor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color: red;">&times;</span>
+                </button>
+            </div>
+            <!--  -->
+            <div class="modal-body mx-auto">
+                <p class="">Los campos marcados con un <small style="color: red;">*</small> son obligatorios</p>
+                <form method="POST" action="">
+                    <div class="form-group">
+                        <label for="name" class="name">Nombre <span style="color: red;">*</span></label>
+                        <input type="text" value="" name="name" class="form-control" required>
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="email">Correo Electronico <span style="color: red;">*</span></label>
+                        <input type="email" value="" name="email" class="form-control" required>
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono" class="telefono">Telefono <span style="color: red;">*</span></label>
+                        <input type="text" value="" name="telefono" class="form-control" required>
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estado" class="estado">Estado <span style="color: red;">*</span></label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Seleccionar</option>
+                        </select>
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="municipio" class="municipio">Municipio <span style="color: red;">*</span></label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Seleccionar</option>
+                        </select>
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="colonia" class="colonia">Colonia <span style="color: red;">*</span></label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Seleccionar</option>
+                        </select>
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="codigo" class="codigo">Codigo postal <span style="color: red;">*</span></label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Seleccionar</option>
+                        </select>
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="calle" class="calle">Calle <span style="color: red;">*</span></label>
+                        <input type="text" value="" name="calle" class="form-control" required>
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="interior" class="interior">Número Interior <span style="color: red;">*</span></label>
+                        <input type="text" value="" name="interior" class="form-control" required>
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exterior" class="exterior">Número Exterior <span style="color: red;">*</span></label>
+                        <input type="text" value="" name="exterior" class="form-control" required>
+                        <div class="invalid-feedback">
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="mx-auto pb-5">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-info">Registrar</button>
+            </div>
+        </div>
+    </div>
 </div>
