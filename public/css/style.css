@@ -105,12 +105,12 @@ a{
     outline: none;
 }
 
-input{
+input, select{
     outline: none !important;
     border-radius: 0!important;
 }
 
-.btn.focus, .btn:focus { outline: 0; box-shadow: 0 0 0 0; } 
+.select:focus, .btn.focus, .btn:focus { outline: 0; box-shadow: 0 0 0 0; } 
 .form-control { box-shadow: none!important;} 
 
 
@@ -118,6 +118,13 @@ input:focus, input[type]:focus {
     border-color: #797a7a;
     box-shadow: 0 1px 1px #3D465B inset, 0 0 8px #3D465B;
     outline: 0 none;
+}
+
+select:focus{
+    border-color: #797a7a!important;
+    box-shadow: 0 1px 1px #3D465B inset, 0 0 8px #3D465B;
+    outline: 0 none;
+
 }
 
 .form-group a{
@@ -307,6 +314,11 @@ input:focus, input[type]:focus {
     color: #3D465B;
 }
 
+.fa-envelope{
+    color: #31C832;
+    font-size: 18px;
+}
+
 .fa-bell{
     color: #FFB833;
     font-size: 18px;
@@ -320,6 +332,22 @@ input:focus, input[type]:focus {
 .nav-color{
     background-color: #FFFF!important;
 }
+
+.title-mensajes-notify{
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+.div-mensajes {
+    width: 300px !important;
+}
+
+.div-perfil{
+    width: 200px !important;
+    height: 200px!important;
+}
+
+.name-user{ text-align: center; font-weight: bold;}
 
 
 /* FOOTER */
@@ -398,6 +426,13 @@ table tbody td {
     font-size: 10px;
 }
 
+
+.title-register{
+    font-size: 1.1rem;
+    color: #616161e1;
+}
+
+
 /* responsive */
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
@@ -413,6 +448,10 @@ table tbody td {
 
     .card-paddin{
         padding-bottom: 12px;
+    }
+
+    .div-perfil{
+        margin: auto!important;
     }
     
  }
