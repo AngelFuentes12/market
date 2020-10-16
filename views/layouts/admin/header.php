@@ -139,10 +139,10 @@
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle user-title" href="#" id="dropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-user fa-fw"></i> <?= $_SESSION['email']; ?>
+                                    <i class="fa fa-user fa-fw"></i> <?= $_SESSION['name']; ?>
                                 </a>
                                 <div class="dropdown-menu div-perfil p-1 animate__animated animate__bounceInDown" aria-labelledby="dropdownProducts">
-                                    <p class="pt-2 name-user">Juan Alberto</p>
+                                    <p class="pt-2 name-user"><?= $_SESSION['name']; ?></p>
                                     <div class="dropdown-divider"></div>
                                     <a class="nav-link submenu" href="#">
                                         <i class="fa fa-user fa-fw"></i> <small class="pl-2 text-muted">Perfil</small>

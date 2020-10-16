@@ -43,6 +43,7 @@
 									}
 									$query_sess->execute(['id_user' => $row['id_user']]);
 									$_SESSION['email'] = $row['email'];
+									$_SESSION['name'] = $row['name'];
 								} else {
 									$case = "password";
 								}
