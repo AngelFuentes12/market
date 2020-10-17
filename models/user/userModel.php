@@ -17,6 +17,7 @@
 
 			try {
 				$query->execute(['id_user' => $_SESSION['user']]);
+				
 				return true;
 			} catch (PDOException $e) {
 				return false;

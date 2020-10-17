@@ -10,22 +10,50 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col"><small class="font-weight-bold">Nombre de categoria<small></th>
-                                            <th scope="col"><small class="font-weight-bold">Eliminar<small></th>
-                                            <th scope="col"><small class="font-weight-bold">Configuraciones<small></th>
+                                            <th scope="col">
+                                                <small class="font-weight-bold">
+                                                    Nombre de categoria
+                                                </small>
+                                            </th>
+
+                                            <th scope="col">
+                                                <small class="font-weight-bold">
+                                                    Eliminar
+                                                </small>
+                                            </th>
+
+                                            <th scope="col">
+                                                <small class="font-weight-bold">
+                                                    Configuraciones
+                                                </small>
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php 
+                                            require_once 'models/admin/category.php';
+                                            foreach ($this->categories as $row): 
+                                            $category = new Category();
+                                            $category = $row;
+                                        ?>
                                         <tr class="">
-                                            <td><span class="">Ropa</span></td>
-                                            <td class="align-middle"><a href="#" class="status-span badge-primary badge-delete"><i class="fas fa-trash-alt"></i></a></td>
-                                            <td class="align-middle"><a href="#" class="status-span badge-secondary">Editar <i class="fas fa-cog"></i></a></td>
+                                            <td>
+                                                <span class=""><?= $category->category; ?></span>
+                                            </td>
+
+                                            <td class="align-middle">
+                                                <a href="<?= constant('URL') . 'categories/delete?id=' . $category->id_category; ?>" class="status-span badge-primary badge-delete">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+
+                                            <td class="align-middle">
+                                                <a href="<?= constant('URL') . 'categories/edit?id=' .  $category->id_category; ?>" class="status-span badge-secondary">
+                                                    Editar <i class="fas fa-cog"></i>
+                                                </a>
+                                            </td>
                                         </tr>
-                                        <tr class="">
-                                            <td><span class="">Calzado</span></td>
-                                            <td class="align-middle"><a href="#" class="status-span badge-primary badge-delete"><i class="fas fa-trash-alt"></i></a></td>
-                                            <td class="align-middle"><a href="#" class="status-span badge-secondary">Editar <i class="fas fa-cog"></i></a></td>
-                                        </tr>
+                                        <?php endforeach ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -53,19 +81,22 @@
             </div>
             <div class="modal-body mx-auto">
                 <p class="">Los campos marcados con un <small style="color: red;">*</small> son obligatorios</p>
-                <form method="POST" action="">
+                <form method="POST" action="<?= constant('URL'); ?>categories/register">
                     <div class="form-group">
                         <label for="categoria" class="categoria">Categoria <span style="color: red;">*</span></label>
-                        <input type="text" value="" name="categoria" class="form-control" required>
-                        <div class="invalid-feedback">
 
+                        <input type="text" value="<?= $this->error['category']; ?>" name="category" class="form-control <?= $this->error['c1']; ?>" maxlength="40" minlength="4" required>
+
+                        <div class="invalid-feedback">
+                            <?= $this->error['m1']; ?>
                         </div>
                     </div>
+
+                    <div class="mx-auto pb-5">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-info">Registrar</button>
+                    </div>
                 </form>
-            </div>
-            <div class="mx-auto pb-5">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-info">Registrar</button>
             </div>
         </div>
     </div>

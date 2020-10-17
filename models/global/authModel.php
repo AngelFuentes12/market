@@ -118,6 +118,22 @@
 			}
 		}
 
+		function verification($email)
+		{
+			$query_del = $this->db->connection()->prepare("DELETE FROM verifications WHERE email = :email");
+			$query_upd = $this->db->connection()->prepare("UPDATE users SET status = 1 WHERE email = :email");
+
+			try {
+				$query_del->execute(['email' => $email]);
+
+				$query_upd->execute(['email' => $email]);
+
+				return true;
+			} catch (PDOException $e) {
+				return true;
+			}
+		}
+
 		function sendEmailReset($email)
 		{
 			$case = "";
@@ -229,7 +245,7 @@
 			}
 		}
 
-		function validationToken($email, $token)
+		function validationTokenReset($email, $token)
 		{
 			$case = "";
 			$query = $this->db->connection()->prepare("SELECT * FROM resets WHERE email = :email AND token = :token AND status = 'valid'");
@@ -255,13 +271,39 @@
 			}
 		}
 
+		function validationTokenVerification($email, $token)
+		{
+			$case = "";
+			$query = $this->db->connection()->prepare("SELECT * FROM verifications WHERE email = :email AND token = :token AND status = 'valid'");
+
+			try {
+				$query->execute([
+					'email' => $email,
+					'token' => $token
+				]);
+
+				$row = $query->fetch();
+				if ($row['id_verification'] != "") {
+					if ($row['token'] === $token && $row['email'] === $email) {
+						$case = 'valid';
+					}
+				} else {
+					$case = "invalid";
+				}
+
+				return $case;
+			} catch (PDOException $e) {
+				return $case;	
+			}
+		}
+
 		function password($email, $token, $password)
 		{
 			$case = "";
 			$query = $this->db->connection()->prepare("UPDATE users SET password = :password WHERE email = :email");
 
 			try {
-				switch ($this->validationToken($email, $token)) {
+				switch ($this->validationTokenReset($email, $token)) {
 					case 'valid':
 						$query->execute([
 							'email' => $email,

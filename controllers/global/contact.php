@@ -34,7 +34,7 @@
 				$response = $_POST['g-recaptcha-response'];
 				$ip = $_SERVER['REMOTE_ADDR'];
 				$password='6LfkDdcZAAAAALvCupYPHNO8HsjF7Uz2Ywr-opUh';
-				$recaptcha = "https://www.google.com/recaptcha/api/siteverify?secret=$password&response=$response&remoteip=$ip";
+				$recaptcha = "https://www.google.com/recaptcha/api/siteverify?secret=".constant('SCPS')."&response=$response&remoteip=$ip";
 
 				$response = file_get_contents($recaptcha) ;
 

@@ -119,40 +119,49 @@
                 <div class="modal-body mx-auto">
                     <p class="">Los campos marcados con un <small style="color: red;">*</small> son obligatorios</p>
                     <!-- <div class="col-12 col-md-10 form-color p-4 "> -->
-                    <form method="POST" action="">
+                    <form method="POST" action="<?= constant('URL'); ?>admins/register">
                         <div class="form-group">
                             <label for="name" class="name">Nombre <span style="color: red;">*</span></label>
-                            <input type="text" value="" name="name" class="form-control" required>
-                            <div class="invalid-feedback">
 
+                            <input type="text" value="<?= $this->error['name']?>" name="name" class="form-control <?= $this->error['c1']; ?>" required>
+
+                            <div class="invalid-feedback">
+                                <?= $this->error['m1']; ?>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="email">Correo Electronico <span style="color: red;">*</span></label>
-                            <input type="email" value="" name="email" class="form-control" required>
-                            <div class="invalid-feedback">
 
+                            <input type="email" value="<?= $this->error['email']; ?>" name="email" class="form-control <?= $this->error['c2']; ?>" required>
+
+                            <div class="invalid-feedback">
+                                <?= $this->error['m2']; ?>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="password" class="password">Contraseña <span style="color: red;">*</span></label>
-                            <input type="password" name="password" class="form-control" required>
+
+                            <input type="password" name="password" value="<?= $this->error['password']; ?>" class="form-control <?= $this->error['c3']; ?>" required>
+
                             <div class="invalid-feedback">
+                                <?= $this->error['m3']; ?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="confpassword" class="confpassword">Escribe nevamente tu contraseña <span style="color: red;">*</span></label>
-                            <input type="password" name="confpassword" class="form-control" required>
+                            <label for="confpassword" class="confpassword">Escribe nuevamente tu contraseña <span style="color: red;">*</span></label>
+
+                            <input type="password" name="confirmpassword" class="form-control <?= $this->error['c4']; ?>" required>
+
                             <div class="invalid-feedback">
+                                <?= $this->error['m4']; ?>
                             </div>
                         </div>
-
+                        <div class="mx-auto pb-5">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-info">Registrar</button>
+                        </div>
                     </form>
-                </div>
-                <div class="mx-auto pb-5">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-info">Registrar</button>
                 </div>
             </div>
         </div>

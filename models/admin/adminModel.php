@@ -17,7 +17,9 @@
 
 			try {
 				$id = isset($_SESSION['admin']) ? $_SESSION['admin'] : $_SESSION['secretary'];
+
 				$query->execute(['id_user' => $id]);
+				
 				return true;
 			} catch (PDOException $e) {
 				return false;

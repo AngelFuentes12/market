@@ -15,7 +15,7 @@
 		function index()
 		{
 			$this->errors([]);
-			$this->view->title = "Iniciar Sesión";
+			$this->view->title = "Iniciar sesión";
 			$this->view->render('auth/login');
 		}
 
@@ -28,8 +28,7 @@
 			if ($response != '') {
 				$response = $_POST['g-recaptcha-response'];
 				$ip = $_SERVER['REMOTE_ADDR'];
-				$secretPassword='6LfkDdcZAAAAALvCupYPHNO8HsjF7Uz2Ywr-opUh';
-				$recaptcha = "https://www.google.com/recaptcha/api/siteverify?secret=$secretPassword&response=$response&remoteip=$ip";
+				$recaptcha = "https://www.google.com/recaptcha/api/siteverify?secret=".constant('SCPS')."&response=$response&remoteip=$ip";
 
 				$response = file_get_contents($recaptcha) ;
 
@@ -39,32 +38,27 @@
 				$status = trim($data[0]);
 
 				if ($status=='true'){
-					switch ($this->model->login($email, $password)) {
+					switch ($this->model->login($email, base64_encode($password))) {
 						case 'user':
 							$this->errors([]);
 							$this->view->title = "Bienvenido";
 							$this->view->render('user/index');
+							return false;
 							break;
 
 						case 'admin':
-							$this->errors([]);
-							$this->view->title = "Bienvenido";
-							$this->view->render('admin/index');
-							break;
-
 						case 'secretary':
 							$this->errors([]);
 							$this->view->title = "Bienvenido";
 							$this->view->render('admin/index');
+							return false;
 							break;
 
 						case 'verification':
 							$this->errors([
-								'c1' => 'is-invalid', 'm1' => 'Revisa tu bandeja de correo electronico',
+								'c1' => 'is-invalid', 'm1' => 'Revisa tu bandeja de correo electrónico',
 								'email' => $email
 							]);
-							$this->view->title = "Iniciar Sesión";
-							$this->view->render('auth/login');
 							break;
 
 						case 'suspended':
@@ -72,8 +66,6 @@
 								'c1' => 'is-invalid', 'm1' => 'Acceso denegado',
 								'email' => $email
 							]);
-							$this->view->title = "Iniciar Sesión";
-							$this->view->render('auth/login');
 							break;
 
 						case 'password':
@@ -81,17 +73,13 @@
 								'c2' => 'is-invalid', 'm2' => 'La contraseña es invalida',
 								'email' => $email
 							]);
-							$this->view->title = "Iniciar Sesión";
-							$this->view->render('auth/login');
 							break;
 
 						case 'email':
 							$this->errors([
-								'c1' => 'is-invalid', 'm1' => 'El correo electronico es invalido', 
+								'c1' => 'is-invalid', 'm1' => 'El correo electrónico es invalido', 
 								'email' => $email
 							]);
-							$this->view->title = "Iniciar Sesión";
-							$this->view->render('auth/login');
 							break;
 
 						case 'credentials':
@@ -100,44 +88,30 @@
 								'c2' => 'is-invalid', 
 								'email' => $email
 							]);
-							$this->view->title = "Iniciar Sesión";
-							$this->view->render('auth/login');
 							break;
 
 						case 'sessions':
 							$this->errors([
-								'c1' => 'is-invalid', 'm1' => 'Alcanzo el numero maximo de sesiones activas',
+								'c1' => 'is-invalid', 'm1' => 'Alcanzo el número máximo de sesiones activas',
 								'email' => $email
 							]);
-							$this->view->title = "Iniciar Sesión";
-							$this->view->render('auth/login');
 							break;
 
 						default:
-							$this->errors([
-								'alert' => 'alert-danger', 
-								'message' => 'Ocurrio un error vuelva a intentarlo mas tarde'
-							]);
-							$this->view->title = "Iniciar Sesión";
-							$this->view->render('auth/login');
+							$this->errorMessage();
 							break;
 					}
 				} else if ($status=='false'){
-					$this->errors([
-						'alert' => 'alert-danger', 
-						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
-					]);
-					$this->view->title = "Iniciar Sesión";
-					$this->view->render('auth/login');
+					$this->errorMessage();
 				}
 			} else {
 				$this->errors([
 					'c3' => 'is-invalid', 'm3' => 'Debe validar la captcha',
 					'email' => $email
 				]);
-				$this->view->title = "Iniciar Sesión";
-				$this->view->render('auth/login');
 			}
+			$this->view->title = "Iniciar sesión";
+			$this->view->render('auth/login');
 		}
 
 		function register()
@@ -156,52 +130,67 @@
 
 		function resetpassword()
 		{
-			$email = isset($_POST['email']) ? $_POST['email'] : '';
+			$email = isset($_POST['email']) ? preg_replace('/\s\s+/', ' ', trim($_POST['email'])) : '';
+			$response = isset($_POST['g-recaptcha-response']) ? $_POST['g-recaptcha-response'] : '';
 
-			if ($email != '') {
-				switch ($this->model->reset($email)) {
-					case 'register':
-						$this->sendEmailReset($email);
-						break;
+			if ($response != '') {
+				$response = $_POST['g-recaptcha-response'];
+				$ip = $_SERVER['REMOTE_ADDR'];
+				$recaptcha = "https://www.google.com/recaptcha/api/siteverify?secret=".constant('SCPS')."&response=$response&remoteip=$ip";
 
-					case 'email':
+				$response = file_get_contents($recaptcha) ;
+
+				$dividir = explode('"success":', $response);
+				$data = explode(',', $dividir[1]);
+
+				$status = trim($data[0]);
+
+				if ($status=='true'){
+					if ($email != '') {
+						switch ($this->model->reset($email)) {
+							case 'register':
+								$this->sendEmailReset($email);
+								break;
+
+							case 'email':
+								$this->errors([
+									'c1' => 'is-invalid', 
+									'm1' => 'El correo electrónico es invalido',
+									'email' => $email
+								]);
+								break;
+
+							case 'credentials':
+								$this->errors([
+									'c1' => 'is-invalid', 
+									'm1' => 'Esta credencial es incorrecta',
+									'email' => $email
+								]);
+								break;
+							
+							default:
+								$this->errorMessage();
+								break;
+						}
+					} else {
 						$this->errors([
 							'c1' => 'is-invalid', 
-							'm1' => 'El correo electronico es invalido',
+							'm1' => 'Debe ingresar un correo electrónico',
 							'email' => $email
 						]);
-						$this->view->title = "Restablecer contraseña";
-						$this->view->render('auth/reset');
-						break;
-
-					case 'credentials':
-						$this->errors([
-							'c1' => 'is-invalid', 
-							'm1' => 'Esta credencial es incorrecta',
-							'email' => $email
-						]);
-						$this->view->title = "Restablecer contraseña";
-						$this->view->render('auth/reset');
-						break;
-					
-					default:
-						$this->errors([
-							'alert' => 'alert-danger', 
-							'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
-						]);
-						$this->view->title = "Restablecer contraseña";
-						$this->view->render('auth/reset');
-						break;
+					}
+				} else if ($status=='false'){
+					$this->errorMessage();
 				}
 			} else {
 				$this->errors([
-					'c1' => 'is-invalid', 
-					'm1' => 'Debe completar este campo',
+					'c2' => 'is-invalid', 'm2' => 'Debe validar la captcha',
 					'email' => $email
 				]);
-				$this->view->title = "Restablecer";
-				$this->view->render('auth/reset');
-			}	
+			}
+
+			$this->view->title = "Restablecer contraseña";
+			$this->view->render('auth/reset');	
 		}
 
 
@@ -211,27 +200,17 @@
 				case 'send':
 					$this->errors([
 						'alert' => 'alert-success', 
-						'message' => 'Se envio un correo electronico a ' . $email . ' con mas instrucciones',
+						'message' => 'Se envio un correo electrónico a ' . $email . ' con mas instrucciones',
 						'email' => $email
 					]);
-					$this->view->title = "Iniciar Sesión";
+					$this->view->title = "Iniciar sesión";
 					$this->view->render('auth/login');
+					return false;
 					break;
 
 				case 'failed':
-					$this->errors([
-						'alert' => 'alert-danger', 
-						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
-					]);
-					$this->view->title = "Restablecer contraseña";
-					$this->view->render('auth/reset');
-					break;
-				
 				default:
-					$this->errors([
-						'alert' => 'alert-danger', 
-						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
-					]);
+					$this->errorMessage();
 					$this->view->title = "Restablecer contraseña";
 					$this->view->render('auth/reset');
 					break;
@@ -240,11 +219,11 @@
 
 		function email()
 		{
-			$email = isset($_GET['email']) ? $_GET['email'] : '';
+			$email = isset($_GET['email']) ? preg_replace('/\s\s+/', ' ', trim($_GET['email'])) : '';
 			$token = isset($_GET['token']) ? $_GET['token'] : '';
 			
 			if ($email != '' && $token != '') {
-				switch ($this->model->validationToken($email, $token)) {
+				switch ($this->model->validationTokenReset($email, $token)) {
 					case 'valid':
 						$this->errors([
 							'email' => $email,
@@ -252,25 +231,23 @@
 						]);
 						$this->view->title = "Cambiar contraseña";
 						$this->view->render('auth/email');
+						return false;
 						break;
 
 					case 'invalid':
 						$this->errors([]);
 						$this->view->title = "Ups...";
 						$this->view->render('error/404');
+						return false;
 						break;
 					
 					default:
-						$this->errors([]);
-						$this->view->title = "Cambiar contraseña";
-						$this->view->render('auth/reset');
-						break;
 				}
-			} else {
-				$this->errors([]);
-				$this->view->title = "Cambiar contraseña";
-				$this->view->render('auth/reset');
 			}
+
+			$this->errors([]);
+			$this->view->title = "Cambiar contraseña";
+			$this->view->render('auth/reset');
 		}
 
 		function password()
@@ -284,8 +261,7 @@
 			if ($response != '') {
 				$response = $_POST['g-recaptcha-response'];
 				$ip = $_SERVER['REMOTE_ADDR'];
-				$secretPassword='6LfkDdcZAAAAALvCupYPHNO8HsjF7Uz2Ywr-opUh';
-				$recaptcha = "https://www.google.com/recaptcha/api/siteverify?secret=$secretPassword&response=$response&remoteip=$ip";
+				$recaptcha = "https://www.google.com/recaptcha/api/siteverify?secret=".constant('SCPS')."&response=$response&remoteip=$ip";
 
 				$response = file_get_contents($recaptcha) ;
 
@@ -294,81 +270,71 @@
 
 				$status = trim($data[0]);
 
-				if ($status == 'true'){
-					if ($email != '') {
-						if ($token != '') {
-							if ($password != '') {
-								if ($confirmpassword != '') {
-									if ($password === $confirmpassword) {
-										switch ($this->model->password($email, $token, $confirmpassword)) {
-											case 'change':
-												$this->errors([
-													'email' => $email,
-													'alert' => 'alert-success', 
-													'message' => 'La contraseña fue actualizada exitosamente'
-												]);
-												$this->view->title = "Iniciar Sesión";
-												$this->view->render('auth/login');
-												break;
-
-											case 'invalid':
-											default:
-												$this->errors([
-													'email' => $email,
-													'alert' => 'alert-danger', 
-													'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
-												]);
-												$this->view->title = "Cambiar contraseña";
-												$this->view->render('auth/reset');
-												break;
-										}
-									} else {
-										$this->errors([
-											'c2' => 'is-invalid',
-											'c3' => 'is-invalid', 'm3' => 'Las contraseñas no coinciden',
-											'email' => $email,
-											'password' => $password,
-											'token' => $token
-										]);
-										$this->view->title = "Cambiar contraseña";
-										$this->view->render('auth/email');
-									}
-								} else {
+				if ($status == 'true') {
+					if ($email != "" && $token != "" && $password != "" && $confirmpassword != "") {
+						if ($password === $confirmpassword) {
+							switch ($this->model->password($email, $token, base64_encode($password))) {
+								case 'change':
 									$this->errors([
-										'c3' => 'is-invalid', 'm3' => 'Confirme su contraseña',
 										'email' => $email,
-										'password' => $password,
-										'token' => $token
+										'alert' => 'alert-success', 
+										'message' => 'La contraseña fue actualizada exitosamente'
 									]);
+									$this->view->title = "Iniciar sesión";
+									$this->view->render('auth/login');
+									return false;
+									break;
+
+								case 'invalid':
+								default:
+									$this->errorMessage();
 									$this->view->title = "Cambiar contraseña";
-									$this->view->render('auth/email');
-								}
-							} else {
-								$this->errors([
-									'c2' => 'is-invalid', 'm2' => 'Ingrese una contraseña',
-									'email' => $email,
-									'token' => $token
-								]);
-								$this->view->title = "Cambiar contraseña";
-								$this->view->render('auth/email');
+									$this->view->render('auth/reset');
+									break;
 							}
+						} else {
+							$this->errors([
+								'c2' => 'is-invalid',
+								'c3' => 'is-invalid', 'm3' => 'Las contraseñas no coinciden',
+								'email' => $email,
+								'password' => $password,
+								'token' => $token
+							]);
 						}
+						
+					} else {
+						$c1 = ""; $m1 = "";
+						$c2 = ""; $m2 = "";
+						$c3 = ""; $m3 = "";
+						if ($email == "") {
+							$c1 = "is-invalid";
+							$m1 = "Debe ingresar un email";
+						}
+
+						if ($password == "") {
+							$c2 = "is-invalid";
+							$m2 = "Debe ingresar una contraseña";
+						}
+
+						if ($confirmpassword == "") {
+							$c3 = "is-invalid";
+							$m3 = "Debe confirmar su contraseña";
+						}
+
+						$this->errors([
+							'c1' => $c1, 'm1' => $m1,
+							'c2' => $c2, 'm2' => $m2,
+							'c3' => $c3, 'm3' => $m3,
+							'email' => $email,
+							'password' => $password,
+							'token' => $token
+						]);
 					}
-					$this->errors([
-						'email' => $email,
-						'alert' => 'alert-danger', 
-						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
-					]);
+				} else if ($status == 'false') {
+					$this->errorMessage();
 					$this->view->title = "Cambiar contraseña";
 					$this->view->render('auth/reset');
-				} else if ($status == 'false'){
-					$this->errors([
-						'email' => $email,
-						'alert' => 'alert-danger', 
-						'message' => 'Ocurrio un error, vuelva a intentarlo más tarde'
-					]);
-					$this->view->title = "Cambiar contraseña";
-					$this->view->render('auth/reset');
+					return false;
 				}
 			} else {
 				$this->errors([
@@ -377,9 +343,52 @@
 					'password' => $password,
 					'token' => $token
 				]);
-				$this->view->title = "Cambiar contraseña";
-				$this->view->render('auth/email');
 			}
+			$this->view->title = "Cambiar contraseña";
+			$this->view->render('auth/email');
+		}
+
+		function verification()
+		{
+			$email = isset($_GET['email']) ? preg_replace('/\s\s+/', ' ', trim($_GET['email'])) : '';
+			$token = isset($_GET['token']) ? $_GET['token'] : '';
+			
+			if ($email != '' && $token != '') {
+				switch ($this->model->validationTokenVerification($email, $token)) {
+					case 'valid':
+						if ($this->model->verification($email)) {
+							$this->errors([
+								'email' => $email,
+								'alert' => 'alert-success',
+								'message' => 'Felicitaciones ' . $email . ' tu cuenta fue verificada, ahora puedes acceder al sistema'
+							]);
+						} else {
+							$this->errorMessage();
+						}
+						
+						break;
+
+					case 'invalid':
+						$this->errors([]);
+						$this->view->title = "Ups...";
+						$this->view->render('error/404');
+						return false;
+						break;
+					
+					default:
+				}
+			}
+
+			$this->view->title = "Iniciar sesión";
+			$this->view->render('auth/login');
+		}
+
+		function errorMessage()
+		{	
+			$this->errors([
+				'alert' => 'alert-danger',
+				'message' => 'Ocurrió un error, vuelva a interntarlo más tarde'
+			]);
 		}
 
 		function errors($error)

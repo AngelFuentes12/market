@@ -17,17 +17,66 @@
 			$this->validation();
 
 			$this->errors([]);
-			$this->view->title = "Categorias";
-			$this->view->render('admin/categories/show');
+			$this->getCategories();
 		}
 
 		function register()
 		{
 			$this->validation();
 
-			$this->errors([]);
-			$this->view->title = "Registrar categoria";
-			$this->view->render('admin/categories/register');
+			$category = isset($_POST['category']) ? preg_replace('/\s\s+/', ' ', trim($_POST['category'])) : '';
+
+			if ($category != '') {
+				switch ($this->model->register($category)) {
+					case 'success':
+						$this->errors([
+							'alert' => 'alert-success',
+							'message' => 'Categoría registrada exitosamente'
+						]);
+						break;
+
+					case 'category':
+						$this->errors([
+							'c1' => 'is-invalid',
+							'm1' => 'Esta categoría ya fue registrada',
+							'category' => $category,
+							'alert' => 'alert-info',
+							'message' => 'Verifique su información'
+						]);
+						break;
+					
+					default:
+						$this->errorMessage();
+						break;
+				}
+			} else {
+				$this->errors([
+					'c1' => 'is-invalid',
+					'm1' => 'Ingrese una categoría',
+					'alert' => 'alert-info',
+					'message' => 'Verifique su información'
+				]);
+			}
+			$this->getCategories();
+		}
+
+		function delete()
+		{
+			$id = isset($_GET['id']) ? $_GET['id'] : '';
+
+			if (is_numeric($id) && $id > 0) {
+				if ($this->model->delete($id)) {
+					$this->errors([
+						'alert' => 'alert-success',
+						'message' => 'Categoría eliminada exitosamente'
+					]);
+				} else {
+					$this->errorMessage();
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getCategories();
 		}
 
 		function validation()
@@ -42,22 +91,42 @@
 					session_destroy();
 					header("Location: " . constant('URL'));
 				} else {
-					$this->errors([
-						'alert' => 'alert-danger',
-						'message' => 'Ocurrio un error, vuelva a interntarlo más tarde'
-					]);
+					$this->errorMessage();
 					$this->view->title = "Bienvenido";
 					$this->view->render('admin/index');
 				}
 			}
 		}
 
+		function getCategories()
+		{
+			$this->view->title = "Categorías";
+			$categories = $this->model->getCategories();
+			$this->view->categories = $categories;
+			$this->view->render('admin/categories/show');
+		}
+
+		function errorMessage()
+		{	
+			$this->errors([
+				'alert' => 'alert-danger',
+				'message' => 'Ocurrió un error, vuelva a interntarlo más tarde'
+			]);
+		}
+
 		function errors($error)
 		{
+			$c1 = isset($error['c1']) ? $error['c1'] : '';
+			$m1 = isset($error['m1']) ? $error['m1'] : '';
+
+			$category = isset($error['category']) ? $error['category'] : '';
+
 			$alert = isset($error['alert']) ? $error['alert'] : '';
 			$message = isset($error['message']) ? $error['message'] : '';
 
 			$this->view->error = [
+				'c1' => $c1, 'm1' => $m1,
+				'category' => $category,
 				'alert' => $alert, 'message' => $message
 			];
 		}

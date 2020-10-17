@@ -17,6 +17,7 @@
 
 			try {
 				$id = isset($_SESSION['admin']) ? $_SESSION['admin'] : $_SESSION['secretary'];
+				
 				$query->execute(['id_user' => $id]);
 
 				$row = $query->fetch();

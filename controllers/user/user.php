@@ -28,10 +28,7 @@
 				session_destroy();
 				header("Location: " . constant('URL'));
 			} else {
-				$this->errors([
-					'alert' => 'alert-danger',
-					'message' => 'Ocurrio un error, vuelva a interntarlo más tarde'
-				]);
+				$this->errorMessage();
 				$this->view->title = "Bienvenido";
 				$this->view->render('admin/index');
 			}
@@ -44,6 +41,14 @@
 			if ($validation->validationSession() == false) {
 				$this->logout();
 			}
+		}
+
+		function errorMessage()
+		{	
+			$this->errors([
+				'alert' => 'alert-danger',
+				'message' => 'Ocurrió un error, vuelva a interntarlo más tarde'
+			]);
 		}
 
 		function errors($error)

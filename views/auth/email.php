@@ -40,7 +40,7 @@
 
 						<div class="form-group">
 							<label for="captcha" class="captcha">Captcha <span style="color: red;">*</span></label></label>
-							<div class="g-recaptcha <?= $this->error['c4']; ?>" data-sitekey="6LfkDdcZAAAAAP5CSjK2uKUgg_sw5HshpK4QVlC1"></div>
+							<div class="g-recaptcha <?= $this->error['c4']; ?>" data-sitekey="<?= constant('PSS') ?>"></div>
 
 							<div class="invalid-feedback">
 								<?= $this->error['m4']; ?>

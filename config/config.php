@@ -11,7 +11,10 @@
 	define('PIC', 'http://localhost/market/resources/images/system/');
 	define('CSS', 'http://localhost/market/public/css/');
 	define('JS', 'http://localhost/market/resources/js/');
-	
+
+	/* Recaptcha */
+	define('SCPS', '6LfkDdcZAAAAALvCupYPHNO8HsjF7Uz2Ywr-opUh');
+	define('PSS', '6LfkDdcZAAAAAP5CSjK2uKUgg_sw5HshpK4QVlC1');
 
 	/* Database */
 	define('HOST', 'localhost');
