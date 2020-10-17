@@ -1,13 +1,16 @@
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script src="<?= constant('JS'); ?>tables.js"></script>
+
     <div id="content" class="container-fluid p-5">
         <section class="py-3">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-12 form-color p-4 shadow-sm">
-                        <h4 class="pb-1">Pagína de administradores</h4>
+                        <h4 class="pb-1">Administradores</h4>
                         <div class="row mb-3">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table id="tableAdmins" class="table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">

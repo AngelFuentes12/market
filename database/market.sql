@@ -1,8 +1,9 @@
+DROP DATABASE market_new;
 CREATE DATABASE market_new CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
 USE market_new;
 
 CREATE TABLE states(id_state INT AUTO_INCREMENT PRIMARY KEY,
-    state VARCHAR(60) NOT NULL)
+    state VARCHAR(60) UNIQUE NOT NULL)
     Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
 
 CREATE TABLE municipalities(id_municipality INT AUTO_INCREMENT PRIMARY KEY,

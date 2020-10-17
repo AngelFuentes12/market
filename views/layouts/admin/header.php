@@ -18,6 +18,9 @@
     <!-- CSS Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
+    <!-- DataTable CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+
     <!--animate.css  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- jQuery -->
@@ -42,6 +45,20 @@
                     <i class="fas fa-house-user"></i>
                     <small class="pl-4 text-muted">Dashboard</small>
                 </a>
+
+                <div class="dropdown">
+                    <button class="list-group-item list-group-item-action dropdown-toggle" type="button" id="direcciones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-road"></i>
+                        <small class="pl-4 text-muted">Direcciones</small>
+                    </button>
+                
+                    <div class="dropdown-menu" aria-labelledby="direcciones">
+                        <a class="dropdown-item" href="<?= constant('URL'); ?>states">Estados</a>
+                        <a class="dropdown-item" href="<?= constant('URL'); ?>municipalities">Municipios</a>
+                        <a class="dropdown-item" href="<?= constant('URL'); ?>colonies">Colonias</a>
+                        <a class="dropdown-item" href="<?= constant('URL'); ?>postcodes">Codigos Postales</a>
+                    </div>
+                </div>
 
                 <a href="<?= constant('URL'); ?>admins" class="list-group-item list-group-item-action">
                     <i class="fas fa-user-shield"></i><small class="pl-4 text-muted">Administradores</small>

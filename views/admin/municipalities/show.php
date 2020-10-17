@@ -5,17 +5,23 @@
         <section class="py-3">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-8 form-color p-4 shadow-sm">
-                        <h4 class="pb-1">Categorias</h4>
+                    <div class="col-12 col-md-10 form-color p-4 shadow-sm">
+                        <h4 class="pb-1">Municipios</h4>
                         <div class="row mb-3">
                             <div class="col-xl-12 col-lg-13">
                                 <div class="table-responsive">
-                                    <table id="tableCategories" class="table">
+                                    <table id="tableMunicipalities" class="table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">
                                                     <small class="font-weight-bold">
-                                                        Nombre de categoria
+                                                        Estado
+                                                    </small>
+                                                </th>
+
+                                                <th scope="col">
+                                                    <small class="font-weight-bold">
+                                                        Municipio
                                                     </small>
                                                 </th>
 
@@ -32,26 +38,31 @@
                                                 </th>
                                             </tr>
                                         </thead>
+
                                         <tbody>
                                             <?php 
-                                                require_once 'models/admin/category.php';
-                                                foreach ($this->categories as $row): 
-                                                $category = new Category();
-                                                $category = $row;
+                                                require_once 'models/admin/municipality.php';
+                                                foreach ($this->municipalities as $row): 
+                                                    $municipality = new State();
+                                                    $municipality = $row;
                                             ?>
-                                            <tr class="">
+                                            <tr>
                                                 <td>
-                                                    <span class=""><?= $category->category; ?></span>
+                                                    <span><?= $municipality->state; ?></span>
+                                                </td>
+
+                                                <td>
+                                                    <span><?= $municipality->municipality; ?></span>
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="<?= constant('URL') . 'categories/delete?id=' . $category->id_category; ?>" class="status-span badge-primary badge-delete">
+                                                    <a href="<?= constant('URL') . 'municipalities/delete?id=' . $municipality->id_municipality; ?>" class="status-span badge-primary badge-delete">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </a>
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="<?= constant('URL') . 'categories/edit?id=' .  $category->id_category; ?>" class="status-span badge-secondary">
+                                                    <a href="<?= constant('URL') . 'municipalities/edit?id=' .  $municipality->id_municipality; ?>" class="status-span badge-secondary">
                                                         Editar <i class="fas fa-cog"></i>
                                                     </a>
                                                 </td>
@@ -62,36 +73,65 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="status-span badge-primary badge-active" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus"></i></a>
+
+                        <a href="#" class="status-span badge-primary badge-active" data-toggle="modal" data-target="#exampleModalCenter">
+                            <i class="fas fa-plus"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-
-
-
-    <!-- Modal registro admin-->
     <div class="modal animate__animated animate__bounceInRight" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title title-register" id="exampleModalLongTitle"><?= $_SESSION['name']; ?>, registra una categoria</h5>
+                    <h5 class="modal-title title-register" id="exampleModalLongTitle">
+                        <?= $_SESSION['name']; ?>, registra un municipio
+                    </h5>
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" style="color: red;">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body mx-auto">
-                    <p class="">Los campos marcados con un <small style="color: red;">*</small> son obligatorios</p>
-                    <form method="POST" action="<?= constant('URL'); ?>categories/register">
-                        <div class="form-group">
-                            <label for="categoria" class="categoria">Categoria <span style="color: red;">*</span></label>
 
-                            <input type="text" value="<?= $this->error['category']; ?>" name="category" class="form-control <?= $this->error['c1']; ?>" maxlength="40" minlength="4" required>
+                <div class="modal-body mx-auto">
+                    <p>
+                        Los campos marcados con un <small style="color: red;">*</small> son obligatorios
+                    </p>
+
+                    <form method="POST" action="<?= constant('URL'); ?>municipalities/register">
+                        <div class="form-group">
+                            <label for="state">
+                                Estado <span style="color: red;">*</span>
+                            </label>
+
+                            <select id="state" class="form-control <?= $this->error['c1']; ?>" name="id_state" required>
+                                <option selected>Seleccionar...</option>
+                                <?php 
+                                    require_once 'models/admin/state.php';
+                                    foreach ($this->states as $row): 
+                                        $state = new State();
+                                        $state = $row;
+                                ?>
+                                <option value="<?= $state->id_state; ?>"><?= $state->state; ?></option>
+                                <?php endforeach ?>
+                            </select>
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m1']; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="municipality">Estado <span style="color: red;">*</span>
+                            </label>
+
+                            <input id="municipality" type="text" value="<?= $this->error['municipality']; ?>" name="municipality" class="form-control <?= $this->error['c2']; ?>" maxlength="40" minlength="4" required>
+
+                            <div class="invalid-feedback">
+                                <?= $this->error['m2']; ?>
                             </div>
                         </div>
 

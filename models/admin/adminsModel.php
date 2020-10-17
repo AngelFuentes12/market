@@ -42,7 +42,7 @@
 		{
 			$case = "";
 			$query = $this->db->connection()->prepare("UPDATE users SET status = :status WHERE id_user = :id_user");
-			$query_val = $this->db->connection()->prepare("SELECT * FROM users WHERE id_user = :id");
+			$query_val = $this->db->connection()->prepare("SELECT * FROM users WHERE id_user = :id_user");
 
 			try {
 				$query_val->execute(['id_user' => $id]);
