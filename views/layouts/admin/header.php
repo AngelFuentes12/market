@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 
     <!--animate.css  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
@@ -47,16 +47,24 @@
                 </a>
 
                 <div class="dropdown">
-                    <button class="list-group-item list-group-item-action dropdown-toggle" type="button" id="direcciones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <!-- <button class="list-group-item list-group-item-action dropdown-toggle" type="button" id="direcciones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-road"></i>
                         <small class="pl-4 text-muted">Direcciones</small>
-                    </button>
-                
+
+                        *SI LA INFO ESTA BIEN DE CLASSES Y ID Y DEMAS BORRA ESTO
+                    </button> -->
+                    <a class="list-group-item list-group-item-action text-muted" href="#" id="dropdownProducts" id="direcciones" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-road"></i>
+                        <small class="pl-4 text-muted">Direcciones</small>
+                        <small class="pl-5"><i class="fas fa-caret-down"></i></small>
+                        
+                    </a>
+
                     <div class="dropdown-menu" aria-labelledby="direcciones">
-                        <a class="dropdown-item" href="<?= constant('URL'); ?>states">Estados</a>
-                        <a class="dropdown-item" href="<?= constant('URL'); ?>municipalities">Municipios</a>
-                        <a class="dropdown-item" href="<?= constant('URL'); ?>colonies">Colonias</a>
-                        <a class="dropdown-item" href="<?= constant('URL'); ?>postcodes">Codigos Postales</a>
+                        <a class="nav-link submenu" href="<?= constant('URL'); ?>states">Estados</a>
+                        <a class="nav-link submenu" href="<?= constant('URL'); ?>municipalities">Municipios</a>
+                        <a class="nav-link submenu" href="<?= constant('URL'); ?>colonies">Colonias</a>
+                        <a class="nav-link submenu" href="<?= constant('URL'); ?>postcodes">Codigos Postales</a>
                     </div>
                 </div>
 
@@ -133,7 +141,8 @@
                                         <small class="text-muted ml-auto pl-3">Hace 2 horas</small>
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <center><a class="nav-link submenu" href="<?= constant('URL'); ?>messages">Ver Más</a><center>
+                                    <center><a class="nav-link submenu" href="<?= constant('URL'); ?>messages">Ver Más</a>
+                                        <center>
                                 </div>
                             </li>
 

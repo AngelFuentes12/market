@@ -339,15 +339,60 @@ select:focus{
     font-weight: bold;
 }
 .div-mensajes {
-    width: 300px !important;
+    width: 200px !important;
 }
 
 .div-perfil{
-    width: 200px !important;
+    width: 190px !important;
     height: 200px!important;
 }
 
+
+/* tablas diseños */
+
+.dataTables_paginate{
+    padding-top: 1rem!important;
+}
+
+/* } paging_simple_numbers */
+.current{
+    border: none;
+}
+
+.dataTables_info{
+    padding-top: 1.75rem!important;
+    font-weight: bold;
+}
+
+.paginate_button{
+    background-color: #C8F1D8!important;
+}
+
+#tableAdmins_previous, #tableAdmins_next{
+    font-size: 1rem!important;
+    color: #01AD47!important;
+}
+
+.tableAdmins_length , select{
+    border: 1px solid #f2f2f2!important;
+}
+
+#tableAdmins{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #c2c1c1;
+}
+
+
+/* bordes de submenus */
+#direcciones{
+    border:none!important;
+}
 .name-user{ text-align: center; font-weight: bold;}
+
+/* modal */
+.center-footer{padding-left: 70px;}
+
 
 
 /* FOOTER */
