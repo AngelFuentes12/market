@@ -10,7 +10,7 @@
                         <div class="row mb-3">
                             <div class="col-xl-12 col-lg-13">
                                 <div class="table-responsive">
-                                    <table id="tableCategories" class="table">
+                                    <table id="dataTable" class="table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">

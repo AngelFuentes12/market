@@ -1,10 +1,10 @@
 <?php 
 
-	require_once 'models/admin/admin.php';
+	require_once 'models/admin/secretary.php';
 	/**
 	 * @author: Angel Fuentes
 	 */
-	class AdminsModel extends Model
+	class SecretariesModel extends Model
 	{
 		
 		function __construct()
@@ -12,16 +12,16 @@
 			parent::__construct();
 		}
 
-		function getAdmins()
+		function getSecretaries()
 		{
 			$items = [];
-			$query = $this->db->connection()->prepare("SELECT * FROM users WHERE level = 1");
+			$query = $this->db->connection()->prepare("SELECT * FROM users WHERE level = 2");
 
 			try {
 				$query->execute();
 
 				while ($row = $query->fetch()) {
-					$item = new Admin();
+					$item = new Secretary();
 					$item->id_user = $row['id_user'];
 					$item->name = $row['name'];
 					$item->email = $row['email'];
@@ -105,9 +105,9 @@
 
 				$row = $query->fetch();
 
-				if ($row['level'] == 1) {
+				if ($row['level'] == 2) {
 
-					$item = new Admin();
+					$item = new Secretary();
 					$item->id_user = $row['id_user'];
 					$item->name = $row['name'];
 					$item->email = $row['email'];
@@ -128,7 +128,7 @@
 		{
 			$case = "";
 
-			$query = $this->db->connection()->prepare("INSERT INTO users (name, email, password, level, status, sessions) VALUES (:name, :email, :password, 1, 2, 0)");
+			$query = $this->db->connection()->prepare("INSERT INTO users (name, email, password, level, status, sessions) VALUES (:name, :email, :password, 2, 2, 0)");
 			$query_val = $this->db->connection()->prepare("SELECT * FROM users WHERE email = :email");
 			$query_ver = $this->db->connection()->prepare("SELECT * FROM verifications WHERE email = :email AND status = 'valid'");
 			$query_upd = $this->db->connection()->prepare("UPDATE verifications SET status = 'expired' WHERE id_verification = :id_verification ");
