@@ -120,6 +120,24 @@
 			}
 		}
 
+		function edit()
+		{
+			$this->validation();
+
+			$id = isset($_POST['id']) ? $_POST['id'] : '';
+			$name = isset($_POST['name']) ? preg_replace('/\s\s+/', ' ', trim($_POST['name'])) : '';
+
+			if ($this->model->edit($id, $name)) {
+				$this->errors([
+					'alert' => 'alert-success',
+					'message' => 'Informacion actualizada exitosamente'
+				]);
+			} else {
+				$this->errorMessage();
+			}
+			$this->getSecretaries();
+		}
+
 		function store()
 		{
 			$this->validation();
@@ -136,20 +154,12 @@
 					$this->view->title = "Editar secretaria";
 					$this->view->secretaries = $secretary;
 					$this->view->render('admin/secretaries/edit');
+					return false;
 				}
 			} else {
 				$this->errorMessage();
 			}
 			$this->getSecretaries();
-		}
-
-		function edit()
-		{
-			$id = isset($_GET['id']) ? $_GET['id'] : '';
-			$name = isset($_POST['name']) ? preg_replace('/\s\s+/', ' ', trim($_POST['name'])) : '';
-
-			echo $name;
-
 		}
 
 		function status()

@@ -95,6 +95,21 @@
 			}
 		}
 
+		function edit($id, $name)
+		{
+			$query = $this->db->connection()->prepare("UPDATE users SET name = :name WHERE id_user = :id_user");
+			try {
+				$query->execute([
+					'id_user' => $id,
+					'name' => $name
+				]);
+
+				return true;
+			} catch (PDOException $e) {
+				return false;
+			}
+		}
+		
 		function store($id)
 		{
 			$items = [];
