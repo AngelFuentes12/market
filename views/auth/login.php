@@ -6,7 +6,6 @@
 				<div class="col-12 col-md-4 form-color p-4 shadow-sm">
 					<form method="POST" action="<?php echo constant('URL'); ?>auth/login">
 						<h3 class="text-login h3">Identifícate</h3>
-
 						<div class="form-group">
 							<label for="email" class="email">Correo Electronico <span style="color: red;">*</span></label>
 							<input type="email" value="<?php echo $this->error['email']; ?>" name="email" class="form-control <?php echo $this->error['c1']; ?>" required>
