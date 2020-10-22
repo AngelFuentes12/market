@@ -95,7 +95,7 @@
                             </div>
                         </div>
 
-                        <div class="mx-auto pb-5">
+                        <div class="mx-auto pb-5 center-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-info">Registrar</button>
                         </div>

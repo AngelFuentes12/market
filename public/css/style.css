@@ -356,7 +356,9 @@ select:focus{
 
 /* } paging_simple_numbers */
 .current{
-    border: none;
+    border: none!important;
+    background: #C8F1D8!important;
+    font-size: 1rem!important;    
 }
 
 .dataTables_info{

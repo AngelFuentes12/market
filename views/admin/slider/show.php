@@ -12,7 +12,7 @@
                                 </div>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input">
-                                    <label class="custom-file-label" for="files">Elegir imagen <span style="color: red;">*</span></label>
+                                    <label class="custom-file-label text-file" for="files">Elegir <span style="color: red;">*</span></label>
                                 </div>
                                 <div class="invalid-feedback">
                                     alert!
@@ -29,7 +29,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 form-color p-4 shadow-sm">
-                <h4 class="pb-1 text-slider font-weight-bold">Imaganes guardadas</h4>
+                    <h4 class="pb-1 text-slider font-weight-bold">Imaganes guardadas</h4>
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -50,6 +50,42 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-3">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 form-color p-4 shadow-sm">
+                    <h4 class="pb-1">Imaganes guardadas</h4>
+                    <div class="row mb-3">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><small class="font-weight-bold">ID<small></th>
+                                            <th scope="col"><small class="font-weight-bold">Nombre<small></th>
+                                            <th scope="col"><small class="font-weight-bold">Status<small></th>
+                                            <th scope="col"><small class="font-weight-bold">#<small></th>
+                                            <th scope="col"><small class="font-weight-bold">Eliminar<small></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="d-block">1</span><small class="text-muted">imagen.png</small></td>
+                                            <td class="align-middle"><span class="status-span badge-secondary text-secondary">Nombre</span></td>
+                                            <td class="align-middle"><span class="status-span badge-primary badge-active">Activo</span></td>
+                                            <td class="align-middle"><a href="#" class="status-span badge-primary badge-activo"><i class="fas fa-arrow-down"></i></a></td>
+                                            <td class="align-middle"><a href="#" class="status-span badge-primary badge-delete"><i class="fas fa-trash-alt"></i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
