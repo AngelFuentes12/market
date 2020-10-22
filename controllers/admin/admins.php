@@ -120,14 +120,14 @@
 			}
 		}
 
-		function edit()
+		function store()
 		{
 			$this->validation();
 
 			$id = isset($_GET['id']) ? $_GET['id'] : '';
 
 			if (is_numeric($id) && $id > 0) {
-				$admin = $this->model->edit($id);
+				$admin = $this->model->store($id);
 
 				if (sizeof($admin) == 0) {
 					$this->errorMessage();

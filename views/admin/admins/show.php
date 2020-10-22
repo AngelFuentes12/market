@@ -10,7 +10,7 @@
                         <div class="row mb-3">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="table-responsive">
-                                    <table id="tableAdmins" class="table">
+                                    <table id="dataTable" class="table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">
@@ -88,7 +88,7 @@
                                                     </td>
 
                                                     <td class="align-middle">
-                                                        <a href="<?= constant('URL'); ?>admins/edit?id=<?= $admin->id_user; ?>" class="status-span badge-secondary">
+                                                        <a href="<?= constant('URL'); ?>admins/store?id=<?= $admin->id_user; ?>" class="status-span badge-secondary">
                                                             Editar <i class="fas fa-cog"></i>
                                                         </a>
                                                     </td>
