@@ -58,8 +58,12 @@
 									<input type="hidden" name="id" value="<?= $admin->id_user; ?>">
 
 									<input type="submit" class="btn btn-info" value="Actualizar">
+<<<<<<< HEAD
 
 									<a href="<?= constant('URL'); ?>admins" class="btn btn-danger">Cancelar</a>
+=======
+									<a href="<?= constant('URL'); ?>admins" class="btn btn-danger btn-cancel">Cancelar</a>
+>>>>>>> db81abe1c9049b00e1bdfea956a529b72ad42088
 								</div>
 							<?php endforeach ?>
 						</form>
