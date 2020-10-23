@@ -44,7 +44,7 @@
 								<div class="form-group mx-auto">
 									<input type="hidden" name="id" value="<?= $admin->id_user; ?>">
 									<input type="submit" class="btn btn-info" value="Actualizar">
-									<a href="<?= constant('URL'); ?>admins" class="btn btn-danger">Cancelar</a>
+									<a href="<?= constant('URL'); ?>admins" class="btn btn-danger btn-cancel">Cancelar</a>
 								</div>
 							<?php endforeach ?>
 						</form>

@@ -5,7 +5,7 @@
         <section class="py-3">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-8 form-color p-4 shadow-sm">
+                    <div class="col-12 col-md-12 form-color p-4 shadow-sm">
                         <h4 class="pb-1">Categorias</h4>
                         <div class="row mb-3">
                             <div class="col-xl-12 col-lg-13">

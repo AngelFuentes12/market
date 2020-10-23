@@ -47,6 +47,8 @@
     </section>
 </div>
 
+
+
 <!-- Modal registro admin-->
 <div class="modal animate__animated animate__bounceInRight" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -70,6 +72,12 @@
                     </div>
                     <div class="form-group">
                         <label for="email" class="email">Correo Electronico <span style="color: red;">*</span></label>
+
+                        <span class="hint--right hint--rounded hint--info hint--large" style="cursor: pointer;" 
+                        aria-label="Si tienes 2 correos electronicios Ingresa ambos colcando una coma por ejemplo: correo@corre.com,correo@corre.com">
+                        <i class="fas fa-info-circle"></i>
+                        </span>
+
                         <input type="email" value="" name="email" class="form-control" required>
                         <div class="invalid-feedback">
 
@@ -77,6 +85,12 @@
                     </div>
                     <div class="form-group">
                         <label for="telefono" class="telefono">Telefono <span style="color: red;">*</span></label>
+
+                        <span class="hint--right hint--rounded hint--info hint--large" style="cursor: pointer;" 
+                        aria-label="Si tienes 2 Telefonos Ingresa ambos colcando una coma por ejemplo: 554 6754 123,554 6754 123 ">
+                        <i class="fas fa-info-circle"></i>
+                        </span>
+
                         <input type="text" value="" name="telefono" class="form-control" required>
                         <div class="invalid-feedback">
 
@@ -155,3 +169,4 @@
         </div>
     </div>
 </div>
+

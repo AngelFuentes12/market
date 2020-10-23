@@ -137,7 +137,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link submenu hint--bottom hint--rounded" aria-label="Lista de deseos" href="#"><i class="fas fa-heart"></i></a>
+                    <a class="nav-link submenu hint--bottom hint--rounded" aria-label="Lista de deseos" href="#"><i class="fas fa-heart"></i> (0)</a>
                 </li>
 
                 <li class="nav-item">

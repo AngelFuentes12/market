@@ -14,6 +14,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="<?= constant('CSS'); ?>style.css">
+    <link rel="stylesheet" type="text/css" href="<?= constant('CSS'); ?>hint.min.css">
 
     <!-- CSS Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -57,7 +58,7 @@
                         <i class="fas fa-road"></i>
                         <small class="pl-4 text-muted">Direcciones</small>
                         <small class="pl-5"><i class="fas fa-caret-down"></i></small>
-                        
+
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="direcciones">
@@ -131,7 +132,7 @@
                             <li class="nav-item dropdown pr-2">
                                 <a class="nav-link  user-title" href="#" id="dropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <!-- class="nav-link dropdown-toggle user-title"  -->
-                                    <i class="far fa-envelope"></i></i>
+                                    <i class="far fa-envelope"></i>
                                 </a>
                                 <div class="dropdown-menu p-2 div-mensajes animate__animated animate__tada" aria-labelledby="dropdownProducts">
                                     <p class="title-mensajes-notify text-muted">Tienes 1 Mensajes</p>
@@ -148,7 +149,7 @@
 
                             <li class="nav-item dropdown pr-2">
                                 <a class="nav-link user-title" href="#" id="dropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="far fa-bell"></i></i>
+                                    <i class="far fa-bell"></i>
                                 </a>
                                 <div class="dropdown-menu p-2 div-mensajes animate__animated animate__tada" aria-labelledby="dropdownProducts">
                                     <p class="title-mensajes-notify text-muted">Tienes 1 Notificación</p>
@@ -216,7 +217,5 @@
                 </div>
             <?php endif ?>
 
-
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
