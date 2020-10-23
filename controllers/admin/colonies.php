@@ -24,8 +24,8 @@
 		{
 			$this->validation();
 
-			$id_state = $_POST['id_state'];
-			$id_municipality = $_POST['id_municipality'];
+			$id_state = isset($_POST['id_state']) ? $_POST['id_state'] : '';
+			$id_municipality = isset($_POST['id_municipality']) ? $_POST['id_municipality'] : '';
 			$colony = isset($_POST['colony']) ? preg_replace('/\s\s+/', ' ', trim($_POST['colony'])) : '';
 
 			if (is_numeric($id_state) && $id_state > 0 && is_numeric($id_municipality) && $id_municipality > 0 && $colony != '') {
@@ -39,8 +39,8 @@
 
 					case 'colony':
 						$this->errors([
-							'c2' => 'is-invalid',
-							'm2' => 'Este colonia ya fue registrada',
+							'c3' => 'is-invalid',
+							'm3' => 'Este colonia ya fue registrada',
 							'colony' => $colony,
 							'alert' => 'alert-info',
 							'message' => 'Verifique su información'
@@ -140,7 +140,7 @@
 		function getMunicipalities()
 		{
 			
-			$id_state = $_POST['id_state'];
+			$id_state = isset($_POST['id_state']) ? $_POST['id_state'] : '';
 
 			require_once 'models/admin/municipalitiesModel.php';
 			$municipality = new MunicipalitiesModel();

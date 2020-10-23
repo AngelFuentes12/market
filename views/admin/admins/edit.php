@@ -12,38 +12,53 @@
 								$admin = $row;
 							?>
 								<div class="from-group">
-									<label for="name" class="name font-weight-bold pt-3">Nombre</label>
-									<input type="text" name="name" class="form-control" value="<?= $admin->name; ?>">
+									<label for="name" class="name font-weight-bold pt-3">
+										Nombre
+									</label>
+
+									<input type="text" name="name" class="form-control" value="<?= $admin->name; ?>" minlength="3" required>
 								</div>
 
 								<div class="form-group">
-									<label for="email" class="email font-weight-bold pt-3">Correo Electronico</label>
+									<label for="email" class="email font-weight-bold pt-3">
+										Correo Electronico
+									</label>
+
 									<input type="email" name="email" class="form-control" value="<?= $admin->email; ?>" readonly>
 								</div>
 
 								<div class="form-group">
-									<label for="user" class="user font-weight-bold">Tipo usuario</label>
+									<label for="user" class="user font-weight-bold">
+										Tipo usuario
+									</label>
+
 									<input type="text" name="type_user" class="form-control" value="<?= ($admin->level == 1) ? 'Administrador' : ''; ?>" readonly>
 								</div>
 
 								<div class="form-group">
-									<label for="status" class="status font-weight-bold">Status</label>
+									<label for="status" class="status font-weight-bold">
+										Status
+									</label>
+
 									<?php
-									$type = '';
-									if ($admin->status == 1) {
-										$type = 'Activo';
-									} else if ($admin->status == 2) {
-										$type = 'Verificacion';
-									} else if ($admin->status == 3) {
-										$type = 'Suspendido';
-									}
+										$type = '';
+										if ($admin->status == 1) {
+											$type = 'Activo';
+										} else if ($admin->status == 2) {
+											$type = 'Verificacion';
+										} else if ($admin->status == 3) {
+											$type = 'Suspendido';
+										}
 									?>
+
 									<input type="text" name="status" class="form-control" value="<?= $type; ?>" readonly>
 								</div>
 
 								<div class="form-group mx-auto">
 									<input type="hidden" name="id" value="<?= $admin->id_user; ?>">
+
 									<input type="submit" class="btn btn-info" value="Actualizar">
+
 									<a href="<?= constant('URL'); ?>admins" class="btn btn-danger">Cancelar</a>
 								</div>
 							<?php endforeach ?>

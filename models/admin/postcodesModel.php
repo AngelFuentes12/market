@@ -37,6 +37,28 @@
 			}
 		}
 
+		function getPostcodesSpecific($id_colony)
+		{
+			$items = [];
+			$query = $this->db->connection()->prepare("SELECT postcodes.id_postcode, postcode FROM states NATURAL JOIN states_municipalities NATURAL JOIN municipalities NATURAL JOIN municipalities_colonies NATURAL JOIN colonies NATURAL JOIN colonies_postcodes NATURAL JOIN postcodes WHERE id_colony = :id_colony");
+
+			try {
+				$query->execute(['id_colony' => $id_colony]);
+
+				while ($row = $query->fetch()) {
+					$item = new Postcode();
+					$item->id_postcode = $row['id_postcode'];
+					$item->postcode = $row['postcode'];
+
+					array_push($items, $item);
+				}
+
+				return $items;
+			} catch (PDOException $e) {
+				return [];
+			}
+		}
+
 		function register($id_state, $id_municipality, $id_colony, $postcode)
 		{
 			$case = "";

@@ -127,11 +127,15 @@
 			$id = isset($_POST['id']) ? $_POST['id'] : '';
 			$name = isset($_POST['name']) ? preg_replace('/\s\s+/', ' ', trim($_POST['name'])) : '';
 
-			if ($this->model->edit($id, $name)) {
-				$this->errors([
-					'alert' => 'alert-success',
-					'message' => 'Informacion actualizada exitosamente'
-				]);
+			if (is_numeric($id) && $id > 0 && $name != "") {
+				if ($this->model->edit($id, $name)) {
+					$this->errors([
+						'alert' => 'alert-success',
+						'message' => 'Informacion actualizada exitosamente'
+					]);
+				} else {
+					$this->errorMessage();
+				}
 			} else {
 				$this->errorMessage();
 			}

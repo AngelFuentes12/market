@@ -24,9 +24,9 @@
 		{
 			$this->validation();
 
-			$id_state = $_POST['id_state'];
-			$id_municipality = $_POST['id_municipality'];
-			$id_colony = $_POST['id_colony'];
+			$id_state = isset($_POST['id_state']) ? $_POST['id_state'] : '';
+			$id_municipality = isset($_POST['id_municipality']) ? $_POST['id_municipality'] : '';
+			$id_colony = isset($_POST['id_colony']) ? $_POST['id_colony'] : '';
 			$postcode = isset($_POST['postcode']) ? preg_replace('/\s\s+/', ' ', trim($_POST['postcode'])) : '';
 
 			if (is_numeric($id_state) && $id_state > 0 && is_numeric($id_municipality) && $id_municipality > 0 && is_numeric($id_colony) && $id_colony > 0 && is_numeric($postcode)) {
@@ -40,8 +40,8 @@
 
 					case 'postcode':
 						$this->errors([
-							'c2' => 'is-invalid',
-							'm2' => 'Este codigo postal ya fue registrado',
+							'c4' => 'is-invalid',
+							'm4' => 'Este codigo postal ya fue registrado',
 							'postcode' => $postcode,
 							'alert' => 'alert-info',
 							'message' => 'Verifique su información'
@@ -148,8 +148,7 @@
 
 		function getColonies()
 		{
-			
-			$id_municipality = $_POST['id_municipality'];
+			$id_municipality = isset($_POST['id_municipality']) ? $_POST['id_municipality'] : '';
 
 			require_once 'models/admin/coloniesModel.php';
 			$colony = new ColoniesModel();
@@ -163,6 +162,25 @@
 				$colon = $row;
 
 				$data .= '<option value="'.$colon->id_colony.'">'.$colon->colony.'</option>';
+			}
+			$data .= '</select>';
+			echo $data;
+		}
+
+		function getPostcode()
+		{
+			$id_colony = isset($_POST['id_colony']) ? $_POST['id_colony'] : '';
+
+			$postcodes = $this->model->getPostcodesSpecific($id_colony);
+
+			$data = '<select id="postcode" class="form-control" name="id_postcode" required>';
+			$data .= "<option selected>Seleccionar...</option>";
+			require_once 'models/admin/postcode.php';
+			foreach ($postcodes as $row) {
+				$postcode = new Postcode();
+				$postcode = $row;
+
+				$data .= '<option value="'.$postcode->id_postcode.'">'.$postcode->postcode.'</option>';
 			}
 			$data .= '</select>';
 			echo $data;

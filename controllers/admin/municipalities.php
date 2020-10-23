@@ -24,7 +24,7 @@
 		{
 			$this->validation();
 
-			$id_state = $_POST['id_state'];
+			$id_state = isset($_POST['id_state']) ? $_POST['id_state'] : '';
 			$municipality = isset($_POST['municipality']) ? preg_replace('/\s\s+/', ' ', trim($_POST['municipality'])) : '';
 
 			if (is_numeric($id_state) && $id_state > 0 && $municipality != '') {
