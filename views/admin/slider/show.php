@@ -1,5 +1,5 @@
-<div id="content" class="container-fluid p-5">
-    <section class="py-3">
+<div id="content" class="container-fluid py-5">
+    <section>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-7 form-color p-4 shadow-sm">
@@ -25,7 +25,7 @@
         </div>
     </section>
 
-    <section class="py-3">
+    <section  id="imagen-guardada" class="py-3">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 form-color p-4 shadow-sm">
@@ -56,7 +56,7 @@
         </div>
     </section>
 
-    <section class="py-3">
+    <section id="tabla-imaganes" class="py-3">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 form-color p-4 shadow-sm">

@@ -1,8 +1,8 @@
-	<div id="content" class="container-fluid p-5">
-		<section class="py-3">
+	<div id="content" class="container-fluid py-5">
+		<section class="">
 			<div class="container">
 				<div class="row justify-content-center">
-					<div class="col-12 col-md-6 form-color p-4 shadow-sm">
+					<div class="col-12 col-md-10 form-color p-4 shadow-sm">
 						<h4 class="py-2 font-weight-bold">Editar Información</h4>
 						<form action="<?= constant('URL'); ?>admins/edit" method="POST">
 							<?php

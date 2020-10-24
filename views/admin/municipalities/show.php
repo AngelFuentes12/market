@@ -1,8 +1,8 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
     <script src="<?= constant('JS'); ?>tables.js"></script>
 
-    <div id="content" class="container-fluid p-5">
-        <section class="py-3">
+    <div id="content" class="container-fluid py-5">
+        <section class="">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-12 form-color p-4 shadow-sm">

@@ -2,8 +2,8 @@
     <script src="<?= constant('JS'); ?>direcctions.js"></script>
     <script src="<?= constant('JS'); ?>tables.js"></script>
 
-    <div id="content" class="container-fluid p-5">
-        <section class="py-3">
+    <div id="content" class="container-fluid py-5">
+        <section class="">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-12 form-color p-4 shadow-sm">

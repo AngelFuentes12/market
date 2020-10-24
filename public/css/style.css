@@ -484,6 +484,20 @@ table tbody td {
     color: #616161e1;
 }
 
+.notifiaciones-mensajes{
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: #000;
+    font-weight: bold;
+}
+
+.link-mensajeria, .link-mensajeria:hover{
+    font-weight: bold;
+    color: #000;
+}
+
+.div-grafica{background-color: #FFFF; border-radius: 5px;}
 
 /* responsive */
 /* Extra small devices (portrait phones, less than 576px) */
@@ -505,6 +519,12 @@ table tbody td {
     .div-perfil{
         margin: auto!important;
     }
+
+    .t-responsive{
+        padding-top: 13px;
+    }
+
+
     
  }
 
