@@ -107,7 +107,7 @@
 				$row = $query_val->fetch();
 
 				if ($row['municipality'] == $municipality) {
-					return true;
+					return false;
 				} else {
 					$query->execute([
 						'id_municipality' => $id_municipality,

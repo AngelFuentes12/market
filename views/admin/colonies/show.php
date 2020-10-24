@@ -74,7 +74,7 @@
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="<?= constant('URL') . 'colonies/edit?id=' .  $colony->id_colony; ?>" class="status-span badge-secondary">
+                                                    <a href="<?= constant('URL') . 'colonies/store?id=' .  $colony->id_colony; ?>" class="status-span badge-secondary">
                                                         Editar <i class="fas fa-cog"></i>
                                                     </a>
                                                 </td>

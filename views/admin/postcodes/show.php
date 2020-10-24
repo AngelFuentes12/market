@@ -84,7 +84,7 @@
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="<?= constant('URL') . 'postcodes/edit?id=' .  $postcode->id_postcode; ?>" class="status-span badge-secondary">
+                                                    <a href="<?= constant('URL') . 'postcodes/store?id=' .  $postcode->id_postcode; ?>" class="status-span badge-secondary">
                                                         Editar <i class="fas fa-cog"></i>
                                                     </a>
                                                 </td>

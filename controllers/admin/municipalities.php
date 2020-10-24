@@ -83,6 +83,7 @@
 
 			$id_state = isset($_POST['id_state']) ? $_POST['id_state'] : '';
 			$id_municipality = isset($_POST['id_municipality']) ? $_POST['id_municipality'] : '';
+			$state = isset($_POST['state']) ? preg_replace('/\s\s+/', ' ', trim($_POST['state'])) : '';
 			$municipality = isset($_POST['municipality']) ? preg_replace('/\s\s+/', ' ', trim($_POST['municipality'])) : '';
 
 			if (is_numeric($id_state) && $id_state > 0 && is_numeric($id_municipality) && $id_municipality > 0 && $municipality != "") {
@@ -92,7 +93,10 @@
 						'message' => 'Informacion actualizada exitosamente'
 					]);
 				} else {
-					$this->errorMessage();
+					$this->errors([
+						'alert' => 'alert-warning',
+						'message' => 'El municipio ' . $municipality . ' ya fue registrado en el estado de ' . $state
+					]);
 				}
 			} else {
 				$this->errorMessage();

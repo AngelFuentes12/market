@@ -2,7 +2,7 @@
 		<section class="py-3">
 			<div class="container">
 				<div class="row justify-content-center">
-					<div class="col-12 col-md-12 form-color p-4 shadow-sm">
+					<div class="col-12 col-md-6 form-color p-4 shadow-sm">
 						<h4 class="py-2 font-weight-bold">Editar Información</h4>
 						<form action="<?= constant('URL'); ?>admins/edit" method="POST">
 							<?php
@@ -58,8 +58,6 @@
 									<input type="hidden" name="id" value="<?= $admin->id_user; ?>">
 
 									<input type="submit" class="btn btn-info" value="Actualizar">
-
-									<a href="<?= constant('URL'); ?>admins" class="btn btn-danger">Cancelar</a>
 
 									<a href="<?= constant('URL'); ?>admins" class="btn btn-danger btn-cancel">Cancelar</a>
 								</div>

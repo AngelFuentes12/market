@@ -93,7 +93,10 @@
 						'message' => 'Informacion actualizada exitosamente'
 					]);
 				} else {
-					$this->errorMessage();
+					$this->errors([
+						'alert' => 'alert-warning',
+						'message' => 'El estado ' . $state . ' ya fue registrado'
+					]);
 				}
 			} else {
 				$this->errorMessage();

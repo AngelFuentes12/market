@@ -86,6 +86,58 @@
 			$this->getColonies();
 		}
 
+		function edit()
+		{
+			$this->validation();
+
+			$id_state = isset($_POST['id_state']) ? $_POST['id_state'] : '';
+			$id_municipality = isset($_POST['id_municipality']) ? $_POST['id_municipality'] : '';
+			$id_colony = isset($_POST['id_colony']) ? $_POST['id_colony'] : '';
+			$municipality = isset($_POST['municipality']) ? preg_replace('/\s\s+/', ' ', trim($_POST['municipality'])) : '';
+			$colony = isset($_POST['colony']) ? preg_replace('/\s\s+/', ' ', trim($_POST['colony'])) : '';
+
+			if (is_numeric($id_state) && $id_state > 0 && is_numeric($id_municipality) && $id_municipality > 0 && is_numeric($id_colony) && $id_colony > 0 && $colony != "") {
+				if ($this->model->edit($id_state, $id_municipality, $id_colony, $colony)) {
+					$this->errors([
+						'alert' => 'alert-success',
+						'message' => 'Informacion actualizada exitosamente'
+					]);
+				} else {
+					$this->errors([
+						'alert' => 'alert-warning',
+						'message' => 'La colonia ' . $colony . ' ya fue registrada en el municipio de ' . $municipality
+					]);
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getColonies();
+		}
+
+		function store()
+		{
+			$this->validation();
+
+			$id = isset($_GET['id']) ? $_GET['id'] : '';
+
+			if (is_numeric($id) && $id > 0) {
+				$colony = $this->model->store($id);
+
+				if (sizeof($colony) == 0) {
+					$this->errorMessage();
+				} else {
+					$this->errors([]);
+					$this->view->title = "Editar Colonia";
+					$this->view->colonies = $colony;
+					$this->view->render('admin/colonies/edit');
+					return false;
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getColonies();
+		}
+
 		function delete()
 		{
 			$id = isset($_GET['id']) ? $_GET['id'] : '';

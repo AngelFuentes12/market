@@ -2,7 +2,7 @@
 		<section class="py-3">
 			<div class="container">
 				<div class="row justify-content-center">
-					<div class="col-12 col-md-12 form-color p-4 shadow-sm">
+					<div class="col-12 col-md-6 form-color p-4 shadow-sm">
 						<h4 class="py-2 font-weight-bold">Editar Información</h4>
 						<form action="<?= constant('URL'); ?>secretaries/edit" method="POST">
 							<?php

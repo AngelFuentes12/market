@@ -95,6 +95,59 @@
 			$this->getPostcodes();
 		}
 
+		function edit()
+		{
+			$this->validation();
+
+			$id_state = isset($_POST['id_state']) ? $_POST['id_state'] : '';
+			$id_municipality = isset($_POST['id_municipality']) ? $_POST['id_municipality'] : '';
+			$id_colony = isset($_POST['id_colony']) ? $_POST['id_colony'] : '';
+			$id_postcode = isset($_POST['id_postcode']) ? $_POST['id_postcode'] : '';
+			$colony = isset($_POST['colony']) ? preg_replace('/\s\s+/', ' ', trim($_POST['colony'])) : '';
+			$postcode = isset($_POST['postcode']) ? $_POST['postcode'] : '';
+
+			if (is_numeric($id_state) && $id_state > 0 && is_numeric($id_municipality) && $id_municipality > 0 && is_numeric($id_colony) && $id_colony > 0 && is_numeric($id_postcode) && $id_postcode > 0 && is_numeric($postcode) && $postcode > 0) {
+				if ($this->model->edit($id_state, $id_municipality, $id_colony, $id_postcode, $postcode)) {
+					$this->errors([
+						'alert' => 'alert-success',
+						'message' => 'Informacion actualizada exitosamente'
+					]);
+				} else {
+					$this->errors([
+						'alert' => 'alert-warning',
+						'message' => 'El codigo postal ' . $postcode . ' ya fue registrado en la colonia ' . $colony
+					]);
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getPostcodes();
+		}
+
+		function store()
+		{
+			$this->validation();
+
+			$id = isset($_GET['id']) ? $_GET['id'] : '';
+
+			if (is_numeric($id) && $id > 0) {
+				$postcode = $this->model->store($id);
+
+				if (sizeof($postcode) == 0) {
+					$this->errorMessage();
+				} else {
+					$this->errors([]);
+					$this->view->title = "Editar Codigo postal";
+					$this->view->postcodes = $postcode;
+					$this->view->render('admin/postcodes/edit');
+					return false;
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getColonies();
+		}
+
 		function delete()
 		{
 			$id = isset($_GET['id']) ? $_GET['id'] : '';
