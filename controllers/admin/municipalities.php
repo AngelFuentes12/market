@@ -77,6 +77,53 @@
 			$this->getMunicipalities();
 		}
 
+		function edit()
+		{
+			$this->validation();
+
+			$id_state = isset($_POST['id_state']) ? $_POST['id_state'] : '';
+			$id_municipality = isset($_POST['id_municipality']) ? $_POST['id_municipality'] : '';
+			$municipality = isset($_POST['municipality']) ? preg_replace('/\s\s+/', ' ', trim($_POST['municipality'])) : '';
+
+			if (is_numeric($id_state) && $id_state > 0 && is_numeric($id_municipality) && $id_municipality > 0 && $municipality != "") {
+				if ($this->model->edit($id_state, $id_municipality, $municipality)) {
+					$this->errors([
+						'alert' => 'alert-success',
+						'message' => 'Informacion actualizada exitosamente'
+					]);
+				} else {
+					$this->errorMessage();
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getMunicipalities();
+		}
+
+		function store()
+		{
+			$this->validation();
+
+			$id = isset($_GET['id']) ? $_GET['id'] : '';
+
+			if (is_numeric($id) && $id > 0) {
+				$municipality = $this->model->store($id);
+
+				if (sizeof($municipality) == 0) {
+					$this->errorMessage();
+				} else {
+					$this->errors([]);
+					$this->view->title = "Editar Municipio";
+					$this->view->municipalities = $municipality;
+					$this->view->render('admin/municipalities/edit');
+					return false;
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getStates();
+		}
+
 		function delete()
 		{
 			$id = isset($_GET['id']) ? $_GET['id'] : '';

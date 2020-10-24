@@ -94,6 +94,59 @@
 			}
 		}
 
+		function edit($id_state, $id_municipality, $municipality)
+		{
+			$query = $this->db->connection()->prepare("UPDATE municipalities SET municipality = :municipality WHERE id_municipality = :id_municipality");
+			$query_val = $this->db->connection()->prepare("SELECT municipality FROM states NATURAL JOIN municipalities NATURAL JOIN states_municipalities WHERE states.id_state = :id_state AND municipality = :municipality");
+			try {
+				$query_val->execute([
+					'id_state' => $id_state,
+					'municipality' => $municipality
+				]);
+
+				$row = $query_val->fetch();
+
+				if ($row['municipality'] == $municipality) {
+					return true;
+				} else {
+					$query->execute([
+						'id_municipality' => $id_municipality,
+						'municipality' => $municipality
+					]);
+
+					return true;
+				}
+
+				//return true;
+			} catch (PDOException $e) {
+				return false;
+			}
+		}
+
+		function store($id)
+		{
+			$items = [];
+			$query = $this->db->connection()->prepare("SELECT states.id_state, municipalities.id_municipality, state, municipality FROM states NATURAL JOIN municipalities NATURAL JOIN states_municipalities WHERE municipalities.id_municipality = :id_municipality");
+
+			try {
+				$query->execute(['id_municipality' => $id]);
+
+				while ($row = $query->fetch()) {
+					$item = new Municipality();
+					$item->id_state = $row['id_state'];
+					$item->id_municipality = $row['id_municipality'];
+					$item->state = $row['state'];
+					$item->municipality = $row['municipality'];
+
+					array_push($items, $item);
+				}
+
+				return $items;
+			} catch (PDOException $e) {
+				return [];
+			}
+		}
+
 		function delete($id)
 		{
 			$query = $this->db->connection()->prepare("DELETE FROM municipalities WHERE id_municipality = :id_municipality");
