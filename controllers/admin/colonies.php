@@ -118,10 +118,10 @@
 		{
 			$this->validation();
 
-			$id = isset($_GET['id']) ? $_GET['id'] : '';
+			$id_colony = isset($_GET['id']) ? $_GET['id'] : '';
 
-			if (is_numeric($id) && $id > 0) {
-				$colony = $this->model->store($id);
+			if (is_numeric($id_colony) && $id_colony > 0) {
+				$colony = $this->model->store($id_colony);
 
 				if (sizeof($colony) == 0) {
 					$this->errorMessage();
@@ -140,10 +140,10 @@
 
 		function delete()
 		{
-			$id = isset($_GET['id']) ? $_GET['id'] : '';
+			$id_colony = isset($_GET['id']) ? $_GET['id'] : '';
 
-			if (is_numeric($id) && $id > 0) {
-				if ($this->model->delete($id)) {
+			if (is_numeric($id_colony) && $id_colony > 0) {
+				if ($this->model->delete($id_colony)) {
 					$this->errors([
 						'alert' => 'alert-success',
 						'message' => 'Colonia eliminado exitosamente'

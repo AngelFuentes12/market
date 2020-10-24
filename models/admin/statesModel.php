@@ -57,12 +57,12 @@
 			}
 		}
 
-		function delete($id)
+		function delete($id_state)
 		{
 			$query = $this->db->connection()->prepare("DELETE FROM states WHERE id_state = :id_state");
 
 			try {
-				$query->execute(['id_state' => $id]);
+				$query->execute(['id_state' => $id_state]);
 
 				return true;
 			} catch (PDOException $e) {
@@ -70,12 +70,12 @@
 			}
 		}
 
-		function edit($id, $state)
+		function edit($id_state, $state)
 		{
 			$query = $this->db->connection()->prepare("UPDATE states SET state = :state WHERE id_state = :id_state");
 			try {
 				$query->execute([
-					'id_state' => $id,
+					'id_state' => $id_state,
 					'state' => $state
 				]);
 
@@ -85,13 +85,13 @@
 			}
 		}
 
-		function store($id)
+		function store($id_state)
 		{
 			$items = [];
 			$query = $this->db->connection()->prepare("SELECT * FROM states WHERE id_state = :id_state");
 
 			try {
-				$query->execute(['id_state' => $id]);
+				$query->execute(['id_state' => $id_state]);
 
 				while ($row = $query->fetch()) {
 					$item = new State();

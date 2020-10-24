@@ -124,11 +124,11 @@
 		{
 			$this->validation();
 
-			$id = isset($_POST['id']) ? $_POST['id'] : '';
+			$id_secretary = isset($_POST['id']) ? $_POST['id'] : '';
 			$name = isset($_POST['name']) ? preg_replace('/\s\s+/', ' ', trim($_POST['name'])) : '';
 
-			if (is_numeric($id) && $id > 0 && $name != "") {
-				if ($this->model->edit($id, $name)) {
+			if (is_numeric($id_secretary) && $id_secretary > 0 && $name != "") {
+				if ($this->model->edit($id_secretary, $name)) {
 					$this->errors([
 						'alert' => 'alert-success',
 						'message' => 'Informacion actualizada exitosamente'
@@ -146,10 +146,10 @@
 		{
 			$this->validation();
 
-			$id = isset($_GET['id']) ? $_GET['id'] : '';
+			$id_secretary = isset($_GET['id']) ? $_GET['id'] : '';
 
-			if (is_numeric($id) && $id > 0) {
-				$secretary = $this->model->store($id);
+			if (is_numeric($id_secretary) && $id_secretary > 0) {
+				$secretary = $this->model->store($id_secretary);
 
 				if (sizeof($secretary) == 0) {
 					$this->errorMessage();
@@ -170,12 +170,12 @@
 		{
 			$this->validation();
 
-			$id = isset($_GET['id']) ? $_GET['id'] : '';
+			$id_secretary = isset($_GET['id']) ? $_GET['id'] : '';
 			$status = isset($_GET['status']) ? $_GET['status'] : '';
 
-			if (is_numeric($id) && $id > 0) {
+			if (is_numeric($id_secretary) && $id_secretary > 0) {
 				if ($status == 1 || $status == 3) {
-					switch ($this->model->changeStatus($id, $status)) {
+					switch ($this->model->changeStatus($id_secretary, $status)) {
 						case 'success':
 							$this->errors([
 								'alert' => 'alert-success',
@@ -201,10 +201,10 @@
 		{
 			$this->validation();
 
-			$id = isset($_GET['id']) ? $_GET['id'] : '';
+			$id_secretary = isset($_GET['id']) ? $_GET['id'] : '';
 
-			if (is_numeric($id) && $id > 0) {
-				switch ($this->model->delete($id)) {
+			if (is_numeric($id_secretary) && $id_secretary > 0) {
+				switch ($this->model->delete($id_secretary)) {
 					case 'success':
 						$this->errors([
 							'alert' => 'alert-success',

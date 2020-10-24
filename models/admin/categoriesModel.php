@@ -57,12 +57,49 @@
 			}
 		}
 
-		function delete($id)
+		function edit($id_category, $category)
+		{
+			$query = $this->db->connection()->prepare("UPDATE categories SET category = :category WHERE id_category = :id_category");
+			try {
+				$query->execute([
+					'id_category' => $id_category,
+					'category' => $category
+				]);
+
+				return true;
+			} catch (PDOException $e) {
+				return false;
+			}
+		}
+
+		function store($id_category)
+		{
+			$items = [];
+			$query = $this->db->connection()->prepare("SELECT * FROM categories WHERE id_category = :id_category");
+
+			try {
+				$query->execute(['id_category' => $id_category]);
+
+				while ($row = $query->fetch()) {
+					$item = new Category();
+					$item->id_category = $row['id_category'];
+					$item->category = $row['category'];
+
+					array_push($items, $item);
+				}
+
+				return $items;
+			} catch (PDOException $e) {
+				return [];
+			}
+		}
+
+		function delete($id_category)
 		{
 			$query = $this->db->connection()->prepare("DELETE FROM categories WHERE id_category = :id_category");
 
 			try {
-				$query->execute(['id_category' => $id]);
+				$query->execute(['id_category' => $id_category]);
 
 				return true;
 			} catch (PDOException $e) {

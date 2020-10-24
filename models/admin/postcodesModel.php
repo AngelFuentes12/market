@@ -126,13 +126,13 @@
 			}
 		}
 
-		function store($id)
+		function store($id_postcode)
 		{
 			$items = [];
 			$query = $this->db->connection()->prepare("SELECT states.id_state, municipalities.id_municipality, colonies.id_colony, postcodes.id_postcode, state, municipality, colony, postcode FROM states NATURAL JOIN municipalities NATURAL JOIN states_municipalities NATURAL JOIN colonies NATURAL JOIN municipalities_colonies NATURAL JOIN postcodes NATURAL JOIN colonies_postcodes WHERE postcodes.id_postcode = :id_postcode");
 
 			try {
-				$query->execute(['id_postcode' => $id]);
+				$query->execute(['id_postcode' => $id_postcode]);
 
 				while ($row = $query->fetch()) {
 					$item = new Postcode();
@@ -154,12 +154,12 @@
 			}
 		}
 
-		function delete($id)
+		function delete($id_postcode)
 		{
 			$query = $this->db->connection()->prepare("DELETE FROM postcodes WHERE id_postcode = :id_postcode");
 
 			try {
-				$query->execute(['id_postcode' => $id]);
+				$query->execute(['id_postcode' => $id_postcode]);
 
 				return true;
 			} catch (PDOException $e) {
