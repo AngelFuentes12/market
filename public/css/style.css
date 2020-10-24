@@ -499,6 +499,29 @@ table tbody td {
 
 .div-grafica{background-color: #FFFF; border-radius: 5px;}
 
+.categoria-movil{display: none;}
+
+/* foooter cliente */
+
+.footer-color {
+    background-color: #f4f4f4f4;
+}
+
+.footer-title {
+    font-size: 18px;
+}
+
+.footer-color a {
+    font-size: 12px;
+    display: block;
+    color: #000;
+}
+
+.copyrigrh {
+    text-align: center;
+    background-color: #f4f4f4f4;
+}
+
 /* responsive */
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
@@ -524,6 +547,11 @@ table tbody td {
         padding-top: 13px;
     }
 
+    .categoria-responsive{
+        display: none;
+    }
+
+    .categoria-movil{display: inline;}
 
     
  }
