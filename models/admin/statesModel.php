@@ -69,6 +69,43 @@
 				return false;
 			}
 		}
+
+		function edit($id, $state)
+		{
+			$query = $this->db->connection()->prepare("UPDATE states SET state = :state WHERE id_state = :id_state");
+			try {
+				$query->execute([
+					'id_state' => $id,
+					'state' => $state
+				]);
+
+				return true;
+			} catch (PDOException $e) {
+				return false;
+			}
+		}
+
+		function store($id)
+		{
+			$items = [];
+			$query = $this->db->connection()->prepare("SELECT * FROM states WHERE id_state = :id_state");
+
+			try {
+				$query->execute(['id_state' => $id]);
+
+				while ($row = $query->fetch()) {
+					$item = new State();
+					$item->id_state = $row['id_state'];
+					$item->state = $row['state'];
+
+					array_push($items, $item);
+				}
+
+				return $items;
+			} catch (PDOException $e) {
+				return [];
+			}
+		}
 	}
 
 ?>

@@ -62,7 +62,7 @@
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="<?= constant('URL') . 'municipalities/edit?id=' .  $municipality->id_municipality; ?>" class="status-span badge-secondary">
+                                                    <a href="<?= constant('URL') . 'municipalities/store?id=' .  $municipality->id_municipality; ?>" class="status-span badge-secondary">
                                                         Editar <i class="fas fa-cog"></i>
                                                     </a>
                                                 </td>

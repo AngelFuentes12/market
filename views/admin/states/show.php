@@ -52,7 +52,7 @@
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="<?= constant('URL') . 'states/edit?id=' .  $state->id_state; ?>" class="status-span badge-secondary">
+                                                    <a href="<?= constant('URL') . 'states/store?id=' .  $state->id_state; ?>" class="status-span badge-secondary">
                                                         Editar <i class="fas fa-cog"></i>
                                                     </a>
                                                 </td>

@@ -79,6 +79,52 @@
 			$this->getStates();
 		}
 
+		function edit()
+		{
+			$this->validation();
+
+			$id = isset($_POST['id']) ? $_POST['id'] : '';
+			$state = isset($_POST['state']) ? preg_replace('/\s\s+/', ' ', trim($_POST['state'])) : '';
+
+			if (is_numeric($id) && $id > 0 && $state != "") {
+				if ($this->model->edit($id, $state)) {
+					$this->errors([
+						'alert' => 'alert-success',
+						'message' => 'Informacion actualizada exitosamente'
+					]);
+				} else {
+					$this->errorMessage();
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getStates();
+		}
+
+		function store()
+		{
+			$this->validation();
+
+			$id = isset($_GET['id']) ? $_GET['id'] : '';
+
+			if (is_numeric($id) && $id > 0) {
+				$state = $this->model->store($id);
+
+				if (sizeof($state) == 0) {
+					$this->errorMessage();
+				} else {
+					$this->errors([]);
+					$this->view->title = "Editar Estado";
+					$this->view->states = $state;
+					$this->view->render('admin/states/edit');
+					return false;
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getStates();
+		}
+
 		function validation()
 		{
 			require_once 'models/admin/validation.php';
