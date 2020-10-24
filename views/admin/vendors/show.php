@@ -97,37 +97,12 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
         </section>
     </div>
-=======
-        </div>
-    </section>
-</div>
 
 
 
 <!-- Modal registro admin-->
-<div class="modal animate__animated animate__bounceInRight" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title title-register" id="exampleModalLongTitle"><?= $_SESSION['name']; ?>, registra un nuevo proveedor</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" style="color: red;">&times;</span>
-                </button>
-            </div>
-            <!--  -->
-            <div class="modal-body mx-auto">
-                <p class="">Los campos marcados con un <small style="color: red;">*</small> son obligatorios</p>
-                <form method="POST" action="">
-                    <div class="form-group">
-                        <label for="name" class="name">Nombre <span style="color: red;">*</span></label>
-                        <input type="text" value="" name="name" class="form-control" required>
-                        <div class="invalid-feedback">
->>>>>>> db81abe1c9049b00e1bdfea956a529b72ad42088
-
-    <!-- Modal registro admin-->
     <div class="modal animate__animated animate__bounceInRight" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -157,73 +132,35 @@
                                 <?= $this->error['m1']; ?>
                             </div>
                         </div>
-<<<<<<< HEAD
-=======
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="email">Correo Electronico <span style="color: red;">*</span></label>
-
-                        <span class="hint--right hint--rounded hint--info hint--large" style="cursor: pointer;" 
-                        aria-label="Si tienes 2 correos electronicios Ingresa ambos colcando una coma por ejemplo: correo@corre.com,correo@corre.com">
-                        <i class="fas fa-info-circle"></i>
-                        </span>
-
-                        <input type="email" value="" name="email" class="form-control" required>
-                        <div class="invalid-feedback">
->>>>>>> db81abe1c9049b00e1bdfea956a529b72ad42088
 
                         <div class="form-group">
-                            <label for="email">
-                                Correo Electronico <span style="color: red;">*</span>
-                            </label>
+                            <label for="email">Correo Electronico <span style="color: red;">*</span></label>
 
-                            <input id="email" type="email" value="<?= $this->error['email']; ?>" name="email" class="form-control <?= $this->error['c2']; ?>" required>
+                            <span class="hint--right hint--rounded hint--info hint--large" style="cursor: pointer;" 
+                            aria-label="Si tienes 2 correos electronicos, ingresa ambos colocando una coma por ejemplo: correo@correo.com,correo@correo.com">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+
+                            <input id="email" type="email" value="" name="email" class="form-control" required>
 
                             <div class="invalid-feedback">
-                                <?= $this->error['m2']; ?>
-                            </div>
-                        </div>
-<<<<<<< HEAD
-=======
-                    </div>
-                    <div class="form-group">
-                        <label for="telefono" class="telefono">Telefono <span style="color: red;">*</span></label>
 
-                        <span class="hint--right hint--rounded hint--info hint--large" style="cursor: pointer;" 
-                        aria-label="Si tienes 2 Telefonos Ingresa ambos colcando una coma por ejemplo: 554 6754 123,554 6754 123 ">
-                        <i class="fas fa-info-circle"></i>
-                        </span>
-
-                        <input type="text" value="" name="telefono" class="form-control" required>
-                        <div class="invalid-feedback">
->>>>>>> db81abe1c9049b00e1bdfea956a529b72ad42088
-
-                        <div class="form-group">
-                            <label for="email2">
-                                Correo Electronico opcional
-                            </label>
-
-                            <input id="email2" type="email" value="<?= $this->error['email2']; ?>" name="email2" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="telephone">
-                                Telefono <span style="color: red;">*</span>
-                            </label>
-
-                            <input id="telephone" type="text" value="<?= $this->error['telephone']; ?>" name="telephone" class="form-control <?= $this->error['c3']; ?>" required>
-
-                            <div class="invalid-feedback">
-                                <?= $this->error['m3']; ?>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="telephone2">
-                                Telefono opcional
-                            </label>
+                            <label for="telephone">Telefono <span style="color: red;">*</span></label>
 
-                            <input id="telephone2" type="text" value="<?= $this->error['telephone2']; ?>" name="telephone2" class="form-control">
+                            <span class="hint--right hint--rounded hint--info hint--large" style="cursor: pointer;" 
+                            aria-label="Si tienes 2 Telefonos Ingresa ambos colcando una coma por ejemplo: 554 6754 123,554 6754 123 ">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+
+                            <input id="telephone" type="text" value="" name="telephone" class="form-control" required>
+
+                            <div class="invalid-feedback">
+
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -307,6 +244,7 @@
                                 <?= $this->error['m8']; ?>
                             </div>
                         </div>
+                        
                         <div class="form-group">
                             <label for="inside">
                                 Número Interior <span style="color: red;">*</span>
@@ -339,10 +277,4 @@
                 </div>    
             </div>
         </div>
-<<<<<<< HEAD
     </div>
-=======
-    </div>
-</div>
-
->>>>>>> db81abe1c9049b00e1bdfea956a529b72ad42088
