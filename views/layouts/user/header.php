@@ -35,6 +35,28 @@
     <nav id="nav-descuento" class="navbar">
         <span class="text-nav">Envíos GRATIS en compras mayores a $599.00 pesos</span>
     </nav>
+<!--  -->
+    <nav class="nav nav-oculto">
+        <ul class="nav ml-auto pr-5 nav-information">
+            <li class="nav-item ">
+                <a class="nav-link" href="#">Politicas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Atención a clientes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">Correo: ShopMarket@market.com</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">Tel: 4534 5546 23</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"> <img src="<?= constant('CSS'); ?>mexico.png"> MX</a>
+            </li>
+        </ul>
+    </nav>
+
+<!--  -->
     <nav class="navbar navbar-expand-md shadow-sm">
         <a class="navbar-brand pl-3" href="<?= constant('URL'); ?>">
             <img src="<?= constant('PIC'); ?>logotipo.png" style="width: 125px;">
@@ -108,7 +130,7 @@
                     <?php else : ?>
 
                         <li class="nav-item">
-                            <a class="nav-link submenu" href="<?= constant('URL'); ?>">HOME</a>
+                            <a class="nav-link submenu" href="<?= constant('URL'); ?>">INICIO</a>
                         </li>
 
                         <li class="nav-item">
@@ -152,6 +174,15 @@
             </ul>
         </div>
     </nav>
+
+    <!-- buscador  -->
+    <div class="container">
+        <form action="" method="post" class="">
+        <div class="md-form active-cyan-2 mb-4 mt-4">
+            <input class="form-control" type="text" placeholder="Buscador" aria-label="Search">
+        </div>
+        </form>
+    </div>
 
     <?php if ($this->error['alert'] != '') : ?>
         <div class="container">
