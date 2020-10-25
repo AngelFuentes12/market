@@ -24,18 +24,121 @@
 
 		function register()
 		{
+			$this->validation();
+
+			$emails = isset($_POST['email']) ? $_POST['email'] : null;
+			$emails = rtrim($emails, ',');
+			$emails = str_replace(' ', '', $emails);
+			$emails = explode(',', $emails);
+			$telephones = isset($_POST['telephone']) ? $_POST['telephone'] : null;
+			$telephones = rtrim($telephones, ',');
+			$telephones = str_replace(' ', '', $telephones);
+			$telephones = explode(',', $telephones);
+
 			$name = isset($_POST['name']) ? preg_replace('/\s\s+/', ' ', trim($_POST['name'])) : '';
-			$email = isset($_POST['email']) ? preg_replace('/\s\s+/', ' ', trim($_POST['email'])) : '';
-			$email2 = isset($_POST['email2']) ? preg_replace('/\s\s+/', ' ', trim($_POST['email2'])) : '';
-			$telephone = isset($_POST['telephone']) ? $_POST['telephone'] : '';
-			$telephone2 = isset($_POST['telephone2']) ? $_POST['telephone2'] : '';
-			$id_state = isset($_POST['id_state']) ? $_POST['id_state'] : '';
-			$id_municipality = isset($_POST['id_municipality']) ? $_POST['id_municipality'] : '';
-			$id_colony = isset($_POST['id_colony']) ? $_POST['id_colony'] : '';
-			$id_postcode = isset($_POST['id_postcode']) ? $_POST['id_postcode'] : '';
+			$email = isset($emails[0]) ? $emails[0] : '';
+			$email2 = isset($emails[1]) ? $emails[1] : '';
+			$telephone = isset($telephones[0]) ? $telephones[0] : '';
+			$telephone2 = isset($telephones[1]) ? $telephones[1] : '';
+			$id_state = (isset($_POST['id_state']) && $_POST['id_state'] > 0) ? $_POST['id_state'] : '';
+			$id_municipality = (isset($_POST['id_municipality']) && $_POST['id_municipality'] > 0) ? $_POST['id_municipality'] : '';
+			$id_colony = (isset($_POST['id_colony']) && $_POST['id_colony'] > 0) ? $_POST['id_colony'] : '';
+			$id_postcode = (isset($_POST['id_postcode']) && $_POST['id_postcode'] > 0) ? $_POST['id_postcode'] : '';
 			$street = isset($_POST['street']) ? preg_replace('/\s\s+/', ' ', trim($_POST['street'])) : '';
-			$inside = isset($_POST['inside']) ? $_POST['inside'] : '';
-			$outside = isset($_POST['outside']) ? $_POST['outside'] : '';
+			$inside = (isset($_POST['inside']) && $_POST['inside'] > 0) ? $_POST['inside'] : '';
+			$outside = (isset($_POST['outside']) && $_POST['outside'] > 0) ? $_POST['outside'] : '';
+
+			if ($name != '' && $email != '' && is_numeric($telephone) && is_numeric($id_state) && $id_state > 0 && is_numeric($id_municipality) && $id_municipality > 0 && is_numeric($id_colony) && $id_colony > 0 && is_numeric($id_postcode) && $id_postcode > 0 && $street != '' && is_numeric($inside) && is_numeric($outside)) {
+				$this->errors([]);
+			} else {
+				$c1 = ""; $m1 = "";
+				$c2 = ""; $m2 = "";
+				$c3 = ""; $m3 = "";
+				$c4 = ""; $m4 = "";
+				$c5 = ""; $m5 = "";
+				$c6 = ""; $m6 = "";
+				$c7 = ""; $m7 = "";
+				$c8 = ""; $m8 = "";
+				$c9 = ""; $m9 = "";
+				$c10 = ""; $m10 = "";
+				
+				if ($name == '') {
+					$c1 = 'is-invalid';
+					$m1 = 'Ingrese un nombre';
+				}
+
+				if ($email == '') {
+					$c2 = 'is-invalid';
+					$m2 = 'Ingrese un correo electronico';
+				}
+
+				if ($telephone == '') {
+					$c3 = 'is-invalid';
+					$m3 = 'Ingrese un telefono';
+				}
+
+				if ($id_state == '') {
+					$c4 = 'is-invalid';
+					$m4 = 'Selecciona un estado';
+				}
+
+				if ($id_municipality == '') {
+					$c5 = 'is-invalid';
+					$m5 = 'Selecciona un municipio';
+				}
+
+				if ($id_colony == '') {
+					$c6 = 'is-invalid';
+					$m6 = 'Selecciona una colonia';
+				}
+
+				if ($id_postcode == '') {
+					$c7 = 'is-invalid';
+					$m7 = 'Selecciona un codigo postal';
+				}
+
+				if ($street == '') {
+					$c8 = 'is-invalid';
+					$m8 = 'Ingrese una calle';
+				}
+
+				if ($inside == '') {
+					$c9 = 'is-invalid';
+					$m9 = 'Ingresa un numero interior';
+				}
+
+				if ($outside == '') {
+					$c10 = 'is-invalid';
+					$m10 = 'Ingrese un numero exterior';
+				}
+
+				$this->errors([
+					'c1' => $c1, 'm1' => $m1,
+					'c2' => $c2, 'm2' => $m2,
+					'c3' => $c3, 'm3' => $m3,
+					'c4' => $c4, 'm4' => $m4,
+					'c5' => $c5, 'm5' => $m5,
+					'c6' => $c6, 'm6' => $m6,
+					'c7' => $c7, 'm7' => $m7,
+					'c8' => $c8, 'm8' => $m8,
+					'c9' => $c9, 'm9' => $m9,
+					'c10' => $c10, 'm10' => $m10,
+
+					'name'  => $name,
+					'email'  => $email . ',' . $email2,
+					'telephone'  => $telephone . ',' . $telephone2,
+					'street'  => $street,
+					'outside'  => $outside,
+					'inside'  => $inside,
+
+					'alert' => 'alert-info',
+					'message' => 'Verifique su información'
+				]);
+			}
+			$this->view->title = "Proveedores";
+			$this->getStates();
+			$this->view->render('admin/vendors/show');
+
 		}
 
 		function getStates()
@@ -93,12 +196,12 @@
 			$m8 = isset($error['m8']) ? $error['m8'] : "";
 			$c9 = isset($error['c9']) ? $error['c9'] : "";
 			$m9 = isset($error['m9']) ? $error['m9'] : "";
+			$c10 = isset($error['c10']) ? $error['c10'] : "";
+			$m10 = isset($error['m10']) ? $error['m10'] : "";
 
 			$name = isset($error['name']) ? $error['name'] : "";
 			$email = isset($error['email']) ? $error['email'] : "";
-			$email2 = isset($error['email2']) ? $error['email2'] : "";
 			$telephone = isset($error['telephone']) ? $error['telephone'] : "";
-			$telephone2 = isset($error['telephone2']) ? $error['telephone2'] : "";
 			$street = isset($error['street']) ? $error['street'] : "";
 			$outside = isset($error['outside']) ? $error['outside'] : "";
 			$inside = isset($error['inside']) ? $error['inside'] : "";
@@ -116,12 +219,11 @@
 				'c7' => $c7, 'm7' => $m7,
 				'c8' => $c8, 'm8' => $m8,
 				'c9' => $c9, 'm9' => $m9,
+				'c10' => $c10, 'm10' => $m10,
 
 				'name'  => $name,
 				'email'  => $email,
-				'email2'  => $email2,
 				'telephone'  => $telephone,
-				'telephone2'  => $telephone2,
 				'street'  => $street,
 				'outside'  => $outside,
 				'inside'  => $inside,

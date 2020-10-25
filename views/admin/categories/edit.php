@@ -16,7 +16,7 @@
 										Categoria
 									</label>
 
-									<input id="category" type="text" name="category" class="form-control" value="<?= $category->category; ?>"  maxlength="20" minlength="5" required>
+									<input id="category" type="text" name="category" class="form-control" value="<?= $category->category; ?>"  maxlength="40" minlength="5" required>
 								</div>
 
 								<div class="form-group mx-auto">

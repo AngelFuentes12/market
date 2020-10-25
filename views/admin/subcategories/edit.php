@@ -24,7 +24,7 @@
 									Subcategoria
 								</label>
 
-								<input id="subcategory" type="text" class="form-control" name="subcategory" value="<?= $subcategory->subcategory; ?>" maxlength="30" minlength="5" required>
+								<input id="subcategory" type="text" class="form-control" name="subcategory" value="<?= $subcategory->subcategory; ?>" maxlength="50" minlength="5" required>
 							</div>
 
 							<div class="form-group">

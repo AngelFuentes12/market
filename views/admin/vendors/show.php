@@ -100,8 +100,6 @@
         </section>
     </div>
 
-
-
 <!-- Modal registro admin-->
     <div class="modal animate__animated animate__bounceInRight" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -120,13 +118,13 @@
                     <p>
                         Los campos marcados con un <small style="color: red;">*</small> son obligatorios
                     </p>
-                    <form method="POST" action="">
+                    <form method="POST" action="<?= constant('URL'); ?>vendors/register">
                         <div class="form-group">
                             <label for="name">
                                 Nombre <span style="color: red;">*</span>
                             </label>
 
-                            <input id="name" type="text" value="<?= $this->error['name']; ?>" name="name" class="form-control <?= $this->error['c1']; ?>" required>
+                            <input id="name" type="text" value="<?= $this->error['name']; ?>" name="name" class="form-control <?= $this->error['c1']; ?>" minlength="3" maxlength="30" required>
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m1']; ?>
@@ -141,10 +139,10 @@
                                 <i class="fas fa-info-circle"></i>
                             </span>
 
-                            <input id="email" type="email" value="" name="email" class="form-control" required>
+                            <input id="email" type="text" value="<?= $this->error['email']; ?>" name="email" class="form-control <?= $this->error['c2']; ?>" maxlength="40" required>
 
                             <div class="invalid-feedback">
-
+                                <?= $this->error['m2']; ?>
                             </div>
                         </div>
 
@@ -156,10 +154,10 @@
                                 <i class="fas fa-info-circle"></i>
                             </span>
 
-                            <input id="telephone" type="text" value="" name="telephone" class="form-control" required>
+                            <input id="telephone" type="text" value="<?= $this->error['telephone']; ?>" name="telephone" class="form-control <?= $this->error['c3']; ?>" minlength="10" maxlength="22" required>
 
                             <div class="invalid-feedback">
-
+                                <?= $this->error['m3']; ?>
                             </div>
                         </div>
 
@@ -194,10 +192,10 @@
                                 <select id="municipality" class="form-control <?= $this->error['c5']; ?>" name="id_municipality" required>
                                     <option selected>Seleccionar...</option>
                                 </select>
-                            </div>
 
-                            <div class="invalid-feedback">
-                                <?= $this->error['m5']; ?>
+                                <div class="invalid-feedback">
+                                    <?= $this->error['m5']; ?>
+                                </div>
                             </div>
                         </div>
 
@@ -210,10 +208,10 @@
                                 <select id="colony" class="form-control <?= $this->error['c6']; ?>" name="id_colony" required>
                                     <option selected>Seleccionar...</option>
                                 </select>
-                            </div>
 
-                            <div class="invalid-feedback">
-                                <?= $this->error['m6']; ?>
+                                <div class="invalid-feedback">
+                                    <?= $this->error['m6']; ?>
+                                </div>
                             </div>
                         </div>
 
@@ -226,10 +224,10 @@
                                 <select id="postcode" class="form-control <?= $this->error['c7']; ?>" name="id_postcode" required>
                                     <option selected>Seleccionar...</option>
                                 </select>
-                            </div>
 
-                            <div class="invalid-feedback">
-                                <?= $this->error['m7']; ?>
+                                <div class="invalid-feedback">
+                                    <?= $this->error['m7']; ?>
+                                </div>
                             </div>
                         </div>
 
@@ -238,7 +236,7 @@
                                 Calle <span style="color: red;">*</span>
                             </label>
 
-                            <input id="street" type="text" value="<?= $this->error['street']; ?>" name="street" class="form-control <?= $this->error['c8']; ?>" required>
+                            <input id="street" type="text" value="<?= $this->error['street']; ?>" name="street" class="form-control <?= $this->error['c8']; ?>" minlength="5" maxlength="30" required>
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m8']; ?>
@@ -250,7 +248,7 @@
                                 Número Interior <span style="color: red;">*</span>
                             </label>
 
-                            <input id="inside" type="text" value="<?= $this->error['inside']; ?>" name="inside" class="form-control <?= $this->error['c9']; ?>" required>
+                            <input id="inside" type="text" value="<?= $this->error['inside']; ?>" name="inside" class="form-control <?= $this->error['c9']; ?>" minlength="1" maxlength="4" required>
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m9']; ?>
@@ -262,7 +260,7 @@
                                 Número Exterior <span style="color: red;">*</span>
                             </label>
 
-                            <input id="outside" type="text" value="<?= $this->error['outside']; ?>" name="outside" class="form-control <?= $this->error['c9']; ?>" required>
+                            <input id="outside" type="text" value="<?= $this->error['outside']; ?>" name="outside" class="form-control <?= $this->error['c9']; ?>" minlength="1" maxlength="4" required>
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m9']; ?>
@@ -270,7 +268,10 @@
                         </div>
 
                         <div class="mx-auto pb-5">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                Cancelar
+                            </button>
+
                             <button type="submit" class="btn btn-info">Registrar</button>
                         </div>
                     </form>
