@@ -2,40 +2,48 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-6 col-md-2 py-3">
-				<div class="wrapper">
-					<ul class="list-unstyled components">
-						<h6 class="font-weight-bold">Categorias</h6>
-						<li>
-							<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categoria</a>
-							<ul class="collapse list-unstyled" id="homeSubmenu">
+				<nav class="navbar-expand-lg">
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menucategoria" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<i class="fas fa-ellipsis-v"></i> <small>categorias</small>
+					</button>
+					<div class="collapse navbar-collapse" id="menucategoria">
+						<div class="wrapper">
+							<ul class="list-unstyled components">
+								<h6 class="font-weight-bold">Categorias</h6>
 								<li>
-									<a href="#">sucategoria 1</a>
+									<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categoria</a>
+									<ul class="collapse list-unstyled" id="homeSubmenu">
+										<li>
+											<a href="#">sucategoria 1</a>
+										</li>
+										<li>
+											<a href="#">sucategoria 2</a>
+										</li>
+										<li>
+											<a href="#">sucategoria 3</a>
+										</li>
+									</ul>
 								</li>
 								<li>
-									<a href="#">sucategoria 2</a>
-								</li>
-								<li>
-									<a href="#">sucategoria 3</a>
+									<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categoria</a>
+									<ul class="collapse list-unstyled" id="pageSubmenu">
+										<li>
+											<a href="#">sucategoria 1</a>
+										</li>
+										<li>
+											<a href="#">sucategoria 2</a>
+										</li>
+										<li>
+											<a href="#">sucategoria 3</a>
+										</li>
+									</ul>
 								</li>
 							</ul>
-						</li>
-						<li>
-							<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categoria</a>
-							<ul class="collapse list-unstyled" id="pageSubmenu">
-								<li>
-									<a href="#">sucategoria 1</a>
-								</li>
-								<li>
-									<a href="#">sucategoria 2</a>
-								</li>
-								<li>
-									<a href="#">sucategoria 3</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
+						</div>
+					</div>
+				</nav>
 			</div>
+
 
 			<div class="col-sm-6 col-md-10">
 				<small class="h6">productos</small>
