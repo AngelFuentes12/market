@@ -175,15 +175,6 @@
         </div>
     </nav>
 
-    <!-- buscador  -->
-    <div class="container">
-        <form action="" method="post" class="">
-        <div class="md-form active-cyan-2 mb-4 mt-4">
-            <input class="form-control" type="text" placeholder="Buscador" aria-label="Search">
-        </div>
-        </form>
-    </div>
-
     <?php if ($this->error['alert'] != '') : ?>
         <div class="container">
             <div class="row">
