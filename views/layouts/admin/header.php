@@ -90,6 +90,11 @@
                     <small class="pl-4 text-muted">Categorías</small>
                 </a>
 
+                <a href="<?= constant('URL'); ?>subcategories" class="list-group-item list-group-item-action">
+                    <i class="fas fa-chevron-circle-down"></i>
+                    <small class="pl-4 text-muted">Subcategorías</small>
+                </a>
+
                 <a href="<?= constant('URL'); ?>vendors" class="list-group-item list-group-item-action">
                     <i class="fas fa-user-tie"></i>
                     <small class="pl-4 text-muted">Proveedores</small>

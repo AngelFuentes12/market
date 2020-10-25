@@ -60,12 +60,61 @@
 			$this->getCategories();
 		}
 
+		function edit()
+		{
+			$this->validation();
+
+			$id_category = isset($_POST['id']) ? $_POST['id'] : '';
+			$category = isset($_POST['category']) ? preg_replace('/\s\s+/', ' ', trim($_POST['category'])) : '';
+
+			if (is_numeric($id_category) && $id_category > 0 && $category != "") {
+				if ($this->model->edit($id_category, $category)) {
+					$this->errors([
+						'alert' => 'alert-success',
+						'message' => 'Informacion actualizada exitosamente'
+					]);
+				} else {
+					$this->errors([
+						'alert' => 'alert-warning',
+						'message' => 'La categoria ' . $category . ' ya fue registrada'
+					]);
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getCategories();
+		}
+
+		function store()
+		{
+			$this->validation();
+
+			$id_category = isset($_GET['id']) ? $_GET['id'] : '';
+
+			if (is_numeric($id_category) && $id_category > 0) {
+				$category = $this->model->store($id_category);
+
+				if (sizeof($category) == 0) {
+					$this->errorMessage();
+				} else {
+					$this->errors([]);
+					$this->view->title = "Editar categoria";
+					$this->view->categories = $category;
+					$this->view->render('admin/categories/edit');
+					return false;
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getCategories();
+		}
+
 		function delete()
 		{
-			$id = isset($_GET['id']) ? $_GET['id'] : '';
+			$id_category = isset($_GET['id']) ? $_GET['id'] : '';
 
-			if (is_numeric($id) && $id > 0) {
-				if ($this->model->delete($id)) {
+			if (is_numeric($id_category) && $id_category > 0) {
+				if ($this->model->delete($id_category)) {
 					$this->errors([
 						'alert' => 'alert-success',
 						'message' => 'Categoría eliminada exitosamente'

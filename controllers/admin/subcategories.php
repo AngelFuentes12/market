@@ -3,7 +3,7 @@
 	/**
 	 * @author: Angel Fuentes
 	 */
-	class Municipalities extends Controller
+	class Subcategories  extends Controller
 	{
 		
 		function __construct()
@@ -17,30 +17,30 @@
 			$this->validation();
 
 			$this->errors([]);
-			$this->getMunicipalities();
+			$this->getSubcategories();
 		}
 
 		function register()
 		{
 			$this->validation();
 
-			$id_state = isset($_POST['id_state']) ? $_POST['id_state'] : '';
-			$municipality = isset($_POST['municipality']) ? preg_replace('/\s\s+/', ' ', trim($_POST['municipality'])) : '';
+			$id_category = isset($_POST['id_category']) ? $_POST['id_category'] : '';
+			$subcategory = isset($_POST['subcategory']) ? preg_replace('/\s\s+/', ' ', trim($_POST['subcategory'])) : '';
 
-			if (is_numeric($id_state) && $id_state > 0 && $municipality != '') {
-				switch ($this->model->register($id_state, $municipality)) {
+			if (is_numeric($id_category) && $id_category > 0 && $subcategory != '') {
+				switch ($this->model->register($id_category, $subcategory)) {
 					case 'success':
 						$this->errors([
 							'alert' => 'alert-success',
-							'message' => 'Municipio registrado exitosamente'
+							'message' => 'Subcategoria registrada exitosamente'
 						]);
 						break;
 
-					case 'municipality':
+					case 'subcategory':
 						$this->errors([
 							'c2' => 'is-invalid',
-							'm2' => 'Este municipio ya fue registrado',
-							'municipality' => $municipality,
+							'm2' => 'Esta subcategoria ya fue registrada',
+							'subcategory' => $subcategory,
 							'alert' => 'alert-info',
 							'message' => 'Verifique su información'
 						]);
@@ -54,14 +54,14 @@
 				$c1 = ""; $m1 = "";
 				$c2 = ""; $m2 = "";
 
-				if (!is_numeric($id_state)) {
+				if (!is_numeric($id_category)) {
 					$c1 = "is-invalid";
-					$m1 = "Seleccione un estado";
+					$m1 = "Seleccione una categoria";
 				}
 
-				if ($municipality == "") {
+				if ($subcategory == "") {
 					$c2 = "is-invalid";
-					$m2 = "Ingrese un municipio";
+					$m2 = "Ingrese un subcategoria";
 				}
 				
 				$this->errors([
@@ -69,25 +69,25 @@
 					'm1' => $m1,
 					'c2' => $c2,
 					'm2' => $m2,
-					'municipality' => $municipality,
+					'subcategory' => $subcategory,
 					'alert' => 'alert-info',
 					'message' => 'Verifique su información'
 				]);
 			}
-			$this->getMunicipalities();
+			$this->getSubcategories();
 		}
 
 		function edit()
 		{
 			$this->validation();
 
-			$id_state = isset($_POST['id_state']) ? $_POST['id_state'] : '';
-			$id_municipality = isset($_POST['id_municipality']) ? $_POST['id_municipality'] : '';
-			$state = isset($_POST['state']) ? preg_replace('/\s\s+/', ' ', trim($_POST['state'])) : '';
-			$municipality = isset($_POST['municipality']) ? preg_replace('/\s\s+/', ' ', trim($_POST['municipality'])) : '';
+			$id_category = isset($_POST['id_category']) ? $_POST['id_category'] : '';
+			$id_subcategory = isset($_POST['id_subcategory']) ? $_POST['id_subcategory'] : '';
+			$category = isset($_POST['category']) ? preg_replace('/\s\s+/', ' ', trim($_POST['category'])) : '';
+			$subcategory = isset($_POST['subcategory']) ? preg_replace('/\s\s+/', ' ', trim($_POST['subcategory'])) : '';
 
-			if (is_numeric($id_state) && $id_state > 0 && is_numeric($id_municipality) && $id_municipality > 0 && $municipality != "") {
-				if ($this->model->edit($id_state, $id_municipality, $municipality)) {
+			if (is_numeric($id_category) && $id_category > 0 && is_numeric($id_subcategory) && $id_subcategory > 0 && $subcategory != "") {
+				if ($this->model->edit($id_category, $id_subcategory, $subcategory)) {
 					$this->errors([
 						'alert' => 'alert-success',
 						'message' => 'Informacion actualizada exitosamente'
@@ -95,31 +95,31 @@
 				} else {
 					$this->errors([
 						'alert' => 'alert-warning',
-						'message' => 'El municipio ' . $municipality . ' ya fue registrado en el estado de ' . $state
+						'message' => 'La subcategoria ' . $subcategory . ' ya fue registrada en la categoria ' . $category
 					]);
 				}
 			} else {
 				$this->errorMessage();
 			}
-			$this->getMunicipalities();
+			$this->getSubcategories();
 		}
 
 		function store()
 		{
 			$this->validation();
 
-			$id_municipality = isset($_GET['id']) ? $_GET['id'] : '';
+			$id_subcategory = isset($_GET['id']) ? $_GET['id'] : '';
 
-			if (is_numeric($id_municipality) && $id_municipality > 0) {
-				$municipality = $this->model->store($id_municipality);
+			if (is_numeric($id_subcategory) && $id_subcategory > 0) {
+				$subcategory = $this->model->store($id_subcategory);
 
-				if (sizeof($municipality) == 0) {
+				if (sizeof($subcategory) == 0) {
 					$this->errorMessage();
 				} else {
 					$this->errors([]);
-					$this->view->title = "Editar Municipio";
-					$this->view->municipalities = $municipality;
-					$this->view->render('admin/municipalities/edit');
+					$this->view->title = "Editar subcategoria";
+					$this->view->subcategories = $subcategory;
+					$this->view->render('admin/subcategories/edit');
 					return false;
 				}
 			} else {
@@ -130,13 +130,13 @@
 
 		function delete()
 		{
-			$id_municipality = isset($_GET['id']) ? $_GET['id'] : '';
+			$id_subcategory = isset($_GET['id']) ? $_GET['id'] : '';
 
-			if (is_numeric($id_municipality) && $id_municipality > 0) {
-				if ($this->model->delete($id_municipality)) {
+			if (is_numeric($id_subcategory) && $id_subcategory > 0) {
+				if ($this->model->delete($id_subcategory)) {
 					$this->errors([
 						'alert' => 'alert-success',
-						'message' => 'Municipio eliminado exitosamente'
+						'message' => 'Subcategoria eliminada exitosamente'
 					]);
 				} else {
 					$this->errorMessage();
@@ -144,7 +144,7 @@
 			} else {
 				$this->errorMessage();
 			}
-			$this->getMunicipalities();
+			$this->getSubcategories();
 		}
 
 		function validation()
@@ -166,17 +166,17 @@
 			}
 		}
 
-		function getMunicipalities()
+		function getSubcategories()
 		{
-			require_once 'models/admin/statesModel.php';
-			$state = new StatesModel();
-			$states = $state->getStates();
-			$this->view->states = $states;
+			require_once 'models/admin/categoriesModel.php';
+			$category = new CategoriesModel();
+			$categorys = $category->getCategories();
+			$this->view->categorys = $categorys;
 
-			$this->view->title = "Municipios";
-			$municipalities = $this->model->getMunicipalities();
-			$this->view->municipalities = $municipalities;
-			$this->view->render('admin/municipalities/show');
+			$this->view->title = "Subcategorias";
+			$subcategories = $this->model->getSubcategories();
+			$this->view->subcategories = $subcategories;
+			$this->view->render('admin/subcategories/show');
 		}
 
 		function errorMessage()
@@ -194,7 +194,7 @@
 			$c2 = isset($error['c2']) ? $error['c2'] : '';
 			$m2 = isset($error['m2']) ? $error['m2'] : '';
 
-			$municipality = isset($error['municipality']) ? $error['municipality'] : '';
+			$subcategory = isset($error['subcategory']) ? $error['subcategory'] : '';
 
 			$alert = isset($error['alert']) ? $error['alert'] : '';
 			$message = isset($error['message']) ? $error['message'] : '';
@@ -202,7 +202,7 @@
 			$this->view->error = [
 				'c1' => $c1, 'm1' => $m1,
 				'c2' => $c2, 'm2' => $m2,
-				'municipality' => $municipality,
+				'subcategory' => $subcategory,
 				'alert' => $alert, 'message' => $message
 			];
 		}

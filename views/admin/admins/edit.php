@@ -16,7 +16,7 @@
 										Nombre
 									</label>
 
-									<input type="text" name="name" class="form-control" value="<?= $admin->name; ?>" minlength="3" required>
+									<input type="text" name="name" class="form-control" value="<?= $admin->name; ?>" minlength="3" maxlength="20" required>
 								</div>
 
 								<div class="form-group">
@@ -24,7 +24,7 @@
 										Correo Electronico
 									</label>
 
-									<input type="email" name="email" class="form-control" value="<?= $admin->email; ?>" readonly>
+									<input type="email" name="email" class="form-control" value="<?= $admin->email; ?>" readonly required>
 								</div>
 
 								<div class="form-group">
@@ -32,7 +32,7 @@
 										Tipo usuario
 									</label>
 
-									<input type="text" name="type_user" class="form-control" value="<?= ($admin->level == 1) ? 'Administrador' : ''; ?>" readonly>
+									<input type="text" name="type_user" class="form-control" value="<?= ($admin->level == 1) ? 'Administrador' : ''; ?>" readonly required>
 								</div>
 
 								<div class="form-group">
@@ -51,11 +51,11 @@
 										}
 									?>
 
-									<input type="text" name="status" class="form-control" value="<?= $type; ?>" readonly>
+									<input type="text" name="status" class="form-control" value="<?= $type; ?>" readonly required>
 								</div>
 
 								<div class="form-group mx-auto">
-									<input type="hidden" name="id" value="<?= $admin->id_user; ?>">
+									<input type="hidden" name="id" value="<?= $admin->id_user; ?>" readonly required>
 
 									<input type="submit" class="btn btn-info" value="Actualizar">
 

@@ -128,10 +128,10 @@
 		{
 			$this->validation();
 
-			$id = isset($_GET['id']) ? $_GET['id'] : '';
+			$id_postcode = isset($_GET['id']) ? $_GET['id'] : '';
 
-			if (is_numeric($id) && $id > 0) {
-				$postcode = $this->model->store($id);
+			if (is_numeric($id_postcode) && $id_postcode > 0) {
+				$postcode = $this->model->store($id_postcode);
 
 				if (sizeof($postcode) == 0) {
 					$this->errorMessage();
@@ -150,10 +150,10 @@
 
 		function delete()
 		{
-			$id = isset($_GET['id']) ? $_GET['id'] : '';
+			$id_postcode = isset($_GET['id']) ? $_GET['id'] : '';
 
-			if (is_numeric($id) && $id > 0) {
-				if ($this->model->delete($id)) {
+			if (is_numeric($id_postcode) && $id_postcode > 0) {
+				if ($this->model->delete($id_postcode)) {
 					$this->errors([
 						'alert' => 'alert-success',
 						'message' => 'Codigo postal eliminado exitosamente'

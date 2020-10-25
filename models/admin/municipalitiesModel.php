@@ -123,13 +123,13 @@
 			}
 		}
 
-		function store($id)
+		function store($id_municipality)
 		{
 			$items = [];
 			$query = $this->db->connection()->prepare("SELECT states.id_state, municipalities.id_municipality, state, municipality FROM states NATURAL JOIN municipalities NATURAL JOIN states_municipalities WHERE municipalities.id_municipality = :id_municipality");
 
 			try {
-				$query->execute(['id_municipality' => $id]);
+				$query->execute(['id_municipality' => $id_municipality]);
 
 				while ($row = $query->fetch()) {
 					$item = new Municipality();
@@ -147,12 +147,12 @@
 			}
 		}
 
-		function delete($id)
+		function delete($id_municipality)
 		{
 			$query = $this->db->connection()->prepare("DELETE FROM municipalities WHERE id_municipality = :id_municipality");
 
 			try {
-				$query->execute(['id_municipality' => $id]);
+				$query->execute(['id_municipality' => $id_municipality]);
 
 				return true;
 			} catch (PDOException $e) {
