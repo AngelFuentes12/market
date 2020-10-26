@@ -6,7 +6,24 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-12 form-color p-4 shadow-sm">
-                        <h4 class="pb-1">Secretarias</h4>
+                        <div class="row mb-3">
+                            <div class="col-10">
+                                <h4 class="pb-1">Secretarias</h4>
+                            </div>
+
+                            <div class="col-1">
+                                <a href="#" class="btn btn-secondary">
+                                    <i class="fas fa-file-download"></i>
+                                </a>
+                            </div>
+
+                            <div class="col-1">
+                                <a href="<?= constant('URL'); ?>secretaries" class="btn btn-secondary">
+                                    <i class="fas fa-redo-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+
                         <div class="row mb-3">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="table-responsive">

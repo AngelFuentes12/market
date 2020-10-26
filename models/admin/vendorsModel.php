@@ -143,10 +143,25 @@
 
 		function edit($id_direcction, $id_vendor, $vendor, $name, $email2, $telephone2, $street, $inside, $outside)
 		{
-			$query = $this->db->connection()->prepare("UPDATE vendors SET vendor = :vendor, name = :name, email2 = :email2, telephone2 = telephone2 WHERE id_vendor = :id_vendor");
+			$query = $this->db->connection()->prepare("UPDATE vendors SET vendor = :vendor, name = :name, email2 = :email2, telephone2 = :telephone2 WHERE id_vendor = :id_vendor");
 			$query_dir = $this->db->connection()->prepare("UPDATE direcctions SET street = :street, inside = :inside, outside = :outside WHERE id_direcction = :id_direcction");
 
 			try {
+				$query->execute([
+					'id_vendor' => $id_vendor,
+					'vendor' => $vendor,
+					'name' => $name,
+					'email2' => $email2,
+					'telephone2' => $telephone2
+				]);
+
+				$query_dir->execute([
+					'id_direcction' => $id_direcction,
+					'street' => $street,
+					'outside' => $outside,
+					'inside' => $inside
+				]);
+
 				return true;
 			} catch (PDOException $e) {
 				return false;

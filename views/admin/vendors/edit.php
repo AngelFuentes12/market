@@ -96,7 +96,7 @@
 										Calle
 									</label>
 
-									<input id="street" type="email" name="street" class="form-control" value="<?= $vendor->street; ?>" minlength="8" maxlength="40" required>
+									<input id="street" type="text" name="street" class="form-control" value="<?= $vendor->street; ?>" minlength="8" maxlength="40" required>
 								</div>
 
 								<div class="from-group">
@@ -104,7 +104,7 @@
 										Numero interior
 									</label>
 
-									<input id="inside" type="email" name="inside" class="form-control" value="<?= $vendor->inside; ?>" minlength="1" maxlength="4" required>
+									<input id="inside" type="text" name="inside" class="form-control" value="<?= $vendor->inside; ?>" minlength="1" maxlength="4" required>
 								</div>
 
 								<div class="from-group">
@@ -112,12 +112,12 @@
 										Numero exterior
 									</label>
 
-									<input id="outside" type="email" name="outside" class="form-control" value="<?= $vendor->outside; ?>" minlength="1" maxlength="4" required>
+									<input id="outside" type="text" name="outside" class="form-control" value="<?= $vendor->outside; ?>" minlength="1" maxlength="4" required>
 								</div>
 
 								<div class="form-group mx-auto mt-4">
-									<input type="text" name="id_vendor" value="<?= $vendor->id_vendor; ?>" readonly required>
-									<input type="text" name="id_direcction" value="<?= $vendor->id_direcction; ?>" readonly required>
+									<input type="hidden" name="id_vendor" value="<?= $vendor->id_vendor; ?>" readonly required>
+									<input type="hidden" name="id_direcction" value="<?= $vendor->id_direcction; ?>" readonly required>
 
 									<input type="submit" class="btn btn-info" value="Actualizar">
 
@@ -127,7 +127,6 @@
 						</form>
 					</div>
 				</div>
-
 			</div>
 		</section>
 	</div>

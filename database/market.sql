@@ -6,6 +6,40 @@ CREATE TABLE states(id_state INT AUTO_INCREMENT PRIMARY KEY,
     state VARCHAR(60) UNIQUE NOT NULL)
     Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
 
+INSERT INTO `states` (`id_state`, `state`) VALUES
+(5, 'Aguascalientes'),
+(3, 'Baja California'),
+(4, 'Baja California Sur'),
+(6, 'Campeche'),
+(9, 'Chiapas'),
+(10, 'Chihuahua'),
+(12, 'Ciudad de MÃ©xico'),
+(7, 'Coahuila'),
+(8, 'Colima'),
+(11, 'Durango'),
+(2, 'Estado de MÃ©xico'),
+(13, 'Guanajuato'),
+(14, 'Guerrero'),
+(1, 'Hidalgo'),
+(15, 'Jalisco'),
+(16, 'MichoacÃ¡n'),
+(17, 'Morelos'),
+(18, 'Nayarit'),
+(19, 'Nuevo LeÃ³n'),
+(20, 'Oaxaca'),
+(21, 'Puebla'),
+(22, 'QuerÃ©taro'),
+(23, 'Quintana Roo'),
+(24, 'San Luis PotosÃ­'),
+(25, 'Sinaloa'),
+(26, 'Sonora'),
+(27, 'Tabasco'),
+(28, 'Tamaulipas'),
+(29, 'Tlaxcala'),
+(30, 'Veracruz'),
+(31, 'YucatÃ¡n'),
+(32, 'Zacatecas');
+
 CREATE TABLE municipalities(id_municipality INT AUTO_INCREMENT PRIMARY KEY,
     municipality VARCHAR(60) NOT NULL)
     Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';

@@ -243,7 +243,7 @@
 			$this->validation();
 
 			$id_vendor = isset($_POST['id_vendor']) ? $_POST['id_vendor'] : '';
-			$id_direcction		 = isset($_POST['id_direcction']) ? $_POST['id_direcction'] : '';
+			$id_direcction = isset($_POST['id_direcction']) ? $_POST['id_direcction'] : '';
 			$vendor = isset($_POST['vendor']) ? preg_replace('/\s\s+/', ' ', trim($_POST['vendor'])) : '';
 			$name = isset($_POST['name']) ? preg_replace('/\s\s+/', ' ', trim($_POST['name'])) : '';
 			$email2 = isset($_POST['email2']) ? preg_replace('/\s\s+/', ' ', trim($_POST['email2'])) : '';
@@ -252,7 +252,7 @@
 			$inside = isset($_POST['inside']) ? $_POST['inside'] : '';
 			$outside = isset($_POST['outside']) ? $_POST['outside'] : '';
 
-			if (is_numeric($id_vendor) && $id_vendor > 0 && $id_direcction) && $id_direcction > 0 && $vendor != "" && $name != "" && $street != "" $$ is_numeric($inside) && $inside > 0 && is_numeric($outside) && $outside > 0) {
+			if (is_numeric($id_vendor) && $id_vendor > 0 && is_numeric($id_direcction) && $id_direcction > 0 && $vendor != "" && $name != "" && $street != "" && is_numeric($inside) && $inside > 0 && is_numeric($outside) && $outside > 0) {
 				if ($this->model->edit($id_direcction, $id_vendor, $vendor, $name, $email2, $telephone2, $street, $inside, $outside)) {
 					$this->errors([
 						'alert' => 'alert-success',
