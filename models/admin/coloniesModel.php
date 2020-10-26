@@ -76,7 +76,7 @@
 				]);
 
 				$row = $query_val->fetch();
-				if ($row['id_colony'] > 0) {
+				if (isset($row['id_colony']) && $row['id_colony'] > 0) {
 					$case = "colony";
 				} else {
 					$query->execute(['colony' => $colony]);

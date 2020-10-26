@@ -44,7 +44,7 @@
 				$query_val->execute(['state' => $state]);
 
 				$row = $query_val->fetch();
-				if ($row['id_state'] > 0) {
+				if (isset($row['id_state']) && $row['id_state'] > 0) {
 					$case = "state";
 				} else {
 					$query->execute(['state' => $state]);

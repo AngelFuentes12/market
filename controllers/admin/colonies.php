@@ -39,6 +39,10 @@
 
 					case 'colony':
 						$this->errors([
+							'c1' => 'is-invalid',
+							'm1' => 'Seleccione un estado',
+							'c2' => 'is-invalid',
+							'm2' => 'Seleccione un municipio',
 							'c3' => 'is-invalid',
 							'm3' => 'Este colonia ya fue registrada',
 							'colony' => $colony,
@@ -199,7 +203,7 @@
 			$municipalities = $municipality->getMunicipalitiesSpecific($id_state);
 			
 			$data = '<select id="municipality" class="form-control" name="id_municipality" required>';
-			$data .= "<option selected>Seleccionar...</option>";
+			$data .= "<option selected disabled value=''>Seleccionar...</option>";
 			require_once 'models/admin/municipality.php';
 			foreach ($municipalities as $row) {
 				$municip = new Municipality();

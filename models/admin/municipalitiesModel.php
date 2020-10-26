@@ -72,7 +72,7 @@
 				]);
 
 				$row = $query_val->fetch();
-				if ($row['id_municipality'] > 0) {
+				if (isset($row['id_municipality']) && $row['id_municipality'] > 0) {
 					$case = "municipality";
 				} else {
 					$query->execute(['municipality' => $municipality]);

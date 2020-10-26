@@ -40,6 +40,12 @@
 
 					case 'postcode':
 						$this->errors([
+							'c1' => 'is-invalid',
+							'm1' => 'Seleccione un estado',
+							'c2' => 'is-invalid',
+							'm2' => 'Seleccione un municipio',
+							'c3' => 'is-invalid',
+							'm3' => 'Seleccione una colonia',
 							'c4' => 'is-invalid',
 							'm4' => 'Este codigo postal ya fue registrado',
 							'postcode' => $postcode,
@@ -208,7 +214,7 @@
 			$colonies = $colony->getColoniesSpecific($id_municipality);
 			
 			$data = '<select id="colony" class="form-control" name="id_colony" required>';
-			$data .= "<option selected>Seleccionar...</option>";
+			$data .= "<option selected disabled value=''>Seleccionar...</option>";
 			require_once 'models/admin/colony.php';
 			foreach ($colonies as $row) {
 				$colon = new Colony();
@@ -227,7 +233,7 @@
 			$postcodes = $this->model->getPostcodesSpecific($id_colony);
 
 			$data = '<select id="postcode" class="form-control" name="id_postcode" required>';
-			$data .= "<option selected>Seleccionar...</option>";
+			$data .= "<option selected disabled value=''>Seleccionar...</option>";
 			require_once 'models/admin/postcode.php';
 			foreach ($postcodes as $row) {
 				$postcode = new Postcode();

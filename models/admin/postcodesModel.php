@@ -76,7 +76,7 @@
 				]);
 
 				$row = $query_val->fetch();
-				if ($row['id_postcode'] > 0) {
+				if (isset($row['id_postcode']) && $row['id_postcode'] > 0) {
 					$case = "postcode";
 				} else {
 					$query->execute(['postcode' => $postcode]);

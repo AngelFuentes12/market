@@ -17,9 +17,8 @@
 			$this->validation();
 
 			$this->errors([]);
-			$this->view->title = "Proveedores";
-			$this->getStates();
-			$this->view->render('admin/vendors/show');
+			$this->getVendors();
+
 		}
 
 		function register()
@@ -35,6 +34,7 @@
 			$telephones = str_replace(' ', '', $telephones);
 			$telephones = explode(',', $telephones);
 
+			$vendor = isset($_POST['vendor']) ? preg_replace('/\s\s+/', ' ', trim($_POST['vendor'])) : '';
 			$name = isset($_POST['name']) ? preg_replace('/\s\s+/', ' ', trim($_POST['name'])) : '';
 			$email = isset($emails[0]) ? $emails[0] : '';
 			$email2 = isset($emails[1]) ? $emails[1] : '';
@@ -48,8 +48,59 @@
 			$inside = (isset($_POST['inside']) && $_POST['inside'] > 0) ? $_POST['inside'] : '';
 			$outside = (isset($_POST['outside']) && $_POST['outside'] > 0) ? $_POST['outside'] : '';
 
-			if ($name != '' && $email != '' && is_numeric($telephone) && is_numeric($id_state) && $id_state > 0 && is_numeric($id_municipality) && $id_municipality > 0 && is_numeric($id_colony) && $id_colony > 0 && is_numeric($id_postcode) && $id_postcode > 0 && $street != '' && is_numeric($inside) && is_numeric($outside)) {
-				$this->errors([]);
+			if ($vendor != '' && $name != '' && $email != '' && is_numeric($telephone) && is_numeric($id_state) && $id_state > 0 && is_numeric($id_municipality) && $id_municipality > 0 && is_numeric($id_colony) && $id_colony > 0 && is_numeric($id_postcode) && $id_postcode > 0 && $street != '' && is_numeric($inside) && is_numeric($outside)) {
+				$c2 = ""; $m2 = "";
+				$c3 = ""; $m3 = "";
+				switch ($this->model->register($vendor, $name, $email, $email2, $telephone, $telephone2, $id_state, $id_municipality, $id_colony, $id_postcode, $street, $inside, $outside)) {
+					case 'register':
+						$this->errors([
+							'alert' => 'alert-success',
+							'message' => 'Proveedor registrado exitosamente'
+						]);
+						$this->getVendors();
+						return false;
+						break;
+
+					case 'email':
+						$c2 = "is-invalid";
+						$m2 = "Este correo electrónico ya fue registrado";
+						break;
+
+					case 'telephone':
+						$c3 = "is-invalid";
+						$m3 = "Este telefono ya fue registrado";
+						break;
+
+					case '':
+					default:
+						$this->errorMessage();
+						$this->getVendors();
+						return false;
+						break;
+				}
+				$this->errors([
+					'c2' => $c2,
+					'm2' => $m2,
+					'c3' => $c3,
+					'm3' => $m3,
+					'c4' => 'is-invalid',
+					'm4' => 'Seleccione un estado',
+					'c5' => 'is-invalid',
+					'm5' => 'Seleccione un municipio',
+					'c6' => 'is-invalid',
+					'm6' => 'Seleccione una colonia',
+					'c7' => 'is-invalid',
+					'm7' => 'Seleccione un codigo postal',
+					'vendor' => $vendor,
+					'name' => $name,
+					'email' => $email . ',' . $email2,
+					'telephone' => $telephone . ',' . $telephone2,
+					'street' => $street,
+					'inside' => $inside,
+					'outside' => $outside,
+					'alert' => 'alert-info',
+					'message' => 'Verifique su información'
+				]);
 			} else {
 				$c1 = ""; $m1 = "";
 				$c2 = ""; $m2 = "";
@@ -61,6 +112,7 @@
 				$c8 = ""; $m8 = "";
 				$c9 = ""; $m9 = "";
 				$c10 = ""; $m10 = "";
+				$c11 = ""; $m11 = "";
 				
 				if ($name == '') {
 					$c1 = 'is-invalid';
@@ -112,6 +164,11 @@
 					$m10 = 'Ingrese un numero exterior';
 				}
 
+				if ($vendor == '') {
+					$c11 = 'is-invalid';
+					$m11 = 'Ingrese un proveedor';
+				}
+
 				$this->errors([
 					'c1' => $c1, 'm1' => $m1,
 					'c2' => $c2, 'm2' => $m2,
@@ -123,7 +180,9 @@
 					'c8' => $c8, 'm8' => $m8,
 					'c9' => $c9, 'm9' => $m9,
 					'c10' => $c10, 'm10' => $m10,
+					'c11' => $c11, 'm11' => $m11,
 
+					'vendor'  => $vendor,
 					'name'  => $name,
 					'email'  => $email . ',' . $email2,
 					'telephone'  => $telephone . ',' . $telephone2,
@@ -135,10 +194,7 @@
 					'message' => 'Verifique su información'
 				]);
 			}
-			$this->view->title = "Proveedores";
-			$this->getStates();
-			$this->view->render('admin/vendors/show');
-
+			$this->getVendors();
 		}
 
 		function getStates()
@@ -147,6 +203,89 @@
 			$state = new StatesModel();
 			$states = $state->getStates();
 			$this->view->states = $states;
+		}
+
+		function getVendors()
+		{
+			$this->getStates();
+			$vendors = $this->model->getVendors();
+			$this->view->vendors = $vendors;
+			$this->view->title = "Proveedores";
+			$this->view->render('admin/vendors/show');
+		}
+
+		function store()
+		{
+			$this->validation();
+
+			$id_vendor = isset($_GET['id']) ? $_GET['id'] : '';
+
+			if (is_numeric($id_vendor) && $id_vendor > 0) {
+				$vendor = $this->model->store($id_vendor);
+
+				if (sizeof($vendor) == 0) {
+					$this->errorMessage();
+				} else {
+					$this->errors([]);
+					$this->view->title = "Editar proveedor";
+					$this->view->vendors = $vendor;
+					$this->view->render('admin/vendors/edit');
+					return false;
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getVendors();
+		}
+
+		function edit()
+		{
+			$this->validation();
+
+			$id_vendor = isset($_POST['id_vendor']) ? $_POST['id_vendor'] : '';
+			$id_direcction		 = isset($_POST['id_direcction']) ? $_POST['id_direcction'] : '';
+			$vendor = isset($_POST['vendor']) ? preg_replace('/\s\s+/', ' ', trim($_POST['vendor'])) : '';
+			$name = isset($_POST['name']) ? preg_replace('/\s\s+/', ' ', trim($_POST['name'])) : '';
+			$email2 = isset($_POST['email2']) ? preg_replace('/\s\s+/', ' ', trim($_POST['email2'])) : '';
+			$telephone2 = isset($_POST['telephone2']) ? $_POST['telephone2'] : '';
+			$street = isset($_POST['street']) ? preg_replace('/\s\s+/', ' ', trim($_POST['street'])) : '';
+			$inside = isset($_POST['inside']) ? $_POST['inside'] : '';
+			$outside = isset($_POST['outside']) ? $_POST['outside'] : '';
+
+			if (is_numeric($id_vendor) && $id_vendor > 0 && $id_direcction) && $id_direcction > 0 && $vendor != "" && $name != "" && $street != "" $$ is_numeric($inside) && $inside > 0 && is_numeric($outside) && $outside > 0) {
+				if ($this->model->edit($id_direcction, $id_vendor, $vendor, $name, $email2, $telephone2, $street, $inside, $outside)) {
+					$this->errors([
+						'alert' => 'alert-success',
+						'message' => 'Informacion actualizada exitosamente'
+					]);
+				} else {
+					$this->errorMessage();
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getVendors();
+		}
+
+		function delete()
+		{
+			$this->validation();
+
+			$id_vendor = isset($_GET['id']) ? $_GET['id'] : '';
+
+			if (is_numeric($id_vendor) && $id_vendor > 0) {
+				if ($this->model->delete($id_vendor)) {
+					$this->errors([
+						'alert' => 'alert-success',
+						'message' => 'Proveedor eliminado exitosamente'
+					]);
+				} else {
+					$this->errorMessage();
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getVendors();
 		}
 
 		function validation()
@@ -198,7 +337,10 @@
 			$m9 = isset($error['m9']) ? $error['m9'] : "";
 			$c10 = isset($error['c10']) ? $error['c10'] : "";
 			$m10 = isset($error['m10']) ? $error['m10'] : "";
+			$c11 = isset($error['c11']) ? $error['c11'] : "";
+			$m11 = isset($error['m11']) ? $error['m11'] : "";
 
+			$vendor = isset($error['vendor']) ? $error['vendor'] : "";
 			$name = isset($error['name']) ? $error['name'] : "";
 			$email = isset($error['email']) ? $error['email'] : "";
 			$telephone = isset($error['telephone']) ? $error['telephone'] : "";
@@ -220,7 +362,9 @@
 				'c8' => $c8, 'm8' => $m8,
 				'c9' => $c9, 'm9' => $m9,
 				'c10' => $c10, 'm10' => $m10,
+				'c11' => $c11, 'm11' => $m11,
 
+				'vendor'  => $vendor,
 				'name'  => $name,
 				'email'  => $email,
 				'telephone'  => $telephone,

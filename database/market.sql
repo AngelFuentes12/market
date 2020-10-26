@@ -445,11 +445,12 @@ CREATE TABLE products_store(id_product_store INT AUTO_INCREMENT PRIMARY KEY,
     Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
 
 CREATE TABLE vendors(id_vendor INT AUTO_INCREMENT PRIMARY KEY,
-    vendor CHAR(13) UNIQUE NOT NULL,
-    telephone1 CHAR(10) UNIQUE NOT NULL,
+    vendor VARCHAR(30) NOT NULL,
+    name VARCHAR(30) NOT NULL,
     email1 VARCHAR(60) UNIQUE NOT NULL,
-    telephone2 CHAR(10) UNIQUE,
-    email2 VARCHAR(60) UNIQUE)
+    telephone1 CHAR(10) UNIQUE NOT NULL,
+    email2 VARCHAR(60),
+    telephone2 CHAR(10))
     Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
 
 CREATE TABLE vendors_direcctions(id_vendor_direcction INT AUTO_INCREMENT PRIMARY KEY,

@@ -5,7 +5,7 @@
         <section class="">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-12 form-color p-4 shadow-sm">
+                    <div class="col-12 col-md-8 form-color p-4 shadow-sm">
                         <h4 class="pb-1">Municipios</h4>
                         <div class="row mb-3">
                             <div class="col-xl-12 col-lg-13">
@@ -108,14 +108,22 @@
                             </label>
 
                             <select id="state" class="form-control <?= $this->error['c1']; ?>" name="id_state" required>
-                                <option selected>Seleccionar...</option>
+                                <option selected disabled value="">Seleccionar...</option>
                                 <?php 
                                     require_once 'models/admin/state.php';
                                     foreach ($this->states as $row): 
                                         $state = new State();
                                         $state = $row;
                                 ?>
-                                <option value="<?= $state->id_state; ?>"><?= $state->state; ?></option>
+                                <?php if ($this->error['id_state'] == $state->id_state): ?>
+                                <option selected value="<?= $state->id_state; ?>">
+                                    <?= $state->state; ?>
+                                </option>   
+                                <?php else: ?>
+                                <option value="<?= $state->id_state; ?>">
+                                    <?= $state->state; ?>
+                                </option>   
+                                <?php endif ?>
                                 <?php endforeach ?>
                             </select>
 
@@ -125,7 +133,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="municipality">Estado <span style="color: red;">*</span>
+                            <label for="municipality">
+                                Municipio <span style="color: red;">*</span>
                             </label>
 
                             <input id="municipality" type="text" value="<?= $this->error['municipality']; ?>" name="municipality" class="form-control <?= $this->error['c2']; ?>" maxlength="40" minlength="4" required>

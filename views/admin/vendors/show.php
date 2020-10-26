@@ -19,15 +19,15 @@
                                                 </th>
 
                                                 <th scope="col">
-                                                    <small class="font-weight-bold">Estatus</small>
+                                                    <small class="font-weight-bold">Nombre</small>
                                                 </th>
 
                                                 <th scope="col">
-                                                    <small class="font-weight-bold">#</small>
+                                                    <small class="font-weight-bold">Telefonos</small>
                                                 </th>
 
                                                 <th scope="col">
-                                                    <small class="font-weight-bold">Telefono</small>
+                                                    <small class="font-weight-bold">Direccion</small>
                                                 </th>
 
                                                 <th scope="col">
@@ -41,51 +41,60 @@
                                         </thead>
 
                                         <tbody>
+                                            <?php 
+                                                require_once 'models/admin/vendor.php';
+                                                foreach ($this->vendors as $row):
+                                                    $vendor = new Vendor();
+                                                    $vendor = $row; 
+                                            ?>
                                             <tr>
                                                 <td>
-                                                    <span class="d-block">Danile H.</span>
-                                                    <small class="text-muted">daniela@motorola.com</small>
+                                                    <span class="d-block"><?= $vendor->vendor; ?></span>
+                                                </td>
+
+                                                <td>
+                                                    <span class="d-block"><?= $vendor->name; ?></span>
+                                                    <small class="text-muted">
+                                                        <?= $vendor->email1; ?>
+                                                    </small>
+
+                                                    <?php if ($vendor->email2 != ''): ?>
+                                                    <small class="text-muted">
+                                                        <?= $vendor->email2; ?>
+                                                    </small>    
+                                                    <?php endif ?>
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <span class="status-span badge-primary badge-active">
-                                                        Activo
+                                                    <p class="status-span badge-secondary text-secondary">
+                                                        <?= $vendor->telephone1; ?>
+                                                    </p>
+                                                    <?php if ($vendor->telephone2 != ''): ?>
+                                                    <p class="status-span badge-secondary text-secondary">
+                                                        <?= $vendor->telephone2; ?>
+                                                    </p>    
+                                                    <?php endif ?>
+                                                </td>
+
+                                                <td class="align-middle">
+                                                    <span class="d-block">
+                                                        <?= $vendor->direcction; ?>
                                                     </span>
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="#" class="status-span badge-primary badge-activo">
-                                                        <i class="fas fa-arrow-down"></i>
-                                                    </a>
-                                                </td>
-
-                                                <td class="align-middle">
-                                                    <a href="#" class="status-span badge-secondary text-secondary">
-                                                        5545343673
-                                                    </a>
-                                                </td>
-
-                                                <td class="align-middle">
-                                                    <a href="#" class="status-span badge-primary badge-delete">
+                                                    <a href="<?= constant('URL'); ?>vendors/delete?id=<?= $vendor->id_vendor; ?>" class="status-span badge-primary badge-delete">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </a>
                                                 </td>
 
                                                 <td class="align-middle">
-                                                    <a href="#" class="status-span badge-secondary">
+                                                    <a href="<?= constant('URL'); ?>vendors/store?id=<?= $vendor->id_vendor; ?>" class="status-span badge-secondary">
                                                         Editar <i class="fas fa-cog"></i>
                                                     </a>
                                                 </td>
                                             </tr>
-
-                                            <tr class="">
-                                                <td><span class="d-block">Andrea S.</span><small class="text-muted">andrea@samsung.com</small></td>
-                                                <td class="align-middle"><span class="status-span badge-primary badge-delete">desactivado</span></td>
-                                                <td class="align-middle"><a href="#" class="status-span badge-primary badge-active"><i class="fas fa-arrow-up"></i></a></td>
-                                                <td class="align-middle"><a href="#" class="status-span badge-secondary text-secondary">5545343673</a></td>
-                                                <td class="align-middle"><a href="#" class="status-span badge-primary badge-delete"><i class="fas fa-trash-alt"></i></a></td>
-                                                <td class="align-middle"><a href="#" class="status-span badge-secondary">Editar <i class="fas fa-cog"></i></a></td>
-                                            </tr>
+                                            <?php endforeach ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -119,6 +128,18 @@
                         Los campos marcados con un <small style="color: red;">*</small> son obligatorios
                     </p>
                     <form method="POST" action="<?= constant('URL'); ?>vendors/register">
+                        <div class="form-group">
+                            <label for="vendor">
+                                Proveedor <span style="color: red;">*</span>
+                            </label>
+
+                            <input id="vendor" type="text" value="<?= $this->error['vendor']; ?>" name="vendor" class="form-control <?= $this->error['c11']; ?>" minlength="3" maxlength="30" required>
+
+                            <div class="invalid-feedback">
+                                <?= $this->error['m11']; ?>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="name">
                                 Nombre <span style="color: red;">*</span>
@@ -167,7 +188,7 @@
                             </label>
                             
                             <select id="state" class="form-control <?= $this->error['c4']; ?>" name="id_state" required>
-                                <option selected>Seleccionar...</option>
+                                <option selected disabled value="">Seleccionar...</option>
                                 <?php 
                                     require_once 'models/admin/state.php';
                                     foreach ($this->states as $row): 
@@ -190,7 +211,7 @@
 
                             <div id="municipalities">
                                 <select id="municipality" class="form-control <?= $this->error['c5']; ?>" name="id_municipality" required>
-                                    <option selected>Seleccionar...</option>
+                                    <option selected disabled value="">Seleccionar...</option>
                                 </select>
 
                                 <div class="invalid-feedback">
@@ -206,7 +227,7 @@
 
                             <div id="colonies">
                                 <select id="colony" class="form-control <?= $this->error['c6']; ?>" name="id_colony" required>
-                                    <option selected>Seleccionar...</option>
+                                    <option selected disabled value="">Seleccionar...</option>
                                 </select>
 
                                 <div class="invalid-feedback">
@@ -222,7 +243,7 @@
 
                             <div id="postcodes">
                                 <select id="postcode" class="form-control <?= $this->error['c7']; ?>" name="id_postcode" required>
-                                    <option selected>Seleccionar...</option>
+                                    <option selected disabled value="">Seleccionar...</option>
                                 </select>
 
                                 <div class="invalid-feedback">

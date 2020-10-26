@@ -41,6 +41,7 @@
 							'c2' => 'is-invalid',
 							'm2' => 'Este municipio ya fue registrado',
 							'municipality' => $municipality,
+							'id_state' => $id_state,
 							'alert' => 'alert-info',
 							'message' => 'Verifique su información'
 						]);
@@ -125,7 +126,7 @@
 			} else {
 				$this->errorMessage();
 			}
-			$this->getStates();
+			$this->getMunicipalities();
 		}
 
 		function delete()
@@ -194,6 +195,7 @@
 			$c2 = isset($error['c2']) ? $error['c2'] : '';
 			$m2 = isset($error['m2']) ? $error['m2'] : '';
 
+			$id_state = isset($error['id_state']) ? $error['id_state'] : '';
 			$municipality = isset($error['municipality']) ? $error['municipality'] : '';
 
 			$alert = isset($error['alert']) ? $error['alert'] : '';
@@ -202,6 +204,7 @@
 			$this->view->error = [
 				'c1' => $c1, 'm1' => $m1,
 				'c2' => $c2, 'm2' => $m2,
+				'id_state' => $id_state,
 				'municipality' => $municipality,
 				'alert' => $alert, 'message' => $message
 			];

@@ -130,14 +130,14 @@
                             </label>
 
                             <select id="state" class="form-control <?= $this->error['c1']; ?>" name="id_state" required>
-                                <option selected>Seleccionar...</option>
+                                <option selected disabled value="">Seleccionar...</option>
                                 <?php 
                                     require_once 'models/admin/state.php';
                                     foreach ($this->states as $row): 
                                         $state = new State();
                                         $state = $row;
                                 ?>
-                                <option value="<?= $state->id_state; ?>"><?= $state->state; ?></option>
+                                <option value="<?= $state->id_state; ?>"><?= $state->state; ?></option>    
                                 <?php endforeach ?>
                             </select>
 
@@ -153,7 +153,7 @@
 
                             <div id="municipalities">
                                 <select id="municipality" class="form-control <?= $this->error['c2']; ?>" name="id_municipality" required>
-                                    <option selected>Seleccionar...</option>
+                                    <option selected disabled value="">Seleccionar...</option>
                                 </select>
                             </div>
 
@@ -169,7 +169,7 @@
 
                             <div id="colonies">
                                 <select id="colony" class="form-control <?= $this->error['c3']; ?>" name="id_colony" required>
-                                    <option selected>Seleccionar...</option>
+                                    <option selected disabled value="">Seleccionar...</option>
                                 </select>
                             </div>
 
