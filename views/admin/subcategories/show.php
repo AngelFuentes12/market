@@ -122,7 +122,7 @@
                                 <option selected>Seleccionar...</option>
                                 <?php 
                                     require_once 'models/admin/category.php';
-                                    foreach ($this->categorys as $row): 
+                                    foreach ($this->categories as $row): 
                                         $category = new Category();
                                         $category = $row;
                                 ?>

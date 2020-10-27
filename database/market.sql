@@ -132,12 +132,6 @@ CREATE TABLE clients_direcctions(id_client_direcction INT AUTO_INCREMENT PRIMARY
     ON DELETE CASCADE ON UPDATE CASCADE)
     Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
 
-CREATE TABLE products(id_product INT AUTO_INCREMENT PRIMARY KEY,
-    product VARCHAR(60) UNIQUE NOT NULL,
-    cost FLOAT(5,2) NOT NULL,
-    description VARCHAR(300) NOT NULL)
-    Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
-
 CREATE TABLE categories(id_category INT AUTO_INCREMENT PRIMARY KEY,
     category VARCHAR(60) UNIQUE NOT NULL)
     Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
@@ -445,16 +439,24 @@ INSERT INTO `categories_subcategories` (`id_category_subcategory`, `id_category`
 (134, 16, 132),
 (135, 16, 133);
 
-
-CREATE TABLE store(id_store INT AUTO_INCREMENT PRIMARY KEY,
-    date_entry DATETIME NOT NULL,
-    date_exit DATETIME NOT NULL)
-    Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
-
 CREATE TABLE images(id_image INT AUTO_INCREMENT PRIMARY KEY,
     image VARCHAR(60) NOT NULL,
     type ENUM('slider', 'product') NOT NULL,
     status INT(1) NOT NULL)
+    Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
+
+CREATE TABLE products(id_product INT AUTO_INCREMENT PRIMARY KEY,
+    product VARCHAR(60) UNIQUE NOT NULL,
+    cost FLOAT(5,2) NOT NULL,
+    description VARCHAR(300) NOT NULL)
+    Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
+
+CREATE TABLE store(id_store INT AUTO_INCREMENT PRIMARY KEY,
+    id_product INT,
+    FOREIGN KEY (id_product) REFERENCES products (id_product)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    amount INT(5),
+    date_entry DATETIME NOT NULL)
     Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
 
 CREATE TABLE products_categories_subcategories(id_product_category_subcategory INT AUTO_INCREMENT PRIMARY KEY,
@@ -469,15 +471,6 @@ CREATE TABLE products_categories_subcategories(id_product_category_subcategory I
     ON DELETE CASCADE ON UPDATE CASCADE)
     Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
 
-CREATE TABLE products_store(id_product_store INT AUTO_INCREMENT PRIMARY KEY,
-    id_product INT,
-    FOREIGN KEY (id_product) REFERENCES products (id_product)
-    ON DELETE CASCADE ON UPDATE CASCADE,
-    id_store INT,
-    FOREIGN KEY (id_store) REFERENCES store (id_store)
-    ON DELETE CASCADE ON UPDATE CASCADE)
-    Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
-
 CREATE TABLE vendors(id_vendor INT AUTO_INCREMENT PRIMARY KEY,
     vendor VARCHAR(30) NOT NULL,
     name VARCHAR(30) NOT NULL,
@@ -485,6 +478,15 @@ CREATE TABLE vendors(id_vendor INT AUTO_INCREMENT PRIMARY KEY,
     telephone1 CHAR(10) UNIQUE NOT NULL,
     email2 VARCHAR(60),
     telephone2 CHAR(10))
+    Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
+
+CREATE TABLE vendors_products(id_vendor_product INT AUTO_INCREMENT PRIMARY KEY,
+    id_vendor INT,
+    FOREIGN KEY (id_vendor) REFERENCES vendors (id_vendor)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    id_product INT,
+    FOREIGN KEY (id_product) REFERENCES products (id_product)
+    ON DELETE CASCADE ON UPDATE CASCADE)
     Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
 
 CREATE TABLE vendors_direcctions(id_vendor_direcction INT AUTO_INCREMENT PRIMARY KEY,

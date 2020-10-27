@@ -195,7 +195,6 @@
 
 		function getMunicipalities()
 		{
-			
 			$id_state = isset($_POST['id_state']) ? $_POST['id_state'] : '';
 
 			require_once 'models/admin/municipalitiesModel.php';

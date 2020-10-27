@@ -170,13 +170,31 @@
 		{
 			require_once 'models/admin/categoriesModel.php';
 			$category = new CategoriesModel();
-			$categorys = $category->getCategories();
-			$this->view->categorys = $categorys;
+			$categories = $category->getCategories();
+			$this->view->categories = $categories;
 
 			$this->view->title = "Subcategorias";
 			$subcategories = $this->model->getSubcategories();
 			$this->view->subcategories = $subcategories;
 			$this->view->render('admin/subcategories/show');
+		}
+
+		function getSubcategoriesSpecific()
+		{
+			$id_category = isset($_POST['id_category']) ? $_POST['id_category'] : '';
+			$subcategories = $this->model->getSubcategoriesSpecific($id_category);
+			
+			$data = '<select id="subcategory" class="form-control" name="id_subcategory" required>';
+			$data .= "<option selected disabled value=''>Seleccionar...</option>";
+			require_once 'models/admin/subcategory.php';
+			foreach ($subcategories as $row) {
+				$subcategory = new Subcategory();
+				$subcategory = $row;
+
+				$data .= '<option value="'.$subcategory->id_subcategory.'">'.$subcategory->subcategory.'</option>';
+			}
+			$data .= '</select>';
+			echo $data;
 		}
 
 		function errorMessage()

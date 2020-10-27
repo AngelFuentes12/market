@@ -35,6 +35,28 @@
 			}
 		}
 
+		function getSubcategoriesSpecific($id_category)
+		{
+			$items = [];
+			$query = $this->db->connection()->prepare("SELECT subcategories.id_subcategory, subcategory FROM categories NATURAL JOIN categories_subcategories NATURAL JOIN subcategories WHERE id_category = :id_category");
+
+			try {
+				$query->execute(['id_category' => $id_category]);
+
+				while ($row = $query->fetch()) {
+					$item = new Subcategory();
+					$item->id_subcategory = $row['id_subcategory'];
+					$item->subcategory = $row['subcategory'];
+
+					array_push($items, $item);
+				}
+
+				return $items;
+			} catch (PDOException $e) {
+				return [];
+			}
+		}
+
 		function register($id_category, $subcategory)
 		{
 			$case = "";

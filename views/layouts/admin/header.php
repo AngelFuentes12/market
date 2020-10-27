@@ -50,12 +50,6 @@
                 </a>
 
                 <div class="dropdown">
-                    <!-- <button class="list-group-item list-group-item-action dropdown-toggle" type="button" id="direcciones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-road"></i>
-                        <small class="pl-4 text-muted">Direcciones</small>
-
-                        *SI LA INFO ESTA BIEN DE CLASSES Y ID Y DEMAS BORRA ESTO
-                    </button> -->
                     <a class="list-group-item list-group-item-action text-muted" href="#" id="dropdownProducts" id="direcciones" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-road"></i>
                         <small class="pl-4 text-muted">Direcciones</small>
@@ -93,6 +87,11 @@
                 <a href="<?= constant('URL'); ?>subcategories" class="list-group-item list-group-item-action">
                     <i class="fas fa-chevron-circle-down"></i>
                     <small class="pl-4 text-muted">Subcategorías</small>
+                </a>
+
+                <a href="<?= constant('URL'); ?>store" class="list-group-item list-group-item-action">
+                    <i class="fas fa-store"></i>
+                    <small class="pl-4 text-muted">Almacen</small>
                 </a>
 
                 <a href="<?= constant('URL'); ?>vendors" class="list-group-item list-group-item-action">
