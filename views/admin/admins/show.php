@@ -7,14 +7,8 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-12 form-color p-4 shadow-sm">
                         <div class="row mb-3">
-                            <div class="col-10">
+                            <div class="col-11">
                                 <h4 class="pb-1">Administradores</h4>
-                            </div>
-
-                            <div class="col-1">
-                                <a href="#" class="btn btn-secondary">
-                                    <i class="fas fa-file-download"></i>
-                                </a>
                             </div>
 
                             <div class="col-1">

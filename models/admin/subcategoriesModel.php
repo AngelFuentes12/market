@@ -50,7 +50,7 @@
 				$query_val->execute(['subcategory' => $subcategory]);
 
 				$row_val = $query_val->fetch();
-				if ($row_val['id_subcategory'] > 0) {
+				if (isset($row_val['id_subcategory']) && $row_val['id_subcategory'] > 0) {
 					$query_ver->execute([
 						'id_category' => $id_category,
 						'subcategory' => $subcategory
@@ -58,7 +58,7 @@
 
 					$row_ver = $query_ver->fetch();
 
-					if ($row_ver['id_subcategory'] > 0) {
+					if (isset($row_ver['id_subcategory']) && $row_ver['id_subcategory'] > 0) {
 						$case = "subcategory";
 					} else {
 						$query_id->execute(['subcategory' => $subcategory]);
@@ -79,7 +79,7 @@
 
 					$row_ver = $query_ver->fetch();
 
-					if ($row_ver['id_subcategory'] > 0) {
+					if (isset($row_val['id_subcategory']) &&$row_ver['id_subcategory'] > 0) {
 						$case = "subcategory";
 					} else {
 						$query_max->execute();

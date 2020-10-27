@@ -155,7 +155,7 @@
 
 				$row = $query_val->fetch();
 
-				if ($row['id_user' > 0]) {
+				if (isset($row['id_user']) && $row['id_user'] > 0) {
 					$case = "email";
 				} else {
 					$query->execute([
@@ -167,7 +167,7 @@
 					$query_ver->execute(['email' => $email]);
 						
 					$row_ver = $query_ver->fetch();
-					if ($row_ver['id_verification'] != "") {
+					if (isset($row_ver['id_verification']) && $row_ver['id_verification'] != "") {
 						$query_upd->execute(['id_verification' => $row_ver['id_verification']]);
 
 						$query_reg->execute([

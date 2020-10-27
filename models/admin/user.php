@@ -5,11 +5,10 @@
 	 */
 	class User 
 	{
-		public $id_cliente;
-		public $cliente;
+		public $id_user;
 		public $rfc;
-		public $contrapass;
-		public $nevel;
+		public $name;
+		public $email;
 		public $status;
 	}
 

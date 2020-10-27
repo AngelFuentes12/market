@@ -44,7 +44,7 @@
 				$query_val->execute(['category' => $category]);
 
 				$row = $query_val->fetch();
-				if ($row['id_category'] > 0) {
+				if (isset($row['id_category']) && $row['id_category'] > 0) {
 					$case = "category";
 				} else {
 					$query->execute(['category' => $category]);

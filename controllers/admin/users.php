@@ -17,8 +17,38 @@
 			$this->validation();
 
 			$this->errors([]);
-			$this->view->title = "Usuarios";
-			$this->view->render('admin/users/show');
+			$this->getUsers();
+		}
+
+		function status()
+		{
+			$this->validation();
+
+			$id_user = isset($_GET['id']) ? $_GET['id'] : '';
+			$status = isset($_GET['status']) ? $_GET['status'] : '';
+
+			if (is_numeric($id_user) && $id_user > 0) {
+				if ($status == 1 || $status == 3) {
+					switch ($this->model->changeStatus($id_user, $status)) {
+						case 'success':
+							$this->errors([
+								'alert' => 'alert-success',
+								'message' => 'Estatus cambiado exitosamente'
+							]);
+							break;
+
+						case 'fail':
+						default:
+							$this->errorMessage();
+							break;
+					}
+				} else {
+					$this->errorMessage();
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getUsers();	
 		}
 
 		function validation()
@@ -38,6 +68,14 @@
 					$this->view->render('admin/index');
 				}
 			}
+		}
+
+		function getUsers()
+		{
+			$this->view->title = "Clientes";
+			$users = $this->model->getUsers();
+			$this->view->users = $users;
+			$this->view->render('admin/users/show');
 		}
 
 		function errorMessage()
