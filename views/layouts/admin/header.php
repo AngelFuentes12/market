@@ -89,7 +89,7 @@
                     <small class="pl-4 text-muted">Subcategorías</small>
                 </a>
 
-                <a href="<?= constant('URL'); ?>store" class="list-group-item list-group-item-action">
+                <a href="<?= constant('URL'); ?>stores" class="list-group-item list-group-item-action">
                     <i class="fas fa-store"></i>
                     <small class="pl-4 text-muted">Almacen</small>
                 </a>

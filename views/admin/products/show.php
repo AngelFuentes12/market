@@ -26,6 +26,18 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">
+                                                    <small class="font-weight-bold">Subcategoria</small>
+                                                </th>
+
+                                                <th scope="col">
+                                                    <small class="font-weight-bold">Proveedor</small>
+                                                </th>
+
+                                                <th scope="col">
+                                                    <small class="font-weight-bold">Contacto</small>
+                                                </th>
+
+                                                <th scope="col">
                                                     <small class="font-weight-bold">Producto</small>
                                                 </th>
 
@@ -38,38 +50,81 @@
                                                 </th>
 
                                                 <th scope="col">
+                                                    <small class="font-weight-bold">Imagen<small>
+                                                </th>
+
+                                                <th scope="col">
                                                     <small class="font-weight-bold">Eliminar<small>
                                                 </th>
 
                                                 <th scope="col">
-                                                    <small class="font-weight-bold">Configuración<small>
+                                                    <small class="font-weight-bold">Opcion<small>
                                                 </th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
+                                            <?php 
+                                                require_once 'models/admin/product.php';
+                                                foreach ($this->products as $row): 
+                                                    $product = new Product();
+                                                    $product = $row;
+                                            ?>    
                                             <tr>
-                                                <td>
-                                                	<span></span>
+                                                <td class="align-middle">
+                                                	<span class="d-block">
+                                                        <?= $product->subcategory; ?>
+                                                    </span>
                                                 </td>
 
-                                                <td>
-                                                	<span></span>
+                                                <td class="align-middle">
+                                                    <span class="d-block">
+                                                        <?= $product->vendor; ?>
+                                                    </span>
                                                 </td>
 
-                                                <td>
-                                                	<span></span>
+                                                <td class="align-middle">
+                                                    <span class="d-block"><?= $product->name; ?></span>
+                                                    <small class="text-muted">
+                                                        <?= $product->email1; ?>
+                                                    </small>
                                                 </td>
 
-                                                <td>
-                                                	<span></span>
+                                                <td class="align-middle">
+                                                	<span class="d-block">
+                                                        <?= $product->product; ?>
+                                                    </span>
                                                 </td>
 
-                                                <td>
-                                                	<span></span>
+                                                <td class="align-middle">
+                                                	<span class="d-block">
+                                                        <?= $product->cost; ?>
+                                                    </span>
                                                 </td>
 
+                                                <td class="align-middle">
+                                                	<span class="d-block">
+                                                        <?= $product->description; ?>
+                                                    </span>
+                                                </td>
+
+                                                <td class="align-middle">
+                                                	<img src="<?= constant('PRO'); ?><?= $product->image; ?>" alt="<?= $product->product; ?>" class="d-block mx-auto w-100">
+                                                </td>
+
+                                                <td class="align-middle">
+                                                    <a href="<?= constant('URL'); ?>products/delete?id=<?= $product->id_product; ?>" class="status-span badge-primary badge-delete">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
+                                                </td>
+
+                                                <td class="align-middle">
+                                                   <a href="<?= constant('URL'); ?>products/store?id=<?= $product->id_product; ?>" class="status-span badge-secondary">
+                                                        Editar <i class="fas fa-cog"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
+                                            <?php endforeach ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -108,7 +163,7 @@
                                 Categoria <span style="color: red;">*</span>
                             </label>
                             
-                            <select id="category" class="form-control <?= $this->error['c1']; ?>" name="id_category" required>
+                            <select id="category" class="form-control <?= $this->error['c1']; ?>" name="id_category" >
                                 <option selected disabled value="">Seleccionar...</option>
                                 <?php 
                                     require_once 'models/admin/category.php';
@@ -131,7 +186,7 @@
                             </label>
 
                             <div id="subcategories">
-                                <select id="subcategory" class="form-control <?= $this->error['c2']; ?>" name="id_subcategory" required>
+                                <select id="subcategory" class="form-control <?= $this->error['c2']; ?>" name="id_subcategory" >
                                     <option selected disabled value="">Seleccionar...</option>
                                 </select>
 
@@ -146,7 +201,7 @@
                                 Proveedor <span style="color: red;">*</span>
                             </label>
                             
-                            <select id="vendor" class="form-control <?= $this->error['c3']; ?>" name="id_vendor" required>
+                            <select id="vendor" class="form-control <?= $this->error['c3']; ?>" name="id_vendor" >
                                 <option selected disabled value="">Seleccionar...</option>
                                 <?php 
                                     require_once 'models/admin/vendor.php';
@@ -170,7 +225,7 @@
                                 Nombre del producto <span style="color: red;">*</span>
                             </label>
 
-                            <input id="product" type="text" value="<?= $this->error['product']; ?>" name="product" class="form-control <?= $this->error['c4']; ?>" minlength="3" maxlength="30" required>
+                            <input id="product" type="text" value="<?= $this->error['product']; ?>" name="product" class="form-control <?= $this->error['c4']; ?>" minlength="3" maxlength="30" >
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m4']; ?>
@@ -182,7 +237,7 @@
                                 Costo <span style="color: red;">*</span>
                             </label>
 
-                            <input id="cost" type="text" value="<?= $this->error['cost']; ?>" name="cost" class="form-control <?= $this->error['c5']; ?>" minlength="1" maxlength="5" required>
+                            <input id="cost" type="text" value="<?= $this->error['cost']; ?>" name="cost" class="form-control <?= $this->error['c5']; ?>" minlength="1" maxlength="5" >
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m5']; ?>
@@ -194,7 +249,7 @@
                                 Descripcion <span style="color: red;">*</span>
                             </label>
 
-                            <textarea id="description" class="form-control <?= $this->error['c6']; ?>" name="description" value="<?= $this->error['description']; ?>" required></textarea>
+                            <textarea id="description" class="form-control <?= $this->error['c6']; ?>" name="description" ><?= $this->error['description']; ?></textarea>
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m6']; ?>
@@ -206,7 +261,7 @@
                                 Imagen <span style="color: red;">*</span>
                             </label>
 
-                            <input id="image" type="file" class="form-control <?= $this->error['c7']; ?>" name="image[]" >
+                            <input id="image" type="file" class="form-control <?= $this->error['c7']; ?>" name="image" >
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m7']; ?>

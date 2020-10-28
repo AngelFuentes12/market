@@ -447,7 +447,7 @@ CREATE TABLE images(id_image INT AUTO_INCREMENT PRIMARY KEY,
 
 CREATE TABLE products(id_product INT AUTO_INCREMENT PRIMARY KEY,
     product VARCHAR(60) UNIQUE NOT NULL,
-    cost FLOAT(5,2) NOT NULL,
+    cost FLOAT(9,2) NOT NULL,
     description VARCHAR(300) NOT NULL)
     Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
 

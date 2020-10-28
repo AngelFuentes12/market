@@ -17,10 +17,7 @@
 			$this->validation();
 
 			$this->errors([]);
-			$this->getCategories();
-			$this->getVendors();
-			$this->view->title = "Productos";
-			$this->view->render('admin/products/show');
+			$this->getProducts();
 		}
 
 		function register()
@@ -31,9 +28,132 @@
 			$product = isset($_POST['product']) ? preg_replace('/\s\s+/', ' ', trim($_POST['product'])) : '';
 			$cost = isset($_POST['cost']) ? $_POST['cost'] : '';
 			$description = isset($_POST['description']) ? preg_replace('/\s\s+/', ' ', trim($_POST['description'])) : '';
-			$image = "";
 
-			echo "$id_category  $id_subcategory $id_vendor $product $cost $description" ;
+			$file = $_FILES['image'];
+			$image = "";
+			$type = $file['type'];
+			$url = $file['tmp_name'];
+	        $folder = 'resources/images/products/';
+	        $src = "";
+
+			if ($type == 'image/jpg' || $type == 'image/jpeg' || $type == 'image/png' || $type == 'image/gif'){
+	           $image = $file['name'];
+	           $src = $folder.$image;
+	        }
+
+	        if (is_numeric($id_category) && $id_category > 0 && is_numeric($id_subcategory) && $id_subcategory > 0 && is_numeric($id_vendor) && $id_vendor > 0 && $product != '' && is_numeric($cost) && $cost > 0 && $description != '' && $image != '') {
+	        	switch ($this->model->register($id_category, $id_subcategory, $id_vendor, $product, $cost, $description, $image)) {
+	        		case 'register':
+	        			move_uploaded_file($url, $src);
+        				$this->errors([
+        					'alert' => 'alert-success',
+        					'message' => 'Producto registrado exitosamente'
+        				]);
+	        			break;
+
+	        		case 'product':
+	        			$this->errors([
+	        				'c4' => 'is-invalid',
+	        				'm4' => 'Este producto ya fue registrado',
+
+	        				'product' => $product,
+	        				'cost' => $cost,
+	        				'description' => $description,
+
+        					'alert' => 'alert-info',
+        					'message' => 'Verifique su información'
+        				]);
+	        			break;
+
+	        		case '':
+	        		default:
+	        			$this->errorMessage();
+	        			break;
+	        	}
+	        } else {
+	        	$c1 = ""; $m1 = "";
+	        	$c2 = ""; $m2 = "";
+	        	$c3 = ""; $m3 = "";
+	        	$c4 = ""; $m4 = "";
+	        	$c5 = ""; $m5 = "";
+	        	$c6 = ""; $m6 = "";
+	        	$c7 = ""; $m7 = "";
+
+	        	if (!is_numeric($id_category)) {
+	        		$c1 = "is-invalid";
+	        		$m1 = "Seleccione una categoria";
+	        	}
+
+	        	if (!is_numeric($id_subcategory)) {
+	        		$c2 = "is-invalid";
+	        		$m2 = "Seleccione una subcategoria";
+	        	}
+
+	        	if (!is_numeric($id_vendor)) {
+	        		$c3 = "is-invalid";
+	        		$m3 = "Seleccione un proveedor";
+	        	}
+
+	        	if ($product == "") {
+	        		$c4 = "is-invalid";
+	        		$m4 = "Ingrese un producto";
+	        	}
+
+	        	if ($cost == "") {
+	        		$c5 = "is-invalid";
+	        		$m5 = "Ingrese un costo";
+	        	}
+
+	        	if ($description == "") {
+	        		$c6 = "is-invalid";
+	        		$m6 = "Ingrese una descripcion";
+	        	}
+
+	        	if ($image == "") {
+	        		$c7 = "is-invalid";
+	        		$m7 = "Seleccione un formato de imagen valido";
+	        	}
+
+	        	$this->errors([
+	        		'c1' => $c1, 'm1' => $m1,
+	        		'c2' => $c2, 'm2' => $m2,
+	        		'c3' => $c3, 'm3' => $m3,
+	        		'c4' => $c4, 'm4' => $m4,
+	        		'c5' => $c5, 'm5' => $m5,
+	        		'c6' => $c6, 'm6' => $m6,
+	        		'c7' => $c7, 'm7' => $m7,
+
+	        		'product' => $product,
+	        		'cost' => $cost,
+	        		'description' => $description,
+
+	        		'alert' => 'alert-info',
+	        		'message' => 'Verifique su información'
+
+	        	]);
+	        }
+
+	        $this->getProducts();
+		}
+
+		function delete()
+		{
+			$id_product = isset($_GET['id']) ? $_GET['id'] : '';
+
+			if (is_numeric($id_product) && $id_product > 0) {
+				if ($this->model->delete($id_product)) {
+					$this->errors([
+						'alert' => 'alert-success',
+						'message' => 'Producto eliminado exitosamente'
+					]);
+				} else {
+					$this->errorMessage();
+				}
+			} else {
+				$this->errorMessage();
+			}
+			$this->getProducts();
+			$this->model->delete($id_product);
 		}
 
 		function validation()
@@ -61,6 +181,17 @@
 			$category = new CategoriesModel();
 			$categories = $category->getCategories();
 			$this->view->categories = $categories;
+		}
+
+		function getProducts()
+		{
+			$this->getCategories();
+			$this->getVendors();
+
+			$products = $this->model->getProducts();
+			$this->view->products = $products;
+			$this->view->title = "Productos";
+			$this->view->render('admin/products/show');
 		}
 
 		function getVendors()
@@ -111,9 +242,9 @@
 				'c5' => $c5, 'm5' => $m5,
 				'c6' => $c6, 'm6' => $m6,
 				'c7' => $c7, 'm7' => $m7,
-				'product'  => $product,
-				'cost'  => $cost,
-				'description'  => $description,
+				'product' => $product,
+				'cost' => $cost,
+				'description' => $description,
 
 				'alert' => $alert, 'message' => $message
 			];

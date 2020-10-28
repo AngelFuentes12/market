@@ -54,7 +54,8 @@
                                                 $admin = $row;
                                             ?>
                                                 <tr>
-                                                    <td><span class="d-block"><?= $admin->name; ?></span>
+                                                    <td>
+                                                        <span class="d-block"><?= $admin->name; ?></span>
                                                         <small class="text-muted">
                                                             <?= $admin->email; ?>
                                                         </small>
