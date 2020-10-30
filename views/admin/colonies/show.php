@@ -6,7 +6,7 @@
         <section class="">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-10 form-color p-4 shadow-sm">
+                    <div class="col-12 col-md-12 form-color p-4 shadow-sm">
                         <div class="row mb-3">
                             <div class="col-11">
                                 <h4 class="pb-1">Colonias</h4>

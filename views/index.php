@@ -1,11 +1,37 @@
     <!-- buscador  -->
-    <div class="container">
+    <!-- <div class="container">
         <form action="" method="post" class="">
             <div class="md-form active-cyan-2 mb-4 mt-4">
                 <input class="form-control" type="text" placeholder="Buscador" aria-label="Search">
             </div>
         </form>
-    </div>
+    </div> -->
+
+    <!-- slider -->
+    <section id="slider">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-50 mx-auto" src="<?= constant('CSS'); ?>compras.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100 mx-auto" src="<?= constant('CSS'); ?>shop.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100 mx-auto" src="<?= constant('CSS'); ?>shop.jpg" alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+
 
     <section id="categorias">
         <div class="container-fluid">

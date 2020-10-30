@@ -1,54 +1,52 @@
-	<!-- <div class="container-fluid text-center">
-		<div class="row p-3 bg-dark">
-			<div class="col-md-8 mx-auto text-white p-1">
-				<p class="h4">Footer cliente</p>
-			</div>
-    	</div>
+	<div id="footer">
+	    <section id="footer">
+	        <footer class="footer">
+	            <div class="container">
+	                <div class="row d-flex justify-content-around ligas-info">
+	                    <div class="col-12 col-lg-3">
+	                        <p class="titulos-footer">NOSOTROS</p>
+	                        <p>
+	                            <a href="">Acerca de nosotros</a><br>
+	                            <a href="">Tiendas</a><br>
+	                            <a href="">Objetivos</a><br>
+	                            <a href="">Facturación electrónica</a><br>
+	                        </p>
+	                    </div>
+	                    <div class="col-12 col-lg-3">
+	                        <p class="titulos-footer">UBICACIÓN</p>
+	                        <p class="direcccion">
+	                            Camino Real de La Plata 100, <br>
+	                            Zona Plateada, 42080 <br>
+	                            Pachuca de Soto, Hgo.
+	                        </p>
+	                    </div>
+	                    <div class="col-12 col-lg-3">
+	                        <p class="titulos-footer">ATENCIÓN A CLIENTES</p>
+	                        <p>
+	                            <a href="">Preguntas Frecuentes</a><br>
+	                            <a href="">Formas de Pago</a><br>
+	                            <a href="">Políticas de Privacidad</a><br>
+	                            <a href="">Contacto</a><br>
+	                            <a href="">Términos y Condiciones Generales</a><br>
+	                        </p>
+	                    </div>
+	                    <div class="col-12 col-lg-3">
+	                        <p class="titulos-footer">REDES SOCIALES</p>
+	                        <p>
+	                            <a href=""><i class="fab fa-facebook-f"></i> Facebook</a><br>
+	                            <a href=""><i class="fab fa-instagram"></i> Instagram</a><br>
+	                            <a href=""><i class="fab fa-pinterest-p"></i> Pinterest</a><br>
+	                        </p>
+	                    </div>
 
-    	<div class="row bg-light text-secondary">
-    		<div class="col-md-12 font-weight-bold p-4">
-    			<p class="h6">Copyright &COPY; 2020 Creativa | All Rights Reserved.</p>
-    		</div>
-		</div>
-	</div> -->
-
-	<section id="footer">
-		<!-- <div class="row ">
-			<div class="col-lg-3">
-				<small class="footer-title">Nosotros</small>
-				<a href="#">paginacion</a>
-				<a href="#">paginacion</a>
-				<a href="#">paginacion</a>
-				<a href="#">paginacion</a>
-			</div>
-			<div class="col-lg-2">
-				<small class="footer-title">Ubicación</small>
-				<a href="#">paginacion</a>
-				<a href="#">paginacion</a>
-				<a href="#">paginacion</a>
-				<a href="#">paginacion</a>
-			</div>
-			<div class="col-lg-3">
-				<small class="footer-title">Atención a clientes</small>
-				<a href="#">paginacion</a>
-				<a href="#">paginacion</a>
-				<a href="#">paginacion</a>
-				<a href="#">paginacion</a>
-			</div>
-			<div class="col-lg-2">
-				<small class="footer-title">Redes sociales</small>
-				<a href="#">paginacion</a>
-				<a href="#">paginacion</a>
-				<a href="#">paginacion</a>
-				<a href="#">paginacion</a>
-			</div>
-		</div> -->
-		</div>
-		<div class="container-fluid copyrigrh">
-			<small class="">© Supermarket 2020 | Todos los Derechos Reservados | <strong>Términos y Condiciones</strong> | <strong> Aviso de Privacidad</strong></small>
-		</div>
-
-	</section>
+	                    <div class="col-12 col-lg-12 copyrigrh">
+	                        <small class="">© Supermarket 2020 | Todos los Derechos Reservados | <strong>Términos y
+	                                Condiciones</strong> | <strong> Aviso de Privacidad</strong></small>
+	                    </div>
+	                </div>
+	            </div>
+	        </footer>
+	    </section>
+	</div>
 	</body>
-
 	</html>
