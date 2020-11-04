@@ -2,9 +2,9 @@
 		<section class="py-3">
 			<div class="container">
 				<div class="row justify-content-center">
-					<div class="col-12 col-md-6 form-color p-4 shadow-sm">
+					<div class="col-12 col-md-10 form-color p-4 shadow-sm">
 						<h4 class="py-2 font-weight-bold">Editar Información</h4>
-						<form action="<?= constant('URL'); ?>states/edit" method="POST">
+						<form action="<?= constant('URL'); ?>states/edit" method="POST" class="js-validation" novalidate>
 							<?php
 							require_once 'models/admin/state.php';
 							foreach ($this->states as $row) :
@@ -17,9 +17,11 @@
 									</label>
 
 									<input id="state" type="text" name="state" class="form-control" value="<?= $state->state; ?>"  maxlength="20" minlength="5" required>
+
+									<div class="invalid-feedback"><?= $_SESSION['name']; ?>, Ingresa un estado</div>
 								</div>
 
-								<div class="form-group mx-auto">
+								<div class="form-group mx-auto py-2" >
 									<input type="hidden" name="id" value="<?= $state->id_state; ?>" readonly required>
 
 									<input type="submit" class="btn btn-info" value="Actualizar">
@@ -36,3 +38,6 @@
 			</div>
 		</section>
 	</div>
+
+	<!-- js validation -->
+<script src="<?= constant('JS'); ?>validations.js"></script>

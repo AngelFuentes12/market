@@ -65,7 +65,7 @@ a {
 #login {
 	padding-top: 30px;
 	padding-bottom: 30px;
-	/* background-color: #f9f9f9; */
+	background-color: #f9f9f9;
 }
 
 
@@ -180,6 +180,10 @@ select:focus {
 }
 
 /* index slider */
+
+.carousel-inner img{
+	height: 460px!important;
+}
 
 /* ADMIN */
 .text-dashboard {
@@ -430,6 +434,10 @@ select {
 	padding-left: 70px;
 }
 
+#footer-admin{
+	background-color: #000!important;
+}
+
 /* FOOTER */
 #footer{
 	background-color: #f4f4f4;
@@ -456,7 +464,7 @@ select {
 }
 
 #reset {
-	background-color: #f1f1f1;
+	background-color: #f9f9f9;
 	padding-bottom: 50px;
 }
 
@@ -558,6 +566,7 @@ table tbody td {
 	/* box-shadow: 0 1px 0 0 #218838!important; */
 }
 
+
 .title-categoria{
 	font-size: 18px;
 }
@@ -589,14 +598,51 @@ table tbody td {
 /* pendiente hover de etiqueta a */
 .icon-bar{
 	font-size: 1.45rem;
-	margin: 10px;
-	color: #ffb833;
+	color: #000;
 }
 
 .reponsive-categoria{
-	font-size: 18px!important;
-	color: #3d465b;
-	font-weight: bold;
+	margin-left: 30px;
+	font-size: 19px!important;
+	color: #000;
+	font-weight: 900;
+}
+
+
+/* categorias */
+
+.card-deck div{
+	background-color: #f9f9f9;
+	
+}
+
+.texto-orden{
+	font-size: 13px!important;
+	color: #000!important;
+}
+
+.orden-submenu{
+	font-size: 13px;
+	margin:0;
+	padding: 0;
+	color: #000;
+	margin-left: 20px;
+	cursor: pointer;
+}
+
+.orden-submenu:hover{
+	color: #000;
+}
+
+.drop-menu-opt{
+	background-color: none!important;
+	border: 1px solid #f4f4f4!important;
+	border-radius: none!important;
+}
+
+.drop-menu-opt a{
+	font-size: 13px;
+	color: #000;
 }
 
 /* foooter cliente */
@@ -644,6 +690,8 @@ table tbody td {
 	.components li a{font-size: 18px;}
 
 	.card-responsive{margin-top: 12px!important;}
+
+	.carousel-inner img{ height: 270px!important;}
 
 }
 

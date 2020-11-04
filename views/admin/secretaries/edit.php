@@ -4,7 +4,7 @@
 				<div class="row justify-content-center">
 					<div class="col-12 col-md-6 form-color p-4 shadow-sm">
 						<h4 class="py-2 font-weight-bold">Editar Información</h4>
-						<form action="<?= constant('URL'); ?>secretaries/edit" method="POST">
+						<form action="<?= constant('URL'); ?>secretaries/edit" method="POST" class="js-validation" novalidate>
 							<?php
 							require_once 'models/admin/secretary.php';
 							foreach ($this->secretaries as $row) :
@@ -14,6 +14,10 @@
 								<div class="from-group">
 									<label for="name" class="name font-weight-bold pt-3">Nombre</label>
 									<input type="text" name="name" class="form-control" value="<?= $secretary->name; ?>" minlength="3" maxlength="20" required>
+								<div class="invalid-feedback">
+									<?= $_SESSION['name'] ?>, Ingresa un Nombre 
+								</div>
+								
 								</div>
 
 								<div class="form-group">
@@ -58,3 +62,6 @@
 			</div>
 		</section>
 	</div>
+
+<!-- validación -->
+<script src="<?= constant('JS'); ?>validations.js"></script>

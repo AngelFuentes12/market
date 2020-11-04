@@ -70,12 +70,12 @@
                 </a>
 
                 <a href="<?= constant('URL'); ?>users" class="list-group-item list-group-item-action">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-user"></i>
                     <small class="pl-4 text-muted">Clientes</small>
                 </a>
 
                 <a href="<?= constant('URL'); ?>secretaries" class="list-group-item list-group-item-action text-muted">
-                    <i class="fas fa-user-shield"></i>
+                    <i class="fas fa-users"></i>
                     <small class="pl-4 text-muted">Secretarias</small>
                 </a>
 
@@ -85,7 +85,7 @@
                 </a>
 
                 <a href="<?= constant('URL'); ?>subcategories" class="list-group-item list-group-item-action">
-                    <i class="fas fa-chevron-circle-down"></i>
+                    <i class="fas fa-project-diagram"></i>
                     <small class="pl-4 text-muted">Subcategorías</small>
                 </a>
 

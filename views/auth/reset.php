@@ -4,7 +4,7 @@
 		<div class="container p-5">
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-8 form-color p-4 shadow-sm">
-				<form method="POST" action="<?= constant('URL'); ?>auth/resetpassword">
+				<form method="POST" action="<?= constant('URL'); ?>auth/resetpassword" class="js-validation" novalidate>
 					<div class="form-group">
 						<label for="email" class="title-email">Correo Electronico <span style="color: red;">*</span></label>
 
@@ -13,6 +13,8 @@
 						<div class="invalid-feedback">
 							<?= $this->error['m1']; ?>
 						</div>
+						<!-- validation -->               
+                        <div class="invalid-feedback">Por favor ingrese correo valido</div>
 					</div>
 
 					<div class="form-group">
@@ -32,3 +34,7 @@
 			</div>
 		</div>
 	</section>
+
+
+	<!-- validate js -->
+	<script src="<?= constant('JS') ?>validations.js"></script>

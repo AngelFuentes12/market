@@ -138,7 +138,7 @@
                     <p>
                         Los campos marcados con un <small style="color: red;">*</small> son obligatorios
                     </p>
-                    <form method="POST" action="<?= constant('URL'); ?>vendors/register">
+                    <form method="POST" action="<?= constant('URL'); ?>vendors/register" class="js-validation" novalidate>
                         <div class="form-group">
                             <label for="vendor">
                                 Proveedor <span style="color: red;">*</span>
@@ -148,6 +148,10 @@
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m11']; ?>
+                            </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Ingresa un proveedor
                             </div>
                         </div>
 
@@ -160,6 +164,10 @@
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m1']; ?>
+                            </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Ingresa un nombre
                             </div>
                         </div>
 
@@ -176,6 +184,10 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m2']; ?>
                             </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Ingresa un Correo Electronico
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -190,6 +202,10 @@
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m3']; ?>
+                            </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Ingresa un Telefono
                             </div>
                         </div>
 
@@ -213,6 +229,10 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m4']; ?>
                             </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Selecciona un Estado
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -228,7 +248,13 @@
                                 <div class="invalid-feedback">
                                     <?= $this->error['m5']; ?>
                                 </div>
+
+                                <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Ingresa un Municipio
+                                </div>
+
                             </div>
+
                         </div>
 
                         <div class="form-group">
@@ -244,6 +270,12 @@
                                 <div class="invalid-feedback">
                                     <?= $this->error['m6']; ?>
                                 </div>
+
+                                <div class="invalid-feedback">
+                                    <?= $_SESSION['name'] ?>, Ingresa un Colonia
+                                </div>
+
+
                             </div>
                         </div>
 
@@ -260,6 +292,11 @@
                                 <div class="invalid-feedback">
                                     <?= $this->error['m7']; ?>
                                 </div>
+
+                                <div class="invalid-feedback">
+                                    <?= $_SESSION['name'] ?>, Ingresa un Codigo postal
+                                </div>
+
                             </div>
                         </div>
 
@@ -273,6 +310,10 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m8']; ?>
                             </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Ingresa una Calle
+                            </div>
                         </div>
                         
                         <div class="form-group">
@@ -285,6 +326,11 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m9']; ?>
                             </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Ingresa un Número Interior
+                            </div>
+
                         </div>
 
                         <div class="form-group">
@@ -296,6 +342,10 @@
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m9']; ?>
+                            </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Ingresa un Número Exterior
                             </div>
                         </div>
 
@@ -311,3 +361,7 @@
             </div>
         </div>
     </div>
+
+<!-- validación -->
+
+<script src="<?= constant('JS'); ?>validations.js"></script>

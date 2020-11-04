@@ -94,14 +94,16 @@
                 </div>
                 <div class="modal-body mx-auto">
                     <p class="">Los campos marcados con un <small style="color: red;">*</small> son obligatorios</p>
-                    <form method="POST" action="<?= constant('URL'); ?>categories/register">
+                    <form method="POST" action="<?= constant('URL'); ?>categories/register" class="js-validation" novalidate>
                         <div class="form-group">
                             <label for="categoria" class="categoria">Categoria <span style="color: red;">*</span></label>
-
                             <input type="text" value="<?= $this->error['category']; ?>" name="category" class="form-control <?= $this->error['c1']; ?>" maxlength="40" minlength="4" required>
-
                             <div class="invalid-feedback">
                                 <?= $this->error['m1']; ?>
+                            </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name']?>, Ingresa una categoria
                             </div>
                         </div>
 
@@ -114,3 +116,7 @@
             </div>
         </div>
     </div>
+
+<!-- validación -->
+
+<script src="<?= constant('JS'); ?>validations.js"></script>

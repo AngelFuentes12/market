@@ -4,7 +4,7 @@
 				<div class="row justify-content-center">
 					<div class="col-12 col-md-6 form-color p-4 shadow-sm">
 						<h4 class="py-2 font-weight-bold">Editar Información</h4>
-						<form action="<?= constant('URL'); ?>subcategories/edit" method="POST">
+						<form action="<?= constant('URL'); ?>subcategories/edit" method="POST" class="js-validation" novalidate>
 							<?php 
 								require_once 'models/admin/subcategory.php';
 								foreach ($this->subcategories as $row): 
@@ -25,6 +25,10 @@
 								</label>
 
 								<input id="subcategory" type="text" class="form-control" name="subcategory" value="<?= $subcategory->subcategory; ?>" maxlength="50" minlength="5" required>
+							
+								<div class="invalid-feedback">
+									<?= $_SESSION['name']?>, Ingrese una subcategoria
+								</div>
 							</div>
 
 							<div class="form-group">
@@ -44,3 +48,7 @@
 			</div>
 		</section>
 	</div>
+
+<!-- validación -->
+
+<script src="<?= constant('JS'); ?>validations.js"></script>

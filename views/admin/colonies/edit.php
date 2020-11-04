@@ -2,9 +2,9 @@
 		<section class="py-3">
 			<div class="container">
 				<div class="row justify-content-center">
-					<div class="col-12 col-md-6 form-color p-4 shadow-sm">
+					<div class="col-12 col-md-8 form-color p-4 shadow-sm">
 						<h4 class="py-2 font-weight-bold">Editar Información</h4>
-						<form action="<?= constant('URL'); ?>colonies/edit" method="POST">
+						<form action="<?= constant('URL'); ?>colonies/edit" method="POST" class="js-validation" novalidate>
 							<?php 
 								require_once 'models/admin/colony.php';
 								foreach ($this->colonies as $row): 
@@ -33,6 +33,8 @@
 								</label>
 
 								<input id="colony" type="text" class="form-control" name="colony" value="<?= $colony->colony; ?>" maxlength="20" minlength="5" required>
+									
+								<div class="invalid-feedback"><?= $_SESSION['name']; ?>, Ingresa una colonia</div>
 							</div>
 
 							<div class="form-group">
@@ -54,3 +56,5 @@
 			</div>
 		</section>
 	</div>
+<!-- js validation -->
+<script src="<?= constant('JS'); ?>validations.js"></script>

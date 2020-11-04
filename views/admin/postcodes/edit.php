@@ -4,7 +4,7 @@
 				<div class="row justify-content-center">
 					<div class="col-12 col-md-6 form-color p-4 shadow-sm">
 						<h4 class="py-2 font-weight-bold">Editar Información</h4>
-						<form action="<?= constant('URL'); ?>postcodes/edit" method="POST">
+						<form action="<?= constant('URL'); ?>postcodes/edit" method="POST" class="js-validation" novalidate>
 							<?php 
 								require_once 'models/admin/postcode.php';
 								foreach ($this->postcodes as $row): 
@@ -41,6 +41,8 @@
 								</label>
 
 								<input id="postcode" type="text" class="form-control" name="postcode" value="<?= $postcode->postcode; ?>" maxlength="5" minlength="5" required>
+									
+								<div class="invalid-feedback"><?= $_SESSION['name']; ?>, Ingresa un codigo postal</div>
 							</div>
 
 							<div class="form-group mx-auto">
@@ -62,3 +64,6 @@
 			</div>
 		</section>
 	</div>
+
+<!-- js validation -->
+<script src="<?= constant('JS'); ?>validations.js"></script>

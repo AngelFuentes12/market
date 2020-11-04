@@ -5,7 +5,7 @@
 	        <div class="row justify-content-center">
 	            <div class="col-12 col-md-4 form-color p-4 border-login shadow-sm">
 				<h3 class="text-login">Identifícate</h3>
-	                <form method="POST" action="<?php echo constant('URL'); ?>auth/login">
+	                <form method="POST" action="<?php echo constant('URL'); ?>auth/login" class="js-validation" novalidate>
 	                    <div class="form-group">
 	                        <label for="email" class="email">Correo Electronico <span style="color: red;">*</span></label>
 	                        <input type="email" value="<?php echo $this->error['email']; ?>" name="email"
@@ -13,6 +13,10 @@
 	                        <div class="invalid-feedback">
 	                            <?php echo $this->error['m1']; ?>
 	                        </div>
+
+							<!-- validation -->
+                            <!-- <div class="valid-feedback">Excelente</div> -->
+                            <div class="invalid-feedback">Por favor ingrese correo valido</div>
 	                    </div>
 
 	                    <div class="form-group">
@@ -23,6 +27,9 @@
 	                        <div class="invalid-feedback">
 	                            <?php echo $this->error['m2']; ?>
 	                        </div>
+
+							<!-- validation -->
+							<div class="invalid-feedback">Por favor ingrese una contraseña</div>
 	                    </div>
 
 	                    <div class="form-group">
@@ -47,3 +54,6 @@
 	            </div>
 	        </div>
 	</section>
+
+<!-- js validation -->
+<script src="<?= constant('JS'); ?>validations.js"></script>

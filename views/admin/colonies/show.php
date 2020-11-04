@@ -123,7 +123,7 @@
                         Los campos marcados con un <small style="color: red;">*</small> son obligatorios
                     </p>
 
-                    <form method="POST" action="<?= constant('URL'); ?>colonies/register">
+                    <form method="POST" action="<?= constant('URL'); ?>colonies/register" class="js-validation" novalidate>
                         <div class="form-group">
                             <label for="state">
                                 Estado <span style="color: red;">*</span>
@@ -144,6 +144,8 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m1']; ?>
                             </div>
+
+                            <div class="invalid-feedback"><?= $_SESSION['name']; ?>, Seleciona un Estado</div>
                         </div>
 
                         <div class="form-group">
@@ -159,6 +161,8 @@
                                 <div class="invalid-feedback">
                                     <?= $this->error['m2']; ?>
                                 </div>
+
+                                <div class="invalid-feedback"><?= $_SESSION['name']; ?>, Seleciona un Municipio</div>
                             </div>
                         </div>
 
@@ -172,6 +176,8 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m3']; ?>
                             </div>
+
+                            <div class="invalid-feedback"><?= $_SESSION['name']; ?>, Ingresa una colonia</div>
                         </div>
 
                         <div class="mx-auto pb-5 center-footer">
@@ -183,3 +189,7 @@
             </div>
         </div>
     </div>
+
+
+<-- js validation -->
+<script src="<?= constant('JS'); ?>validations.js"></script>!

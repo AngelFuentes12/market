@@ -133,7 +133,7 @@
                         Los campos marcados con un <small style="color: red;">*</small> son obligatorios
                     </p>
 
-                    <form method="POST" action="<?= constant('URL'); ?>postcodes/register">
+                    <form method="POST" action="<?= constant('URL'); ?>postcodes/register" class="js-validation" novalidate>
                         <div class="form-group">
                             <label for="state">
                                 Estado <span style="color: red;">*</span>
@@ -154,6 +154,8 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m1']; ?>
                             </div>
+
+                            <div class="invalid-feedback"><?= $_SESSION['name']; ?>, Selecciona un Estado</div>
                         </div>
 
                         <div class="form-group">
@@ -170,6 +172,9 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m2']; ?>
                             </div>
+
+                            <div class="invalid-feedback"><?= $_SESSION['name']; ?>, Selecciona un Municipio</div>
+
                         </div>
 
                         <div class="form-group">
@@ -186,6 +191,8 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m3']; ?>
                             </div>
+
+                            <div class="invalid-feedback"><?= $_SESSION['name']; ?>, Selecciona una Colonia</div>
                         </div>
 
                         <div class="form-group">
@@ -198,6 +205,8 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m4']; ?>
                             </div>
+
+                            <div class="invalid-feedback"><?= $_SESSION['name']; ?>, Ingresa un codigo postal</div>
                         </div>
 
                         <div class="mx-auto pb-5 center-footer">
@@ -209,3 +218,6 @@
             </div>
         </div>
     </div>
+
+<!-- js validation -->
+<script src="<?= constant('JS'); ?>validations.js"></script>

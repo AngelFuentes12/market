@@ -4,7 +4,7 @@
 				<div class="row justify-content-center">
 					<div class="col-12 col-md-6 form-color p-4 shadow-sm">
 						<h4 class="py-2 font-weight-bold">Editar Información</h4>
-						<form action="<?= constant('URL'); ?>vendors/edit" method="POST">
+						<form action="<?= constant('URL'); ?>vendors/edit" method="POST" class="js-validation" novalidate>
 							<?php
 							require_once 'models/admin/vendor.php';
 							foreach ($this->vendors as $row) :
@@ -17,6 +17,10 @@
 									</label>
 
 									<input id="vendor" type="text" name="vendor" class="form-control" value="<?= $vendor->vendor; ?>" minlength="3" maxlength="20" required>
+								
+									<div class="invalid-feedback">
+										<?= $_SESSION['name'] ?>, Ingresa un proveedor
+									</div>
 								</div>
 
 								<div class="from-group">
@@ -25,6 +29,9 @@
 									</label>
 
 									<input id="name" type="text" name="name" class="form-control" value="<?= $vendor->name; ?>" minlength="3" maxlength="20" required>
+									<div class="invalid-feedback">
+										<?= $_SESSION['name'] ?>, Ingresa un nombre
+									</div>
 								</div>
 
 								<div class="from-group">
@@ -97,6 +104,9 @@
 									</label>
 
 									<input id="street" type="text" name="street" class="form-control" value="<?= $vendor->street; ?>" minlength="8" maxlength="40" required>
+									<div class="invalid-feedback">
+										<?= $_SESSION['name'] ?>, Ingresa una calle
+									</div>
 								</div>
 
 								<div class="from-group">
@@ -105,6 +115,9 @@
 									</label>
 
 									<input id="inside" type="text" name="inside" class="form-control" value="<?= $vendor->inside; ?>" minlength="1" maxlength="4" required>
+									<div class="invalid-feedback">
+										<?= $_SESSION['name'] ?>, Ingresa un Número interior
+									</div>
 								</div>
 
 								<div class="from-group">
@@ -113,6 +126,9 @@
 									</label>
 
 									<input id="outside" type="text" name="outside" class="form-control" value="<?= $vendor->outside; ?>" minlength="1" maxlength="4" required>
+									<div class="invalid-feedback">
+										<?= $_SESSION['name'] ?>, Ingresa un Número exterior
+									</div>
 								</div>
 
 								<div class="form-group mx-auto mt-4">
@@ -130,3 +146,7 @@
 			</div>
 		</section>
 	</div>
+
+<!-- validación -->
+
+<script src="<?= constant('JS'); ?>validations.js"></script>

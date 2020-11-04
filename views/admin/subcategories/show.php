@@ -112,7 +112,7 @@
                         Los campos marcados con un <small style="color: red;">*</small> son obligatorios
                     </p>
 
-                    <form method="POST" action="<?= constant('URL'); ?>subcategories/register">
+                    <form method="POST" action="<?= constant('URL'); ?>subcategories/register" class="js-validation" novalidate>
                         <div class="form-group">
                             <label for="category">
                                 Categoria <span style="color: red;">*</span>
@@ -133,6 +133,10 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m1']; ?>
                             </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name']?>, Selecciona una categoria
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -143,6 +147,10 @@
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m2']; ?>
+                            </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name']?>, Ingresa una subcategoria
                             </div>
                         </div>
 
@@ -155,3 +163,7 @@
             </div>
         </div>
     </div>
+
+<!-- validación -->
+
+<script src="<?= constant('JS'); ?>validations.js"></script>

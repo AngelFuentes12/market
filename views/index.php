@@ -12,14 +12,18 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-50 mx-auto" src="<?= constant('CSS'); ?>compras.jpg" alt="First slide">
+                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR'); ?>promo.jpg" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100 mx-auto" src="<?= constant('CSS'); ?>shop.jpg" alt="Second slide">
+                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR'); ?>promos.png" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100 mx-auto" src="<?= constant('CSS'); ?>shop.jpg" alt="Third slide">
+                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR'); ?>articulos.png" alt="Third slide">
                 </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR'); ?>compras.jpg" alt="Third slide">
+                </div>
+
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -32,6 +36,35 @@
         </div>
     </section>
 
+    <!-- cantegorias -->
+    <section id="categoria-index" class="pt-5">
+        <div class="container">
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <p class="card-text">Electronica</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <p class="card-text">chamarras</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <p class="card-text">Articulos de mesa</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <p class="card-text">Teinis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
 
     <section id="categorias">
         <div class="container-fluid">
@@ -40,7 +73,7 @@
                     <nav class="navbar-expand-lg nv-responsive-cat">
                         <a class="navbar-toggler" data-toggle="collapse" data-target="#menucategoria"
                             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fas fa-bars icon-bar"></i> <small class="reponsive-categoria">Categorias</small>
+                            <i class="fas fa-bars icon-bar"></i><small class="reponsive-categoria">categorias</small>
                         </a>
                         <div class="collapse navbar-collapse" id="menucategoria">
                             <div class="wrapper">
@@ -85,9 +118,28 @@
                 </div>
 
                 <div class="col-sm-6 col-md-10 py-3">
-                    <h5 class="pl-4 font-weight-bold pb-3">productos</h5>
+                    <div class="d-flex justify-content-end py-3 border-register">
+                        <p class="texto-orden">Ordenado por: </p>
+                        <a class=" dropdown-toggle ml-2 orden-submenu" data-toggle="dropdown">
+                            recomendados
+                        </a>
+                        <div class="dropdown-menu drop-menu-opt">
+                            <a class="dropdown-item drop-option" href="#">Mas popular</a>
+                            <a class="dropdown-item drop-option" href="#">Precio bajo</a>
+                            <a class="dropdown-item drop-option" href="#">Precio alto</a>
+                            <a class="dropdown-item drop-option" href="#">Mas popular</a>
+                            <a class="dropdown-item drop-option" href="#">Precio bajo</a>
+                            <a class="dropdown-item drop-option" href="#">Precio alto</a>
+                            <a class="dropdown-item drop-option" href="#">Mas popular</a>
+                            <a class="dropdown-item drop-option" href="#">Precio bajo</a>
+                            <a class="dropdown-item drop-option" href="#">Precio alto</a>
+                        </div>
+                    </div>
+
+                    <div class="cards-produt pt-2">
+                    <small class="py-5">120 resultados</small>
                     <div class="row">
-                        <div class="container">
+                        <div class="container pt-4">
                             <div class="row">
                                 <div class="col-lg-4 card-responsive">
                                     <div class="card">
@@ -129,6 +181,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

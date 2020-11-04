@@ -100,7 +100,7 @@
                         Los campos marcados con un <small style="color: red;">*</small> son obligatorios
                     </p>
 
-                    <form method="POST" action="<?= constant('URL'); ?>states/register">
+                    <form method="POST" action="<?= constant('URL'); ?>states/register" class="js-validation" novalidate>
                         <div class="form-group">
                             <label for="state">
                                 Estado <span style="color: red;">*</span>
@@ -111,6 +111,8 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m1']; ?>
                             </div>
+
+                            <div class="invalid-feedback"><?= $_SESSION['name']; ?>, ingresa un estado</div>
                         </div>
 
                         <div class="mx-auto pb-5 center-footer">
@@ -122,3 +124,6 @@
             </div>
         </div>
     </div>
+
+<!-- js validation -->
+<script src="<?= constant('JS'); ?>validations.js"></script>

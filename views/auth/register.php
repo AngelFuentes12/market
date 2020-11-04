@@ -9,12 +9,14 @@
                     </div> -->
                     <p>Recuerda que debes de ingresar datos validos y activos.</p>
                 </div>
-                <form>
+                <form action=".php" method="POST" class="js-validation" novalidate>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                            <p>Tu correo debe ser activo, por favor ingrese correo valido</p>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                            <!-- validation -->
+                            <div class="valid-feedback">Excelente</div>
+                            <div class="invalid-feedback">Tu correo debe ser activo, Por favor ingrese correo valido</div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">Password</label>
@@ -59,9 +61,11 @@
                             </label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-login">Sign in</button>
+                    <input type="submit" class="btn btn-login" value="Sign in">
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+<script src="<?= constant('JS') ?>validations.js"></script>

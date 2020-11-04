@@ -7,7 +7,7 @@
 						<div class="card-body shadow-sm">
 							<div class="stat-widget-five d-flex">
 								<div class="stat-icon dib flat-color-1">
-									<i class="fas fa-chart-bar icon-primario " style="color:#218838;"></i></i>
+									<i class="fas fa-chart-bar icon-primario " style="color:#218838;"></i>
 								</div>
 								<div class="stat-content pl-4">
 									<div class="text-left dib">

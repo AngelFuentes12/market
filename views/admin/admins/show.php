@@ -134,7 +134,7 @@
                 <div class="modal-body mx-auto">
                     <p class="">Los campos marcados con un <small style="color: red;">*</small> son obligatorios</p>
                     <!-- <div class="col-12 col-md-10 form-color p-4 "> -->
-                    <form method="POST" action="<?= constant('URL'); ?>admins/register">
+                    <form method="POST" action="<?= constant('URL'); ?>admins/register" class="js-validation" novalidate>
                         <div class="form-group">
                             <label for="name" class="name">Nombre <span style="color: red;">*</span></label>
 
@@ -143,6 +143,8 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m1']; ?>
                             </div>
+
+                            <div class="invalid-feedback"><?= $_SESSION['name']; ?>, Ingresa un Nombre</div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="email">Correo Electronico <span style="color: red;">*</span></label>
@@ -152,6 +154,8 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m2']; ?>
                             </div>
+
+                            <div class="invalid-feedback"><?= $_SESSION['name']; ?>, Ingresa un Correo Electronico</div>
                         </div>
 
                         <div class="form-group">
@@ -162,6 +166,8 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m3']; ?>
                             </div>
+
+                            <div class="invalid-feedback"><?= $_SESSION['name']; ?>, Ingresa una contraseña</div>
                         </div>
                         <div class="form-group">
                             <label for="confpassword" class="confpassword">Escribe nuevamente tu contraseña <span style="color: red;">*</span></label>
@@ -171,6 +177,8 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m4']; ?>
                             </div>
+
+                            <div class="invalid-feedback"><?= $_SESSION['name']; ?>, Verifica contraseña</div>
                         </div>
                         <div class="mx-auto pb-5 center-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -181,3 +189,6 @@
             </div>
         </div>
     </div>
+
+<!-- js validation -->
+<script src="<?= constant('JS'); ?>validations.js"></script>

@@ -133,7 +133,7 @@
                 <div class="modal-body mx-auto">
                     <p class="">Los campos marcados con un <small style="color: red;">*</small> son obligatorios</p>
                     <!-- <div class="col-12 col-md-10 form-color p-4 "> -->
-                    <form method="POST" action="<?= constant('URL'); ?>secretaries/register">
+                    <form method="POST" action="<?= constant('URL'); ?>secretaries/register" class="js-validation" novalidate>
                         <div class="form-group">
                             <label for="name" class="name">Nombre <span style="color: red;">*</span></label>
 
@@ -141,6 +141,10 @@
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m1']; ?>
+                            </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name']?>, Ingresa un nombre
                             </div>
                         </div>
                         <div class="form-group">
@@ -151,6 +155,11 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m2']; ?>
                             </div>
+                            
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name']?>, Ingresa un Correo Electronico
+                            </div>
+
                         </div>
 
                         <div class="form-group">
@@ -161,6 +170,10 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m3']; ?>
                             </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name']?>, Ingresa una contraseña
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="confpassword" class="confpassword">Escribe nuevamente tu contraseña <span style="color: red;">*</span></label>
@@ -169,6 +182,10 @@
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m4']; ?>
+                            </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name']?>, Ingresa nuevamente la contraseña
                             </div>
                         </div>
                         <div class="mx-auto pb-5 center-footer">
@@ -180,3 +197,6 @@
             </div>
         </div>
     </div>
+
+<!-- validación -->
+<script src="<?= constant('JS'); ?>validations.js"></script>

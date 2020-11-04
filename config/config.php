@@ -9,6 +9,8 @@
 	define('URL', 'http://localhost/market/');
 	define('IMG', 'http://localhost/market/resources/images/app/');
 	define('PIC', 'http://localhost/market/resources/images/system/');
+	/*slider*/
+	define('SDR', 'http://localhost/market/resources/images/slider/');
 	define('PRO', 'http://localhost/market/resources/images/products/');
 	define('CSS', 'http://localhost/market/public/css/');
 	define('JS', 'http://localhost/market/resources/js/');
