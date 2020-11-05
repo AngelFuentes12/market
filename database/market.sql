@@ -445,6 +445,13 @@ CREATE TABLE images(id_image INT AUTO_INCREMENT PRIMARY KEY,
     status INT(1) NOT NULL)
     Engine = InnoDB CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';
 
+INSERT INTO `images` (`image`, `type`, `status`) VALUES 
+('articulos.png', 'slider', '1'), 
+('promo.jpg', 'slider', '1'), 
+('compras.jpg', 'slider', '1'), 
+('promos.png', 'slider', '1'), 
+('shop.jpg', 'slider', '1');
+
 CREATE TABLE products(id_product INT AUTO_INCREMENT PRIMARY KEY,
     product VARCHAR(60) UNIQUE NOT NULL,
     cost FLOAT(9,2) NOT NULL,

@@ -98,7 +98,7 @@
 
                                                 <td class="align-middle">
                                                 	<span class="d-block">
-                                                        <?= $product->cost; ?>
+                                                        $<?= $product->cost; ?>.00
                                                     </span>
                                                 </td>
 
@@ -109,7 +109,7 @@
                                                 </td>
 
                                                 <td class="align-middle">
-                                                	<img src="<?= constant('PRO'); ?><?= $product->image; ?>" alt="<?= $product->product; ?>" class="d-block mx-auto w-100">
+                                                	<img src="<?= constant('PRO') . $product->image; ?>" alt="<?= $product->product; ?>" class="d-block mx-auto w-100">
                                                 </td>
 
                                                 <td class="align-middle">
@@ -163,7 +163,7 @@
                                 Categoria <span style="color: red;">*</span>
                             </label>
                             
-                            <select id="category" class="form-control <?= $this->error['c1']; ?>" name="id_category" >
+                            <select id="category" class="form-control <?= $this->error['c1']; ?>" name="id_category" required>
                                 <option selected disabled value="">Seleccionar...</option>
                                 <?php 
                                     require_once 'models/admin/category.php';
@@ -186,7 +186,7 @@
                             </label>
 
                             <div id="subcategories">
-                                <select id="subcategory" class="form-control <?= $this->error['c2']; ?>" name="id_subcategory" >
+                                <select id="subcategory" class="form-control <?= $this->error['c2']; ?>" name="id_subcategory" required>
                                     <option selected disabled value="">Seleccionar...</option>
                                 </select>
 
@@ -201,7 +201,7 @@
                                 Proveedor <span style="color: red;">*</span>
                             </label>
                             
-                            <select id="vendor" class="form-control <?= $this->error['c3']; ?>" name="id_vendor" >
+                            <select id="vendor" class="form-control <?= $this->error['c3']; ?>" name="id_vendor" required>
                                 <option selected disabled value="">Seleccionar...</option>
                                 <?php 
                                     require_once 'models/admin/vendor.php';
@@ -225,7 +225,7 @@
                                 Nombre del producto <span style="color: red;">*</span>
                             </label>
 
-                            <input id="product" type="text" value="<?= $this->error['product']; ?>" name="product" class="form-control <?= $this->error['c4']; ?>" minlength="3" maxlength="30" >
+                            <input id="product" type="text" value="<?= $this->error['product']; ?>" name="product" class="form-control <?= $this->error['c4']; ?>" minlength="3" maxlength="30" required>
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m4']; ?>
@@ -237,7 +237,7 @@
                                 Costo <span style="color: red;">*</span>
                             </label>
 
-                            <input id="cost" type="text" value="<?= $this->error['cost']; ?>" name="cost" class="form-control <?= $this->error['c5']; ?>" minlength="1" maxlength="5" >
+                            <input id="cost" type="text" value="<?= $this->error['cost']; ?>" name="cost" class="form-control <?= $this->error['c5']; ?>" minlength="1" maxlength="5" required>
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m5']; ?>
@@ -249,7 +249,7 @@
                                 Descripcion <span style="color: red;">*</span>
                             </label>
 
-                            <textarea id="description" class="form-control <?= $this->error['c6']; ?>" name="description" ><?= $this->error['description']; ?></textarea>
+                            <textarea id="description" class="form-control <?= $this->error['c6']; ?>" name="description" required><?= $this->error['description']; ?></textarea>
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m6']; ?>
@@ -261,7 +261,7 @@
                                 Imagen <span style="color: red;">*</span>
                             </label>
 
-                            <input id="image" type="file" class="form-control <?= $this->error['c7']; ?>" name="image" >
+                            <input id="image" type="file" class="form-control <?= $this->error['c7']; ?>" name="image" required>
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m7']; ?>

@@ -14,16 +14,19 @@
                 <div class="carousel-item active">
                     <img class="d-block w-100 mx-auto" src="<?= constant('SDR'); ?>promo.jpg" alt="First slide">
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR'); ?>promos.png" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR'); ?>articulos.png" alt="Third slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR'); ?>compras.jpg" alt="Third slide">
-                </div>
 
+                <?php 
+                    require_once 'models/admin/sliders.php';
+                    foreach ($this->sliders as $row): 
+                        $slider = new Sliders();
+                        $slider = $row;
+                ?>
+                <?php if ($slider->status == 1): ?>
+                <div class="carousel-item">
+                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR') . $slider->image; ?>">
+                </div>    
+                <?php endif ?>
+                <?php endforeach ?>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -76,6 +79,7 @@
     </section>
 
 
+    <script src="<?= constant('JS'); ?>categories.js"></script>
     <section id="categorias">
         <div class="container-fluid">
             <div class="row">
@@ -89,38 +93,27 @@
                             <div class="wrapper">
                                 <ul class="list-unstyled components">
                                     <h6 class="title-categoria pl-4 pb-3">Ver categorias</h6>
+                                    
+                                    <?php 
+                                        require_once 'models/admin/category.php';
+                                        foreach ($this->categories as $row): 
+                                            $category = new Category();
+                                            $category = $row;
+                                    ?>
                                     <li class="listas-desplegable">
-                                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
-                                            class="pl-4">Playeras <small class="pl-5"><i
-                                                    class="fas fa-angle-down"></i></small></a>
-                                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                                            <li class="pl-5">
-                                                <a href="#" class="subcategorias-info">Deportivas</a>
-                                            </li>
-                                            <li class="pl-5">
-                                                <a href="#" class="subcategorias-info">Juveniles</a>
-                                            </li>
-                                            <li class="pl-5">
-                                                <a href="#" class="subcategorias-info">Adolocentes</a>
-                                            </li>
+                                        <a href="#link<?= $category->id_category; ?>" data-toggle="collapse" aria-expanded="false"
+                                            class="pl-4" onclick="getSubcategories(<?= $category->id_category; ?>)">
+                                            <?= $category->category; ?> 
+
+                                            <small class="pl-5">
+                                                <i class="fas fa-angle-down"></i>
+                                            </small>
+                                        </a>
+                                        <ul class="collapse list-unstyled" id="link<?= $category->id_category; ?>">
+
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                                            class="pl-4">Zapatos <small class="pl-5"><i
-                                                    class="fas fa-angle-down"></i></small></a>
-                                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                                            <li class="pl-5">
-                                                <a href="#" class="subcategorias-info">sucategoria 1</a>
-                                            </li>
-                                            <li class="pl-5">
-                                                <a href="#" class="subcategorias-info">sucategoria 2</a>
-                                            </li>
-                                            <li class="pl-5">
-                                                <a href="#" class="subcategorias-info">sucategoria 3</a>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                    <?php endforeach ?>
                                 </ul>
                             </div>
                         </div>
