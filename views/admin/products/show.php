@@ -157,7 +157,7 @@
                     <p>
                         Los campos marcados con un <small style="color: red;">*</small> son obligatorios
                     </p>
-                    <form method="POST" action="<?= constant('URL'); ?>products/register" enctype="multipart/form-data">
+                    <form method="POST" action="<?= constant('URL'); ?>products/register" enctype="multipart/form-data" class="js-validation" novalidate>
                     	<div class="form-group">
                             <label for="category">
                                 Categoria <span style="color: red;">*</span>
@@ -178,6 +178,10 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m1']; ?>
                             </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Elige una categoria
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -193,6 +197,10 @@
                                 <div class="invalid-feedback">
                                     <?= $this->error['m2']; ?>
                                 </div>
+
+                                <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Elige una subcategoria
+                            </div>
                             </div>
                         </div>
 
@@ -218,6 +226,10 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m3']; ?>
                             </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Elige un proveedor
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -229,6 +241,10 @@
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m4']; ?>
+                            </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Ingrese un nombre del producto
                             </div>
                         </div>
 
@@ -242,17 +258,25 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m5']; ?>
                             </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Ingrese un costo
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label for="description">
-                                Descripcion <span style="color: red;">*</span>
+                                Descripción <span style="color: red;">*</span>
                             </label>
 
                             <textarea id="description" class="form-control <?= $this->error['c6']; ?>" name="description" required><?= $this->error['description']; ?></textarea>
 
                             <div class="invalid-feedback">
                                 <?= $this->error['m6']; ?>
+                            </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Ingrese una descripción
                             </div>
                         </div>
 
@@ -266,9 +290,13 @@
                             <div class="invalid-feedback">
                                 <?= $this->error['m7']; ?>
                             </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Selecciona una imagen
+                            </div>
                         </div>
 
-                        <div class="mx-auto pb-5">
+                        <div class="mx-auto pb-5 center-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">
                                 Cancelar
                             </button>
@@ -280,3 +308,7 @@
             </div>
         </div>
     </div>
+
+<!-- validación -->
+
+<script src="<?= constant('JS'); ?>validations.js"></script>

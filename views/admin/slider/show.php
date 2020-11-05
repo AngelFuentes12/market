@@ -1,10 +1,49 @@
     <div id="content" class="container-fluid py-5">
-        <section>
+    <section  id="imagen-guardada" class="py-3">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-7 form-color p-4 shadow-sm">
-                        <h4 class="pb-1">Subir slider</h4>
+                    <div class="col-12 col-md-12 form-color p-4 shadow-sm">
+                        <h4 class="pb-1 text-slider font-weight-bold">Visualización previa</h4>
 
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="<?= constant('SDR'); ?>shop.jpg">
+                                </div>
+                                <?php 
+                                    require_once 'models/admin/sliders.php';
+                                    foreach ($this->sliders as $row): 
+                                        $slider = new Sliders();
+                                        $slider = $row;
+                                ?>
+                                <?php if ($slider->status == 1): ?>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="<?= constant('SDR') . $slider->image; ?>">
+                                </div>    
+                                <?php endif ?>
+                                <?php endforeach ?>
+                            </div>
+
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="subir-img">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10 form-color p-4 shadow-sm">
+                        <h4 class="pb-1">Subir slider</h4>
                         <form method="POST" enctype="multipart/form-data" action="<?= constant('URL'); ?>slider/register" class="py-3">
                             <div class="form-group">
                                 <div class="input-group">
@@ -14,11 +53,11 @@
                                         </span>
                                     </div>
 
-                                    <div class="custom-file">
+                                    <div class="custom-file ">
                                         <input type="file" name="slider" class="custom-file-input <?= $this->error['c1']; ?>">
 
-                                        <label class="custom-file-label text-file" for="files">
-                                            Elegir <span style="color: red;">*</span>
+                                        <label class="custom-file-label text-file mx-auto" for="files">
+                                            Elegir Imagen<span style="color: red;">*</span>
                                         </label>
 
                                         <div class="invalid-feedback">
@@ -27,8 +66,8 @@
                                     </div>
                                 </div>
 
-                                <div class="mt-3 mx-auto">
-                                    <input type="submit" class="btn btn-info" value="Registrar">
+                                <div class="mt-3 d-flex justify-content-center">
+                                    <input type="submit" class="btn btn-info" value="Subir Imagen">
                                 </div>
                             </div>
                         </form>
@@ -42,7 +81,6 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-10 form-color p-4 shadow-sm">
                         <h4 class="pb-1">Imaganes guardadas</h4>
-
                         <div class="row mb-3">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="table-responsive">
@@ -130,43 +168,4 @@
             </div>
         </section>
 
-        <section  id="imagen-guardada" class="py-3">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-10 form-color p-4 shadow-sm">
-                        <h4 class="pb-1 text-slider font-weight-bold">Imaganes activas</h4>
-
-                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="">
-                                </div>
-                                <?php 
-                                    require_once 'models/admin/sliders.php';
-                                    foreach ($this->sliders as $row): 
-                                        $slider = new Sliders();
-                                        $slider = $row;
-                                ?>
-                                <?php if ($slider->status == 1): ?>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="<?= constant('SDR') . $slider->image; ?>">
-                                </div>    
-                                <?php endif ?>
-                                <?php endforeach ?>
-                            </div>
-
-                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-
-                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
