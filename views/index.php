@@ -42,22 +42,32 @@
             <div class="card-deck">
                 <div class="card">
                     <div class="card-body text-center">
+                        <img src="<?= constant('CTG'); ?>television.png" alt="">
                         <p class="card-text">Electronica</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body text-center">
+                        <img src="<?= constant('CTG'); ?>chaqueta.png" alt="">
                         <p class="card-text">chamarras</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body text-center">
+                        <img src="<?= constant('CTG'); ?>cocina.png" alt="">
                         <p class="card-text">Articulos de mesa</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body text-center">
-                        <p class="card-text">Teinis</p>
+                        <img src="<?= constant('CTG'); ?>zapatillas.png" alt="">
+                        <p class="card-text">Tenis</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="<?= constant('CTG'); ?>ordenador.png" alt="">
+                        <p class="card-text">Laptos</p>
                     </div>
                 </div>
             </div>
@@ -79,7 +89,7 @@
                             <div class="wrapper">
                                 <ul class="list-unstyled components">
                                     <h6 class="title-categoria pl-4 pb-3">Ver categorias</h6>
-                                    <li>
+                                    <li class="listas-desplegable">
                                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
                                             class="pl-4">Playeras <small class="pl-5"><i
                                                     class="fas fa-angle-down"></i></small></a>
@@ -137,7 +147,7 @@
                     </div>
 
                     <div class="cards-produt pt-2">
-                    <small class="py-5">120 resultados</small>
+                        <small class="py-5 resultado">120 resultados</small>
                     <div class="row">
                         <div class="container pt-4">
                             <div class="row">
@@ -146,7 +156,7 @@
                                         <img src="" class="card-img-top" alt="">
                                         <small>Foto del pruducto</small>
                                         <!-- nota elimina el small cuando leas esto pendejo xd-->
-                                        <div class="card-body">
+                                        <div class="card-body info-products-card">
                                             <h5 class="card-title">Nombre del producto</h5>
                                             <p class="card-text">Información del producto.</p>
                                             <center><a href="#" class="btn-login p-2 btn-comprar">Comprar Ahora</a>
@@ -157,7 +167,7 @@
                                 <div class="col-lg-4 card-responsive">
                                     <div class="card">
                                         <img src="" class="card-img-top" alt="">
-                                        <div class="card-body">
+                                        <div class="card-body info-products-card">
                                             <h5 class="card-title">Card title</h5>
                                             <p class="card-text">Some quick example text to build on the card title and
                                                 make
@@ -169,7 +179,7 @@
                                 <div class="col-lg-4 card-responsive">
                                     <div class="card">
                                         <img src="" class="card-img-top" alt="">
-                                        <div class="card-body">
+                                        <div class="card-body info-products-card">
                                             <h5 class="card-title">Card title</h5>
                                             <p class="card-text">Some quick example text to build on the card title and
                                                 make

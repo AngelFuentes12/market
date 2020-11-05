@@ -568,7 +568,8 @@ table tbody td {
 
 
 .title-categoria{
-	font-size: 18px;
+	font-size: 17px;
+	font-family: 'Mulish', sans-serif;
 }
 
 .components li{
@@ -610,15 +611,22 @@ table tbody td {
 
 
 /* categorias */
-
+.info-products-card h5, p{
+	font-family: 'Mulish', sans-serif;
+}
 .card-deck div{
 	background-color: #f9f9f9;
-	
+	border: none;
+}
+
+.card-deck p{
+	font-family: 'Mulish', sans-serif;
 }
 
 .texto-orden{
 	font-size: 13px!important;
 	color: #000!important;
+	font-family: 'Mulish', sans-serif;
 }
 
 .orden-submenu{
@@ -628,6 +636,7 @@ table tbody td {
 	color: #000;
 	margin-left: 20px;
 	cursor: pointer;
+	font-family: 'Mulish', sans-serif;
 }
 
 .orden-submenu:hover{
@@ -643,6 +652,15 @@ table tbody td {
 .drop-menu-opt a{
 	font-size: 13px;
 	color: #000;
+}
+
+.resultado{
+	font-family: 'Mulish', sans-serif;
+	color: #797a7a;
+}
+
+#menucategoria a{
+	font-family: 'Mulish', sans-serif;
 }
 
 /* foooter cliente */
@@ -692,6 +710,8 @@ table tbody td {
 	.card-responsive{margin-top: 12px!important;}
 
 	.carousel-inner img{ height: 270px!important;}
+
+	.listas-desplegable{ padding-top: 20px!important;}
 
 }
 
