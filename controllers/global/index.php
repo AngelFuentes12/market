@@ -34,7 +34,7 @@
 			foreach ($subcategories as $row) {
 				$subcat = new Subcategory();
 				$subcat = $row;
-				$data .= '<li class="pl-5"><a href=subcategories/search?id='.$subcat->id_subcategory.'>'.$subcat->subcategory.'</a></li>';
+				$data .= '<li class="pl-5"><a href=subcategories/search?id='.$subcat->id_subcategory.'><i class="fas fa-angle-right"></i> '.$subcat->subcategory.'</a></li>';
 			}
 			echo $data;
 		}

@@ -86,7 +86,7 @@
                     <nav class="navbar-expand-lg nv-responsive-cat">
                         <a class="navbar-toggler" data-toggle="collapse" data-target="#menucategoria"
                             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fas fa-bars icon-bar"></i><small class="reponsive-categoria">Ver categorias</small>
+                            <i class="fas fa-bars icon-bar"></i><small class="reponsive-categoria">Categorias</small>
                         </a>
                         <div class="collapse navbar-collapse" id="menucategoria">
                             <div class="wrapper">
@@ -100,7 +100,7 @@
                                             $category = $row;
                                     ?>
                                     <li class="listas-desplegable">
-                                        <i class="far fa-circle"></i>
+                                        <i class="fas fa-angle-down"></i>
                                         <a href="#link<?= $category->id_category; ?>" data-toggle="collapse" aria-expanded="false"
                                             class="pl-2" onclick="getSubcategories(<?= $category->id_category; ?>)">
                                             <?= $category->category; ?> 
