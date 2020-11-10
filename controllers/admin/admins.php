@@ -108,8 +108,7 @@
 				case 'send':
 					$this->errors([
 						'alert' => 'alert-success', 
-						'message' => 'Se envio un correo electrónico a ' . $email . ' con mas instrucciones',
-						'email' => $email
+						'message' => 'Se envio un correo electrónico a ' . $email . ' con mas instrucciones'
 					]);
 					break;
 
