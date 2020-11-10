@@ -1,12 +1,14 @@
     <!-- buscador  -->
-    <!-- <div class="container">
-        <form action="" method="post" class="">
-            <div class="md-form active-cyan-2 mb-4 mt-4">
-                <input class="form-control" type="text" placeholder="Buscador" aria-label="Search">
+    <section id="py-6">
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <form class="form-inline position-relative my-2 d-inline-block w-50">
+                    <button class="btn btn-search position-absolute" type="submit"><i class="fas fa-search"></i></button>
+                    <input class="form-control mr-sm-2 w-100" type="" placeholder="Buscador" aria-label="Search">
+                </form>
             </div>
-        </form>
-    </div> -->
-
+        </div>
+    </section>
     <!-- slider -->
     <section id="slider">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -24,7 +26,7 @@
                 <?php if ($slider->status == 1): ?>
                 <div class="carousel-item">
                     <img class="d-block w-100 mx-auto" src="<?= constant('SDR') . $slider->image; ?>">
-                </div>    
+                </div>
                 <?php endif ?>
                 <?php endforeach ?>
             </div>
@@ -92,7 +94,7 @@
                             <div class="wrapper">
                                 <ul class="list-unstyled components">
                                     <h6 class="title-categoria pl-4 pb-3">Ver categorias</h6>
-                                    
+
                                     <?php 
                                         require_once 'models/admin/category.php';
                                         foreach ($this->categories as $row): 
@@ -101,9 +103,10 @@
                                     ?>
                                     <li class="listas-desplegable">
                                         <i class="fas fa-angle-down"></i>
-                                        <a href="#link<?= $category->id_category; ?>" data-toggle="collapse" aria-expanded="false"
-                                            class="pl-2" onclick="getSubcategories(<?= $category->id_category; ?>)">
-                                            <?= $category->category; ?> 
+                                        <a href="#link<?= $category->id_category; ?>" data-toggle="collapse"
+                                            aria-expanded="false" class="pl-2"
+                                            onclick="getSubcategories(<?= $category->id_category; ?>)">
+                                            <?= $category->category; ?>
                                         </a>
                                         <ul class="collapse list-unstyled" id="link<?= $category->id_category; ?>">
 
@@ -137,50 +140,52 @@
 
                     <div class="cards-produt pt-2">
                         <small class="py-5 resultado">120 resultados</small>
-                    <div class="row">
-                        <div class="container pt-4">
-                            <div class="row">
-                                <div class="col-lg-4 card-responsive">
-                                    <div class="card">
-                                        <img src="" class="card-img-top" alt="">
-                                        <small>Foto del pruducto</small>
-                                        <!-- nota elimina el small cuando leas esto pendejo xd-->
-                                        <div class="card-body info-products-card">
-                                            <h5 class="card-title">Nombre del producto</h5>
-                                            <p class="card-text">Información del producto.</p>
-                                            <center><a href="#" class="btn-login p-2 btn-comprar">Comprar Ahora</a>
-                                            </center>
+                        <div class="row">
+                            <div class="container pt-4">
+                                <div class="row">
+                                    <div class="col-lg-4 card-responsive">
+                                        <div class="card">
+                                            <img src="" class="card-img-top" alt="">
+                                            <small>Foto del pruducto</small>
+                                            <!-- nota elimina el small cuando leas esto pendejo xd-->
+                                            <div class="card-body info-products-card">
+                                                <h5 class="card-title">Nombre del producto</h5>
+                                                <p class="card-text">Información del producto.</p>
+                                                <center><a href="#" class="btn-login p-2 btn-comprar">Comprar Ahora</a>
+                                                </center>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 card-responsive">
-                                    <div class="card">
-                                        <img src="" class="card-img-top" alt="">
-                                        <div class="card-body info-products-card">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and
-                                                make
-                                                up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <div class="col-lg-4 card-responsive">
+                                        <div class="card">
+                                            <img src="" class="card-img-top" alt="">
+                                            <div class="card-body info-products-card">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">Some quick example text to build on the card title
+                                                    and
+                                                    make
+                                                    up the bulk of the card's content.</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 card-responsive">
-                                    <div class="card">
-                                        <img src="" class="card-img-top" alt="">
-                                        <div class="card-body info-products-card">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and
-                                                make
-                                                up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <div class="col-lg-4 card-responsive">
+                                        <div class="card">
+                                            <img src="" class="card-img-top" alt="">
+                                            <div class="card-body info-products-card">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">Some quick example text to build on the card title
+                                                    and
+                                                    make
+                                                    up the bulk of the card's content.</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>

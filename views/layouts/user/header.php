@@ -58,7 +58,7 @@
     </nav>
 
 <!--  -->
-    <nav class="navbar navbar-expand-md shadow-sm">
+    <nav class="navbar navbar-expand-md ">
         <a class="navbar-brand pl-3" href="<?= constant('URL'); ?>">
             <img src="<?= constant('PIC'); ?>logotipo.png" style="width: 125px;">
         </a>

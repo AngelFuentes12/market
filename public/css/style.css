@@ -557,17 +557,23 @@ table tbody td {
 	color: #000;
 }
 
-.active-cyan-2 input.form-control {
-	border: none;
-	border-bottom: 1px solid #b3b3b3;
-	border-radius: 0;
+/*busqueda */
+#py-6{
+	padding-bottom: 1rem;
 }
 
-.active-cyan-2 input.form-control[type='text']:focus:not([readonly]) {
-	border-bottom: 1px solid #0070c0 !important;
-	/* box-shadow: 0 1px 0 0 #218838!important; */
+.fa-search{
+	color: #797a7a;
 }
 
+.search-input{
+	border-radius: 1rem!important;
+}
+
+.btn-search{
+	right: 0;
+	margin-right: .25rem;
+}
 
 .title-categoria{
 	font-size: 17px;
@@ -610,6 +616,7 @@ table tbody td {
 .fa-circle{
 	font-size: 9px;
 }
+
 
 /* categorias */
 .info-products-card h5, p{
@@ -689,7 +696,6 @@ table tbody td {
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
 	#nav-descuento span {font-size: 12px;}
-
 	/* error 404 */
 	.display-1 {font-size: 4rem !important;}
 
@@ -718,8 +724,8 @@ table tbody td {
 	.components li{ width: 250px;}
 
 	.drop-menu-opt a { font-size: 14px;}
-	
 
+	.btn-search{ margin-right: .25rem;}
 }
 
 /* Small devices (landscape phones, 576px and up) */
