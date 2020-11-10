@@ -23,7 +23,7 @@
 				]);
 
 				$row = $query->fetch();
-				if ($row['status'] != "") {
+				if (isset($row['status']) && $row['status'] != "") {
 					if ($row['status'] == 1) {
 						if ($row['sessions'] < 2) {
 							if ($row['email'] === $email) {

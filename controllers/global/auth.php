@@ -150,6 +150,7 @@
 						switch ($this->model->reset($email)) {
 							case 'register':
 								$this->sendEmailReset($email);
+								return false;
 								break;
 
 							case 'email':
@@ -200,8 +201,7 @@
 				case 'send':
 					$this->errors([
 						'alert' => 'alert-success', 
-						'message' => 'Se envio un correo electrónico a ' . $email . ' con mas instrucciones',
-						'email' => $email
+						'message' => 'Se envio un correo electrónico a ' . $email . ' con más instrucciones',
 					]);
 					$this->view->title = "Iniciar sesión";
 					$this->view->render('auth/login');
