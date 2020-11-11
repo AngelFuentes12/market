@@ -12,6 +12,7 @@
 	font-family: 'Montserrat', sans-serif;
 }
 
+a:hover{color: #0a0a0a!important;}
 a {
 	text-decoration: none !important;
 }
@@ -726,6 +727,12 @@ table tbody td {
 	.drop-menu-opt a { font-size: 14px;}
 
 	.btn-search{ margin-right: .25rem;}
+
+	.register-cliente-title{font-size: 18px;}
+
+	.campos-obligatorios{font-size: 12px;}
+
+	.recordatorio{font-size: 12px; padding-top: .75rem;}
 }
 
 /* Small devices (landscape phones, 576px and up) */
