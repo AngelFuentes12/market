@@ -186,6 +186,14 @@ select:focus {
 	height: 460px!important;
 }
 
+.card-deck .card-body{
+	cursor: pointer!important;
+}
+
+.buy-now:hover{
+	color: #FFFF!important;
+}
+
 /* ADMIN */
 .text-dashboard {
 	padding-top: 12px;
@@ -440,6 +448,14 @@ select {
 #footer-admin{
 	background-color: #000!important;
 }
+
+/* cliente - index */
+
+#index-cliente{
+	background-color: #f9f9f9;
+}
+
+
 
 /* FOOTER */
 #footer{

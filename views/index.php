@@ -14,7 +14,7 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR'); ?>promo.jpg" alt="First slide">
+                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR'); ?>promo.jpg" class="img-fluid" alt="First slide" >
                 </div>
 
                 <?php 
@@ -25,7 +25,7 @@
                 ?>
                 <?php if ($slider->status == 1): ?>
                 <div class="carousel-item">
-                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR') . $slider->image; ?>">
+                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR') . $slider->image; ?>" class="img-fluid">
                 </div>
                 <?php endif ?>
                 <?php endforeach ?>
@@ -47,32 +47,32 @@
             <div class="card-deck">
                 <div class="card">
                     <div class="card-body text-center">
-                        <img src="<?= constant('CTG'); ?>television.png" alt="">
-                        <p class="card-text">Electronica</p>
+                        <img src="<?= constant('CTG'); ?>television.png" alt="" class="img-fluid">
+                        <p class="card-text font-weight-bold">Electronica</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body text-center">
-                        <img src="<?= constant('CTG'); ?>chaqueta.png" alt="">
-                        <p class="card-text">chamarras</p>
+                        <img src="<?= constant('CTG'); ?>chaqueta.png" alt="" class="img-fluid">
+                        <p class="card-text font-weight-bold">chamarras</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body text-center">
-                        <img src="<?= constant('CTG'); ?>cocina.png" alt="">
-                        <p class="card-text">Articulos de mesa</p>
+                        <img src="<?= constant('CTG'); ?>cocina.png" alt="" class="img-fluid">
+                        <p class="card-text font-weight-bold">Articulos de mesa</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body text-center">
-                        <img src="<?= constant('CTG'); ?>zapatillas.png" alt="">
-                        <p class="card-text">Tenis</p>
+                        <img src="<?= constant('CTG'); ?>zapatillas.png" alt="" class="img-fluid">
+                        <p class="card-text font-weight-bold">Tenis</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body text-center">
                         <img src="<?= constant('CTG'); ?>ordenador.png" alt="">
-                        <p class="card-text">Laptos</p>
+                        <p class="card-text font-weight-bold">Laptos</p>
                     </div>
                 </div>
             </div>
@@ -143,42 +143,42 @@
                         <div class="row">
                             <div class="container pt-4">
                                 <div class="row">
-                                    <div class="col-lg-4 card-responsive">
-                                        <div class="card">
-                                            <img src="" class="card-img-top" alt="">
-                                            <small>Foto del pruducto</small>
-                                            <!-- nota elimina el small cuando leas esto pendejo xd-->
-                                            <div class="card-body info-products-card">
-                                                <h5 class="card-title">Nombre del producto</h5>
-                                                <p class="card-text">Información del producto.</p>
-                                                <center><a href="#" class="btn-login p-2 btn-comprar">Comprar Ahora</a>
-                                                </center>
+                                    <div class="col-lg-4 card-responsive border-0">
+                                        <div class="card my-3 border-0">
+                                            <img src="<?= constant('PRO'); ?>puma.jpg" class="card-img-top img-fluid w-75 mx-auto">
+                                            <div class="position-absolute bg-danger p-2 text-light">
+                                                <small class="">Oferta 10% de descuento</small>
+                                            </div>
+                                            <div class="card-body product-info text-dark">
+                                                <h6 class="font-weight-bold lead">RS-X Hard Drive High Puma</h6>
+                                                <small class="font-weight-bold"><del>Precio original: $4500</del> - Solo por hoy a $3500</small>
+                                                <div class="d-block mt-2">
+                                                <a href="#" class="btn btn-dark d-block buy-now">Comprar Ahora</a>
+                                                </div>                                             
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 card-responsive">
-                                        <div class="card">
-                                            <img src="" class="card-img-top" alt="">
-                                            <div class="card-body info-products-card">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and
-                                                    make
-                                                    up the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <div class="col-lg-4 card-responsive border-0">
+                                        <div class="card my-3 border-0">
+                                            <img src="<?= constant('PRO'); ?>video.jpg" class="card-img-top img-fluid w-75 mx-auto">
+                                            <div class="card-body product-info text-dark">
+                                                <h6 class="font-weight-bold lead">Videoportero inalámbrico</h6>
+                                                <small class="font-weight-bold">Precio: $4500</small>
+                                                <div class="d-block mt-2">
+                                                <a href="#" class="btn btn-dark d-block buy-now">Comprar Ahora</a>
+                                                </div>                                             
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 card-responsive">
-                                        <div class="card">
-                                            <img src="" class="card-img-top" alt="">
-                                            <div class="card-body info-products-card">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and
-                                                    make
-                                                    up the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <div class="col-lg-4 card-responsive border-0">
+                                        <div class="card my-3 border-0">
+                                            <img src="<?= constant('PRO'); ?>madcatz.jpg" class="card-img-top img-fluid w-75 mx-auto">
+                                            <div class="card-body product-info text-dark">
+                                                <h6 class="font-weight-bold lead">Mouse Mad Catz láser Gaming</h6>
+                                                <small class="font-weight-bold">Precio: $4500</small>
+                                                <div class="d-block mt-2">
+                                                <a href="#" class="btn btn-dark d-block buy-now">Comprar Ahora</a>
+                                                </div>                                             
                                             </div>
                                         </div>
                                     </div>

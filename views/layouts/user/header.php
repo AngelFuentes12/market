@@ -105,14 +105,9 @@
                         </li>
 
                         <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link submenu" href="#">
-                                    <i class="far fa-smile-wink"></i> Hola, <?= $_SESSION['email']; ?>
-                                </a>
-                            </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-gear fa-fw"></i>
+                                <a class="nav-link dropdown-toggle submenu" href="#" id="dropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="far fa-smile-wink"></i> Hola, <?= $_SESSION['name']; ?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownProducts">
                                     <a class="nav-link submenu" href="<?= constant('URL'); ?>user/index">
