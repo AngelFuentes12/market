@@ -62,7 +62,7 @@
         <a class="navbar-brand pl-3" href="<?= constant('URL'); ?>">
             <img src="<?= constant('PIC'); ?>logotipo.png" style="width: 125px;">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler btn-menu-responsive" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
         </button>
 
@@ -70,7 +70,6 @@
             <div class="mx-auto">
 
                 <ul class="nav justify-content-center">
-
                     <?php if (isset($_SESSION['user'])) : ?>
 
                         <li class="nav-item">
@@ -109,7 +108,7 @@
                                 <a class="nav-link dropdown-toggle submenu" href="#" id="dropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-smile-wink"></i> Hola, <?= $_SESSION['name']; ?>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownProducts">
+                                <div class="dropdown-menu border-0 rounded-0" aria-labelledby="dropdownProducts">
                                     <a class="nav-link submenu" href="<?= constant('URL'); ?>user/index">
                                         <i class="fa fa-user fa-fw fa-fa-user"></i>Perfil
                                     </a>
@@ -163,7 +162,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link submenu registrate" href="<?= constant('URL'); ?>auth/register">REGISTRATE</a>
+                    <a class="nav-link submenu font-weight-bold" href="<?= constant('URL'); ?>auth/register">REGISTRATE</a>
                 </li>
 
             <?php endif ?>

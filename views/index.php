@@ -3,7 +3,8 @@
         <div class="container">
             <div class="row d-flex align-items-center justify-content-center">
                 <form class="form-inline position-relative my-2 d-inline-block w-50">
-                    <button class="btn btn-search position-absolute" type="submit"><i class="fas fa-search"></i></button>
+                    <button class="btn btn-search position-absolute" type="button"><i
+                            class="fas fa-search"></i></button>
                     <input class="form-control mr-sm-2 w-100" type="" placeholder="Buscador" aria-label="Search">
                 </form>
             </div>
@@ -14,7 +15,8 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR'); ?>promo.jpg" class="img-fluid" alt="First slide" >
+                    <img class="d-block w-100 mx-auto" src="<?= constant('SDR'); ?>banner5.jpg" class="img-fluid"
+                        alt="First slide">
                 </div>
 
                 <?php 
@@ -125,16 +127,11 @@
                         <a class=" dropdown-toggle ml-2 orden-submenu" data-toggle="dropdown">
                             recomendados
                         </a>
-                        <div class="dropdown-menu drop-menu-opt">
-                            <a class="dropdown-item drop-option" href="#">Mas popular</a>
+                        <div class="dropdown-menu drop-menu-opt rounded-0">
+                            <a class="dropdown-item drop-option" href="#">Más popular</a>
                             <a class="dropdown-item drop-option" href="#">Precio bajo</a>
                             <a class="dropdown-item drop-option" href="#">Precio alto</a>
-                            <a class="dropdown-item drop-option" href="#">Mas popular</a>
-                            <a class="dropdown-item drop-option" href="#">Precio bajo</a>
-                            <a class="dropdown-item drop-option" href="#">Precio alto</a>
-                            <a class="dropdown-item drop-option" href="#">Mas popular</a>
-                            <a class="dropdown-item drop-option" href="#">Precio bajo</a>
-                            <a class="dropdown-item drop-option" href="#">Precio alto</a>
+                            <a class="dropdown-item drop-option" href="#">En descuento</a>
                         </div>
                     </div>
 
@@ -145,40 +142,44 @@
                                 <div class="row">
                                     <div class="col-lg-4 card-responsive border-0">
                                         <div class="card my-3 border-0">
-                                            <img src="<?= constant('PRO'); ?>puma.jpg" class="card-img-top img-fluid w-75 mx-auto">
+                                            <img src="<?= constant('PRO'); ?>puma.jpg"
+                                                class="card-img-top img-fluid w-75 mx-auto">
                                             <div class="position-absolute bg-danger p-2 text-light">
                                                 <small class="">Oferta 10% de descuento</small>
                                             </div>
                                             <div class="card-body product-info text-dark">
                                                 <h6 class="font-weight-bold lead">RS-X Hard Drive High Puma</h6>
-                                                <small class="font-weight-bold"><del>Precio original: $4500</del> - Solo por hoy a $3500</small>
+                                                <small class="font-weight-bold"><del>Precio original: $4500</del> - Solo
+                                                    por hoy a $3500</small>
                                                 <div class="d-block mt-2">
-                                                <a href="#" class="btn btn-dark d-block buy-now">Comprar Ahora</a>
-                                                </div>                                             
+                                                    <a href="#" class="btn btn-dark d-block buy-now border-0 rounded-0">Comprar Ahora</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 card-responsive border-0">
                                         <div class="card my-3 border-0">
-                                            <img src="<?= constant('PRO'); ?>video.jpg" class="card-img-top img-fluid w-75 mx-auto">
+                                            <img src="<?= constant('PRO'); ?>video.jpg"
+                                                class="card-img-top img-fluid w-75 mx-auto">
                                             <div class="card-body product-info text-dark">
                                                 <h6 class="font-weight-bold lead">Videoportero inalámbrico</h6>
                                                 <small class="font-weight-bold">Precio: $4500</small>
                                                 <div class="d-block mt-2">
-                                                <a href="#" class="btn btn-dark d-block buy-now">Comprar Ahora</a>
-                                                </div>                                             
+                                                    <a href="#" class="btn btn-dark d-block buy-now border-0 rounded-0">Comprar Ahora</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 card-responsive border-0">
                                         <div class="card my-3 border-0">
-                                            <img src="<?= constant('PRO'); ?>madcatz.jpg" class="card-img-top img-fluid w-75 mx-auto">
+                                            <img src="<?= constant('PRO'); ?>madcatz.jpg"
+                                                class="card-img-top img-fluid w-75 mx-auto">
                                             <div class="card-body product-info text-dark">
                                                 <h6 class="font-weight-bold lead">Mouse Mad Catz láser Gaming</h6>
                                                 <small class="font-weight-bold">Precio: $4500</small>
                                                 <div class="d-block mt-2">
-                                                <a href="#" class="btn btn-dark d-block buy-now">Comprar Ahora</a>
-                                                </div>                                             
+                                                    <a href="#" class="btn btn-dark d-block buy-now border-0 rounded-0">Comprar Ahora</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -12,6 +12,7 @@
 	define('SDR', 'http://localhost/market/resources/images/slider/');
 	define('CTG', 'http://localhost/market/resources/images/categories/');
 	define('PRO', 'http://localhost/market/resources/images/products/');
+	define('USR', 'http://localhost/market/resources/images/users/');
 	define('CSS', 'http://localhost/market/public/css/');
 	define('JS', 'http://localhost/market/resources/js/');
 

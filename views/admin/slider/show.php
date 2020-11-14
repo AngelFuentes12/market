@@ -8,7 +8,7 @@
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" src="<?= constant('SDR'); ?>shop.jpg">
+                                    <img class="d-block w-100" src="<?= constant('SDR'); ?>banner4.jpg">
                                 </div>
                                 <?php 
                                     require_once 'models/admin/sliders.php';
