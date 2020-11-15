@@ -17,6 +17,13 @@
 			$this->validation();
 			
 			$this->errors([]);
+			$this->getStore();
+		}
+
+		function getStore()
+		{
+			$store = $this->model->getStore();
+			$this->view->stores = $store;
 			$this->view->title = "Almacen";
 			$this->view->render('admin/stores/show');
 		}

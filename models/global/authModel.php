@@ -88,7 +88,7 @@
 						$query_val->execute(['email' => $email]);
 						
 						$row_val = $query_val->fetch();
-						if ($row_val['id_reset'] != "") {
+						if (isset($row_val['id_reset']) && $row_val['id_reset'] != "") {
 							$query_upd->execute(['id_reset' => $row_val['id_reset']]);
 
 							$query_reg->execute([

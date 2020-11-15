@@ -202,6 +202,7 @@
 					$this->errors([
 						'alert' => 'alert-success', 
 						'message' => 'Se envio un correo electrónico a ' . $email . ' con más instrucciones',
+						'email' => $email
 					]);
 					$this->view->title = "Iniciar sesión";
 					$this->view->render('auth/login');

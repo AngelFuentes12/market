@@ -12,7 +12,7 @@
 			parent::__construct();
 		}
 
-		function register($id_category, $id_subcategory, $id_vendor, $product, $cost, $description, $image)
+		function register($id_category, $id_subcategory, $id_vendor, $product, $cost, $amount, $description, $image)
 		{
 			$case = "";
 
@@ -24,6 +24,7 @@
 			$query_pro = $this->db->connection()->prepare("SELECT id_product FROM products WHERE product = :product");
 			$query_ins_pro = $this->db->connection()->prepare("INSERT INTO products_categories_subcategories (id_product, id_category_subcategory, id_image) VALUES (:id_product, :id_category_subcategory, :id_image)");
 			$query_ven = $this->db->connection()->prepare("INSERT INTO vendors_products (id_vendor, id_product) VALUES (:id_vendor, :id_product)");
+			$query_sto = $this->db->connection()->prepare("INSERT INTO store (id_product, amount, date_entry) VALUES (:id_product, :amount, NOW())");
 
 			try {
 				$query_val->execute(['product' => $product]);
@@ -63,12 +64,104 @@
 						'id_product' => $row_pro['id_product']
 					]);
 
+					$query_sto->execute([
+						'id_product' => $row_pro['id_product'],
+						'amount' => $amount
+					]);
+
 					$case = "register";
 				}
 
 				return $case;
 			} catch (PDOException $e) {
 				return $case;
+			}
+		}
+
+		function edit($id_product, $id_vendor, $product, $cost, $description, $image)
+		{
+			$query_val = $this->db->connection()->prepare("SELECT * FROM products WHERE product = :product");
+			$query = $this->db->connection()->prepare("UPDATE products SET product = :product, cost = :cost, description = :description WHERE id_product = :id_product");
+			$query_img = $this->db->connection()->prepare("UPDATE images NATURAL JOIN products_categories_subcategories SET image = :image WHERE id_product = :id_product");
+			$query_ven = $this->db->connection()->prepare("UPDATE vendors_products SET id_vendor = :id_vendor WHERE id_product = :id_product");
+
+			try {
+				$query_val->execute(['product' => $product]);
+				$row_val = $query_val->fetch();
+
+				if (isset($row_val['id_product']) && $row_val['id_product'] > 0) {
+					if ($row_val['id_product'] == $id_product) {
+						$query->execute([
+							'id_product' => $id_product,
+							'product' => $product,
+							'cost' => $cost,
+							'description' => $description
+						]);
+
+						$query_img->execute([
+							'id_product' => $id_product,
+							'image' => $image 
+						]);
+
+						$query_ven->execute([
+							'id_product' => $id_product,
+							'id_vendor' => $id_vendor
+						]);
+
+						return true;
+					} else {
+						return false;
+					}
+				} else {
+					$query->execute([
+						'id_product' => $id_product,
+						'product' => $product,
+						'cost' => $cost,
+						'description' => $description
+					]);
+
+					$query_img->execute([
+						'id_product' => $id_product,
+						'image' => $image 
+					]);
+
+					$query_ven->execute([
+						'id_product' => $id_product,
+						'id_vendor' => $id_vendor
+					]);
+					return true;
+				}
+			} catch (PDOException $e) {
+				return false;
+			}
+		}
+
+		function store($id_product)
+		{
+			$items = [];
+
+			$query = $this->db->connection()->prepare("SELECT products.id_product, vendors.id_vendor, vendor, name, product, cost, description, image FROM products NATURAL JOIN vendors_products NATURAL JOIN vendors NATURAL JOIN products_categories_subcategories NATURAL JOIN images WHERE id_product = :id_product");
+
+			try {
+				$query->execute(['id_product' => $id_product]);
+
+				while ($row = $query->fetch()) {
+					$item = new Product();
+					$item->id_product = $row['id_product'];
+					$item->id_vendor = $row['id_vendor'];
+					$item->vendor = $row['vendor'];
+					$item->name = $row['name'];
+					$item->product = $row['product'];
+					$item->cost = $row['cost'];
+					$item->description = $row['description'];
+					$item->image = $row['image'];
+
+					array_push($items, $item);
+				}
+
+				return $items;
+			} catch (PDOException $e) {
+				return $items;
 			}
 		}
 

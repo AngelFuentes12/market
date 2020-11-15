@@ -296,6 +296,22 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="amount">
+                                Piezas de existencia <span style="color: red;">*</span>
+                            </label>
+
+                            <input id="amount" type="text" value="<?= $this->error['amount']; ?>" name="amount" class="form-control <?= $this->error['c8']; ?>" minlength="1" maxlength="5" required>
+
+                            <div class="invalid-feedback">
+                                <?= $this->error['m8']; ?>
+                            </div>
+
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['name'] ?>, Ingrese una existencia
+                            </div>
+                        </div>
+
                         <div class="mx-auto pb-5 center-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">
                                 Cancelar
